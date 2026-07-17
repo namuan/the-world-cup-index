@@ -1,0 +1,4 @@
+world_cup_year,match_date,stage,team_rank,team_goals,opponent_goals,opponent_code,opponent,opponent_rank,opponent_confederation,result,team_shootout_goals,opponent_shootout_goals,extra_time,status,ranking_date,ranking_source_url,match_source_url
+2022,2022-11-21,Group stage,19,1,1,USA,USA,16,CONCACAF,draw,,,False,completed,2022-10-06,https://www.fifa.com/fifa-world-ranking/mens-ranking?dateId=id13792,https://www.fifa.com/en/tournaments/mens/worldcup/qatar2022
+2022,2022-11-25,Group stage,19,0,2,IRN,IR Iran,20,AFC,loss,,,False,completed,2022-10-06,https://www.fifa.com/fifa-world-ranking/mens-ranking?dateId=id13792,https://www.fifa.com/en/tournaments/mens/worldcup/qatar2022
+2022,2022-11-29,Group stage,19,0,3,ENG,England,5,UEFA,loss,,,False,completed,2022-10-06,https://www.fifa.com/fifa-world-ranking/mens-ranking?dateId=id13792,https://www.fifa.com/en/tournaments/mens/worldcup/qatar2022

@@ -1,0 +1,74 @@
+World Ranking Football world cups 
+
+Writing a script to automate this data collection is an excellent idea. Because the data spans over three decades, manually clicking through the FIFA archive for every single tournament would take hours.
+To merge pre-tournament rankings with actual World Cup participants across history, you essentially need two datasets mapped together:
+1. The historical FIFA ranking logs (which provide rank, country, and date).
+2. The World Cup tournament fixtures/lineups (to know which 32 or 48 teams actually played in a given year).
+Fortunately, open-source communities have already scraped and compiled these. The most robust way to do this is by utilizing Kaggle datasets (such as the highly-rated FIFA Men's World Ranking dataset by Lucas Yukio Imafuko and International Football Results 1872 to 2026), or parsing the web programmatically.
+Here is a guide and a complete Python script using the pandas data science library to achieve exactly what you want.
+Step 1: Gather the CSV Files
+Before running the script, you can download open-source CSV data from Kaggle or similar data hubs:
+* fifa_ranking.csv – Contains columns: rank, country_full, rank_date.
+* world_cups_teams.csv – Contains columns: year, team (representing every team that qualified for that specific year).
+Step 2: The Automation Script
+The clever trick to this script is defining a strict timeline. Since World Cups usually take place in June/July, the script calculates a dynamic "window" (e.g., checking the ranking published 1 to 45 days before the World Cup start date) to pull the most accurate pre-tournament ranking automatically.
+import pandas as pd
+
+# 1. Load the historical data files
+rankings_df = pd.read_csv('fifa_ranking.csv')
+wc_teams_df = pd.read_csv('world_cups_teams.csv')
+
+# Ensure date formatting is standardized
+rankings_df['rank_date'] = pd.to_datetime(rankings_df['rank_date'])
+
+# 2. Define historical World Cup kickoff dates (June of that year as a general fallback)
+# You can make this dictionary exactly match official kickoff dates for perfection
+world_cup_dates = {
+    1994: '1994-06-17',
+    1998: '1998-06-10',
+    2002: '2002-05-31',
+    2006: '2006-06-09',
+    2010: '2010-06-11',
+    2014: '2014-06-12',
+    2018: '2018-06-14',
+    2022: '2022-11-20',  # Note the winter exception for Qatar!
+    2026: '2026-06-11'
+}
+
+final_dataset = []
+
+# 3. Loop through each World Cup year to fetch relevant pre-tournament data
+for year, kickoff_str in world_cup_dates.items():
+    kickoff_date = pd.to_datetime(kickoff_str)
+    
+    # Filter rankings released right before the tournament kicks off (max 40 days prior)
+    pre_wc_rankings = rankings_df[
+        (rankings_df['rank_date'] < kickoff_date) & 
+        (rankings_df['rank_date'] >= kickoff_date - pd.Timedelta(days=40))
+    ]
+    
+    # In case a specific month lacked a release, grab the absolute closest prior release
+    if pre_wc_rankings.empty:
+        pre_wc_rankings = rankings_df[rankings_df['rank_date'] < kickoff_date].sort_values(by='rank_date', ascending=False).head(200)
+    
+    # Filter down to just the teams that actually played in that year's tournament
+    teams_in_wc = wc_teams_df[wc_teams_df['year'] == year]['team'].tolist()
+    
+    # Extract the matching data
+    year_data = pre_wc_rankings[pre_wc_rankings['country_full'].isin(teams_in_wc)].copy()
+    year_data['world_cup_year'] = year
+    
+    final_dataset.append(year_data[['world_cup_year', 'country_full', 'rank', 'rank_date']])
+
+# 4. Compile everything into one master data frame
+historical_wc_rankings = pd.concat(final_dataset, ignore_index=True)
+
+# 5. Export to a clean CSV spreadsheet file
+historical_wc_rankings.to_csv('historical_world_cup_rankings.csv', index=False)
+print("Data collection complete! Saved to historical_world_cup_rankings.csv")
+What to Look Out For in Your Data (Data Cleaning Caveats)
+If you build or run this script, your initial console might flag a few missing pieces or mismatched rows. You will want to add a quick string-replacement mapping rule in your script to clean up country naming discrepancies between datasets:
+* The "PR" and "Republic" variations: FIFA often registers teams as USA vs United States, IR Iran vs Iran, or Korea Republic vs South Korea.
+* The UK National Teams: FIFA ranks England, Scotland, and Wales individually, but general historical datasets occasionally map general geographic data differently.
+* Geopolitical Name Shifts: Between 1994 and today, several qualifying nations changed names or borders (e.g., Yugoslavia became Serbia and Montenegro, which later split into Serbia).
+Once those country name strings are normalized, this script will cleanly spit out a single master file tracking how every single team's ranking fluctuated across tournament histories.

@@ -1,0 +1,4 @@
+world_cup_year,match_date,stage,team_rank,team_goals,opponent_goals,opponent_code,opponent,opponent_rank,opponent_confederation,result,team_shootout_goals,opponent_shootout_goals,extra_time,status,ranking_date,ranking_source_url,match_source_url
+2026,2026-06-13,Group stage,83,0,1,SCO,Scotland,42,UEFA,loss,,,False,completed,2026-06-11,https://inside.fifa.com/fifa-world-ranking/men?dateId=id11944,https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026
+2026,2026-06-19,Group stage,83,0,3,BRA,Brazil,6,CONMEBOL,loss,,,False,completed,2026-06-11,https://inside.fifa.com/fifa-world-ranking/men?dateId=id11944,https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026
+2026,2026-06-24,Group stage,83,2,4,MAR,Morocco,7,CAF,loss,,,False,completed,2026-06-11,https://inside.fifa.com/fifa-world-ranking/men?dateId=id11944,https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026

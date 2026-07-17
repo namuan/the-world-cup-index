@@ -1,0 +1,4 @@
+world_cup_year,match_date,stage,team_rank,team_goals,opponent_goals,opponent_code,opponent,opponent_rank,opponent_confederation,result,team_shootout_goals,opponent_shootout_goals,extra_time,status,ranking_date,ranking_source_url,match_source_url
+2006,2006-06-13,Group stage,61,1,2,KOR,Korea Republic,29,AFC,loss,,,False,completed,2006-05-17,https://inside.fifa.com/fifa-world-ranking,https://www.fifa.com/en/tournaments/mens/worldcup/germany2006
+2006,2006-06-19,Group stage,61,0,2,SUI,Switzerland,35,UEFA,loss,,,False,completed,2006-05-17,https://inside.fifa.com/fifa-world-ranking,https://www.fifa.com/en/tournaments/mens/worldcup/germany2006
+2006,2006-06-23,Group stage,61,0,2,FRA,France,8,UEFA,loss,,,False,completed,2006-05-17,https://inside.fifa.com/fifa-world-ranking,https://www.fifa.com/en/tournaments/mens/worldcup/germany2006

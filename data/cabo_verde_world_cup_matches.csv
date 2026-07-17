@@ -1,0 +1,5 @@
+world_cup_year,match_date,stage,team_rank,team_goals,opponent_goals,opponent_code,opponent,opponent_rank,opponent_confederation,result,team_shootout_goals,opponent_shootout_goals,extra_time,status,ranking_date,ranking_source_url,match_source_url
+2026,2026-06-15,Group stage,67,0,0,ESP,Spain,2,UEFA,draw,,,False,completed,2026-06-11,https://inside.fifa.com/fifa-world-ranking/men?dateId=id11944,https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026
+2026,2026-06-21,Group stage,67,2,2,URU,Uruguay,16,CONMEBOL,draw,,,False,completed,2026-06-11,https://inside.fifa.com/fifa-world-ranking/men?dateId=id11944,https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026
+2026,2026-06-26,Group stage,67,0,0,KSA,Saudi Arabia,61,AFC,draw,,,False,completed,2026-06-11,https://inside.fifa.com/fifa-world-ranking/men?dateId=id11944,https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026
+2026,2026-07-03,Group stage,67,2,3,ARG,Argentina,1,CONMEBOL,loss,,,True,completed,2026-06-11,https://inside.fifa.com/fifa-world-ranking/men?dateId=id11944,https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026

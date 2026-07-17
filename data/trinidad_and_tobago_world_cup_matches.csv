@@ -1,0 +1,4 @@
+world_cup_year,match_date,stage,team_rank,team_goals,opponent_goals,opponent_code,opponent,opponent_rank,opponent_confederation,result,team_shootout_goals,opponent_shootout_goals,extra_time,status,ranking_date,ranking_source_url,match_source_url
+2006,2006-06-10,Group stage,47,0,0,SWE,Sweden,16,UEFA,draw,,,False,completed,2006-05-17,https://inside.fifa.com/fifa-world-ranking,https://www.fifa.com/en/tournaments/mens/worldcup/germany2006
+2006,2006-06-15,Group stage,47,0,2,ENG,England,10,UEFA,loss,,,False,completed,2006-05-17,https://inside.fifa.com/fifa-world-ranking,https://www.fifa.com/en/tournaments/mens/worldcup/germany2006
+2006,2006-06-20,Group stage,47,0,2,PAR,Paraguay,33,CONMEBOL,loss,,,False,completed,2006-05-17,https://inside.fifa.com/fifa-world-ranking,https://www.fifa.com/en/tournaments/mens/worldcup/germany2006

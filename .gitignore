@@ -1,0 +1,20 @@
+# Generated outputs — rebuild with scripts
+reports/
+worldcup.db
+
+# Python
+__pycache__/
+*.pyc
+
+# Cached downloads — rebuild with build_world_cup_rankings.py
+.cache/
+
+# Playwright snapshots
+.playwright-cli/
+
+# macOS
+.DS_Store
+
+# Archive
+data/archive.zip
+data/raw/

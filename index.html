@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta
+      name="description"
+      content="England's pre-tournament FIFA ranking and every match result at each men's World Cup from 1994 to 2026."
+    />
+    <meta name="theme-color" content="#f2ecdf" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='44' fill='%23f2ecdf' stroke='%23b51e2e' stroke-width='8'/%3E%3Cpath d='M24 50h52M50 24v52' stroke='%23b51e2e' stroke-width='8'/%3E%3C/svg%3E" />
+    <title>England at the World Cup · Rank Room</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#matches">Skip to England’s matches</a>
+
+    <header class="masthead">
+      <a class="brand" href="#2026" aria-label="England World Cup Rank Room, home">
+        <span class="brand-mark" aria-hidden="true">XI</span>
+        <span>
+          <span class="brand-kicker">The World Cup Index</span>
+          <span class="brand-name">England / Rank Room</span>
+        </span>
+      </a>
+      <p class="edition">Rank before kick-off.<br />Every opponent. Every score.</p>
+    </header>
+
+    <main>
+      <section class="year-nav-shell" aria-labelledby="year-heading">
+        <p class="eyebrow" id="year-heading">Choose a tournament</p>
+        <div class="year-nav" id="year-tabs" role="tablist" aria-label="World Cup year"></div>
+      </section>
+
+      <section class="england-hero" aria-labelledby="hero-title">
+        <div class="hero-edition" aria-hidden="true">
+          <span id="hero-year">2026</span>
+          <span class="hero-cross"></span>
+        </div>
+
+        <div class="hero-copy">
+          <p class="eyebrow">England at the World Cup</p>
+          <h1 id="hero-title">England arrived ranked <span id="hero-rank-word">fourth</span> in the world.</h1>
+          <p class="hero-deck" id="hero-deck">Seven matches played. One more to come.</p>
+        </div>
+
+        <div class="rank-stamp" id="rank-stamp" aria-label="England FIFA rank 4">
+          <span class="rank-label">FIFA rank</span>
+          <strong id="hero-rank">4</strong>
+          <span class="rank-date" id="rank-date">11 Jun 2026</span>
+        </div>
+      </section>
+
+      <section class="tournament-summary" aria-label="Selected tournament summary">
+        <dl>
+          <div>
+            <dt>Matches played</dt>
+            <dd id="matches-played">7</dd>
+          </div>
+          <div>
+            <dt>Results</dt>
+            <dd id="result-record">5W · 1D · 1L</dd>
+          </div>
+          <div>
+            <dt>Goals</dt>
+            <dd id="goal-record">14 for · 8 against</dd>
+          </div>
+          <div>
+            <dt>Reached</dt>
+            <dd id="tournament-reached">Third-place play-off</dd>
+          </div>
+        </dl>
+      </section>
+
+      <section class="matches-section" id="matches" aria-labelledby="matches-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">The tournament ledger</p>
+            <h2 id="matches-title">Every England match</h2>
+          </div>
+          <p class="section-note">Ranks are the final FIFA positions published before the tournament—not the ranking on match day.</p>
+        </div>
+
+        <div class="match-key" aria-label="Match result key">
+          <span><i class="key-dot win"></i>Win</span>
+          <span><i class="key-dot draw"></i>Draw</span>
+          <span><i class="key-dot loss"></i>Loss</span>
+          <span><i class="key-dot scheduled"></i>Scheduled</span>
+        </div>
+
+        <div class="match-ledger" id="match-ledger"></div>
+
+        <div class="no-tournament" id="no-tournament" hidden>
+          <span class="no-tournament-mark" aria-hidden="true">DNQ</span>
+          <div>
+            <h3>England did not qualify.</h3>
+            <p>There is no England ranking or match record for the 1994 World Cup.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="rank-history" aria-labelledby="history-title">
+        <div class="history-copy">
+          <p class="eyebrow">The long view</p>
+          <h2 id="history-title">England’s arrival rank</h2>
+          <p>Lower is better. Select a point to open that tournament.</p>
+        </div>
+        <div class="history-chart-shell">
+          <svg
+            id="history-chart"
+            class="history-chart"
+            viewBox="0 0 800 340"
+            role="img"
+            aria-labelledby="chart-title chart-description"
+          ></svg>
+        </div>
+      </section>
+
+      <section class="source-strip" aria-labelledby="source-title">
+        <div>
+          <p class="eyebrow" id="source-title">Sources & method</p>
+          <h2>Two records, joined by team and tournament.</h2>
+        </div>
+        <p>
+          Match scores and stages come from FIFA tournament records. England and opponent tags use the same final pre-tournament FIFA ranking snapshot.
+          Shootouts are shown separately from the match score.
+        </p>
+        <div class="source-links">
+          <a id="match-source" href="#" rel="noreferrer" target="_blank">Open FIFA tournament record ↗</a>
+          <a id="ranking-source" href="#" rel="noreferrer" target="_blank">Open ranking source ↗</a>
+          <a href="data/england_world_cup_matches.csv" download>Download England match data ↓</a>
+          <a href="data/world_cup_rankings.csv" download>Download all ranking data ↓</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>England / Rank Room</span>
+      <span>40 completed matches · 8 tournament appearances · rankings from 1998</span>
+    </footer>
+
+    <div class="load-error" id="load-error" role="alert" hidden>
+      <strong>The dashboard data could not be loaded.</strong>
+      <span>Run <code>./serve_dashboard.py</code>, then reload this page.</span>
+    </div>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>
