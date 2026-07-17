@@ -137,7 +137,6 @@ def main(args):
 <body>
 <main>
   <header class="report-hd">
-    <p class="eyebrow">The World Cup Index</p>
     <h1>Giant-killer Index</h1>
     <p>Teams beating higher-ranked opponents. Use the filters to narrow down by stage, result, year, or rank gap.</p>
   </header>

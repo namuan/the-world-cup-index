@@ -45,8 +45,6 @@ a { color: inherit; text-underline-offset: .25em; }
 .report-header, main > section, .tournaments, .report-footer { width: var(--page); margin-inline: auto; }
 .report-header { display: flex; min-height: 4.5rem; align-items: center; justify-content: space-between; padding-block: .65rem; border-bottom: 1px solid var(--ink); }
 .report-brand { display: flex; gap: .75rem; align-items: center; }
-.report-brand > span { display: grid; width: 2.5rem; height: 2.5rem; place-items: center; border: 2px solid var(--red); border-radius: 50%; color: var(--red); font-family: var(--font-display); font-size: 1rem; font-weight: 700; }
-.report-brand p, .edition { margin: 0; font-size: .72rem; font-weight: 700; letter-spacing: .12em; line-height: 1.45; text-transform: uppercase; }
 .report-brand strong { font-family: var(--font-display); font-size: 1.1rem; letter-spacing: 0; text-transform: none; }
 .edition { color: var(--ink-soft); }
 .report-intro { display: grid; grid-template-columns: 1.5fr .65fr; gap: clamp(2rem, 6vw, 6rem); align-items: end; padding-block: 2.25rem; }
@@ -155,7 +153,7 @@ h2 { font-size: clamp(2.2rem, 4.5vw, 4.8rem); }
           <body>
             <a class="skip-link" href="#world-cup-1994">Skip to tournaments</a>
             <header class="report-header" id="report-top">
-              <div class="report-brand"><span>XI</span><p>The World Cup Index<br /><strong>Korea DPR / Complete Report</strong></p></div>
+              <div class="report-brand"><strong>Korea DPR / Complete Report</strong></div>
             </header>
 
             <main>
