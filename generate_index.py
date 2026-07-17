@@ -90,6 +90,8 @@ def main():
           <ul>
         {continuous_rows}
           </ul>
+          <h2>Giant-killer Index</h2>
+          <p>Teams ranked by wins against higher-ranked opponents. <a href="effectiveness.html">Filterable report →</a></p>
           <h2>Interactive dashboards</h2>
           <p>Teams with full match data. Switch between tournaments, explore every fixture and ranking history. <span class="counts">{len(interactive)} dashboards</span></p>
           <ul>
