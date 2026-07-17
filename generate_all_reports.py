@@ -82,7 +82,8 @@ def discover_teams(rankings):
         if code in EXCLUDE_CODES:
             continue
         canonical = ALIAS_MAP.get(code, code)
-        if canonical not in teams:
+        # Prefer the canonical code's name when it appears directly
+        if canonical not in teams or code == canonical:
             teams[canonical] = {
                 "name": row["team"],
                 "field_prefix": row["team"].lower().replace(" ", "_"),
