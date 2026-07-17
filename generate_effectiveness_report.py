@@ -164,11 +164,11 @@ def main(args):
       <tr>
         <th>#</th>
         <th>Team</th>
-        <th class="col-hideable">All</th>
-        <th>Wins</th>
-        <th class="col-hideable">Draws</th>
-        <th class="col-hideable">Losses</th>
-        <th>Avg gap</th>
+        <th class="col-hideable sortable" data-sort="visibleTotal">All</th>
+        <th class="sortable" data-sort="visibleWins" data-default="-1">Wins</th>
+        <th class="col-hideable sortable" data-sort="visibleDraws">Draws</th>
+        <th class="col-hideable sortable" data-sort="visibleLosses">Losses</th>
+        <th class="sortable" data-sort="avgGap">Avg gap</th>
         <th></th>
       </tr>
     </thead>
@@ -179,7 +179,23 @@ def main(args):
 
 <script>
 const DATA = {teams_json};
-const NO_DATA = DATA.filter(t => t.wins === 0 && t.total === 0);
+let sortKey = null;
+let sortDir = 1;
+
+document.querySelectorAll('.sortable').forEach(th => {{
+  th.addEventListener('click', () => {{
+    const key = th.dataset.sort;
+    if (sortKey === key) {{
+      sortDir = -sortDir;
+    }} else {{
+      sortKey = key;
+      sortDir = parseInt(th.dataset.default) || 1;
+    }}
+    document.querySelectorAll('.sortable').forEach(h => h.classList.remove('asc', 'desc'));
+    th.classList.add(sortDir > 0 ? 'asc' : 'desc');
+    applyFilters();
+  }});
+}});
 
 function applyFilters() {{
   const knockoutOnly = document.getElementById('fl-stage').checked;
@@ -208,10 +224,18 @@ function applyFilters() {{
     return true;
   }});
 
-  filtered.sort((a, b) => {{
-    if (b.visibleWins !== a.visibleWins) return b.visibleWins - a.visibleWins;
-    return b.avgGap - a.avgGap;
-  }});
+  if (sortKey) {{
+    filtered.sort((a, b) => {{
+      const va = a[sortKey], vb = b[sortKey];
+      if (va === vb) return 0;
+      return (va > vb ? 1 : -1) * sortDir;
+    }});
+  }} else {{
+    filtered.sort((a, b) => {{
+      if (b.visibleWins !== a.visibleWins) return b.visibleWins - a.visibleWins;
+      return b.avgGap - a.avgGap;
+    }});
+  }}
 
   const tbody = document.getElementById('table-body');
   tbody.innerHTML = filtered.map((t, i) => {{
@@ -301,6 +325,10 @@ STYLES = dedent("""
     table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
     thead { border-bottom: 2px solid var(--ink); }
     th { text-align: left; padding: .6rem .5rem; font-size: .65rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); }
+    th.sortable { cursor: pointer; user-select: none; }
+    th.sortable:hover { color: var(--ink); }
+    th.sortable.asc::after { content: ' ↑'; }
+    th.sortable.desc::after { content: ' ↓'; }
     td { padding: .65rem .5rem; border-bottom: 1px solid var(--rule); font-size: .9rem; }
     .rank-num { font-weight: 700; color: var(--ink-soft); width: 2rem; }
     .team-name { font-weight: 600; }
