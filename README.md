@@ -92,10 +92,16 @@ Wikipedia API (pinned revisions)
                    (continuous + interactive dashboards + index)
 ```
 
-## Sources
+## Sources & acknowledgements
 
-- Rankings: pinned Wikipedia revisions for each World Cup page, which cite official FIFA ranking publications
-- Match data: Wikipedia group and knockout stage articles, parsed from `{{Football box}}` and `{{#invoke:Football box}}` templates
-- 2026 data: `2026_FIFA_World_Cup_round_of_32` and `2026_FIFA_World_Cup_knockout_stage` pages
+**Wikipedia** — Team rankings are extracted from pinned revisions of tournament pages on Wikipedia. Match results are parsed from group and knockout stage articles. Wikipedia content is available under the [Creative Commons Attribution-ShareAlike 4.0 International](https://en.wikipedia.org/wiki/Wikipedia:Text_of_the_Creative_Commons_Attribution-ShareAlike_4.0_International_License) (CC BY-SA 4.0) license.
+
+**FIFA** — All pre-tournament rankings originate from FIFA's official [Men's World Ranking](https://www.fifa.com/fifa-world-ranking/men) publications. Match scores are sourced from FIFA's tournament records. FIFA data is © FIFA.
+
+**2026 data** — Current tournament data is sourced from `2026_FIFA_World_Cup_round_of_32` and `2026_FIFA_World_Cup_knockout_stage` pages as the tournament progresses.
 
 Penalty shootout scores are kept separate from the match score. Scheduled matches without a result are marked as such.
+
+## License
+
+The code in this repository is licensed under the MIT License — see [LICENSE](LICENSE). The data files in `data/` are derived from Wikipedia (CC BY-SA 4.0) and FIFA sources.
