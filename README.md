@@ -20,8 +20,12 @@ The data powers two kinds of reports — an interactive dashboard per team and a
 ./generate_all_reports.py
 
 # Open the team index
-open reports/index.html
+open docs/index.html
 ```
+
+![England continuous report](docs/england-report.png)
+
+![Giant-killer Index](docs/effectiveness.png)
 
 All scripts use `uv` for inline dependency management — just run them.
 
