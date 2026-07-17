@@ -1,0 +1,1678 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta
+      name="description"
+      content="Slovakia's pre-tournament FIFA ranking and every match result at each men's World Cup from 1994 to 2026."
+    />
+    <meta name="theme-color" content="#f2ecdf" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='44' fill='%23f2ecdf' stroke='%23b51e2e' stroke-width='8'/%3E%3Cpath d='M24 50h52M50 24v52' stroke='%23b51e2e' stroke-width='8'/%3E%3C/svg%3E" />
+    <title>Slovakia at the World Cup · Rank Room</title>
+    <style>
+:root {
+  --paper: oklch(95% 0.018 84);
+  --paper-deep: oklch(90% 0.027 76);
+  --paper-light: oklch(98% 0.009 84);
+  --ink: oklch(20% 0.03 252);
+  --ink-soft: oklch(39% 0.025 252);
+  --rule: oklch(74% 0.028 76);
+  --red: oklch(50% 0.205 27);
+  --red-dark: oklch(38% 0.17 27);
+  --blue: oklch(48% 0.13 252);
+  --green: oklch(49% 0.12 151);
+  --amber: oklch(65% 0.14 78);
+  --focus: oklch(61% 0.18 242);
+  --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-ui: "Avenir Next", Avenir, "Gill Sans", "Trebuchet MS", sans-serif;
+  --page: min(94vw, 1480px);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 20rem;
+  margin: 0;
+  padding-right: env(safe-area-inset-right);
+  padding-left: env(safe-area-inset-left);
+  color: var(--ink);
+  background:
+    linear-gradient(90deg, transparent 49.94%, oklch(72% 0.02 80 / 0.2) 50%, transparent 50.06%),
+    var(--paper);
+  font-family: var(--font-ui);
+  font-kerning: normal;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  content: "";
+  opacity: 0.2;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.92' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.08'/%3E%3C/svg%3E");
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 20;
+  padding: 0.8rem 1rem;
+  color: var(--paper-light);
+  background: var(--ink);
+  transform: translateY(-160%);
+  transition: transform 160ms var(--ease-out);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.masthead,
+.year-nav-shell,
+main > section,
+footer {
+  width: var(--page);
+  margin-inline: auto;
+}
+
+.masthead {
+  display: flex;
+  min-height: 7.5rem;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-block: 1.4rem 1rem;
+  border-bottom: 1px solid var(--ink);
+}
+
+.brand {
+  display: inline-flex;
+  gap: 0.75rem;
+  align-items: center;
+  text-decoration: none;
+}
+
+.brand-mark {
+  display: grid;
+  width: 3.25rem;
+  height: 3.25rem;
+  place-items: center;
+  border: 2px solid var(--red);
+  border-radius: 50%;
+  color: var(--red);
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.brand-kicker,
+.brand-name {
+  display: block;
+}
+
+.brand-kicker,
+.eyebrow,
+.edition,
+dt,
+.rank-label,
+.rank-date,
+.match-stage,
+.match-date,
+.rank-chip,
+.result-badge,
+.match-count,
+.rank-comparison,
+.match-key,
+footer {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.brand-name {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.5vw, 2.15rem);
+  font-weight: 600;
+  line-height: 0.95;
+}
+
+.edition {
+  margin: 0;
+  color: var(--ink-soft);
+  line-height: 1.55;
+  text-align: right;
+}
+
+.year-nav-shell {
+  padding-block: 1.5rem 0;
+}
+
+.eyebrow {
+  margin: 0 0 0.65rem;
+  color: var(--red);
+}
+
+.year-nav {
+  display: grid;
+  grid-template-columns: repeat(9, minmax(4.5rem, 1fr));
+  overflow-x: auto;
+  border-block: 1px solid var(--rule);
+  scrollbar-width: thin;
+}
+
+.year-tab {
+  position: relative;
+  min-width: 4.5rem;
+  min-height: 3.5rem;
+  padding: 0.7rem 0.35rem;
+  border: 0;
+  color: var(--ink-soft);
+  background: transparent;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.year-tab::after {
+  position: absolute;
+  right: 16%;
+  bottom: -1px;
+  left: 16%;
+  height: 4px;
+  content: "";
+  background: var(--red);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 180ms var(--ease-out);
+}
+
+.year-tab:hover,
+.year-tab[aria-selected="true"] {
+  color: var(--red-dark);
+}
+
+.year-tab[aria-selected="true"]::after {
+  transform: scaleX(1);
+}
+
+.team-hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(14rem, 0.8fr) minmax(25rem, 1.55fr) minmax(12rem, 0.55fr);
+  gap: clamp(2rem, 5vw, 6rem);
+  min-height: 35rem;
+  align-items: center;
+  padding-block: clamp(4rem, 8vw, 8rem);
+  overflow: hidden;
+}
+
+.hero-edition {
+  position: relative;
+  display: grid;
+  width: clamp(13rem, 21vw, 20rem);
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid var(--red);
+  border-radius: 50%;
+}
+
+.hero-edition > span:first-child {
+  position: relative;
+  z-index: 1;
+  color: var(--red);
+  background: var(--paper);
+  font-family: var(--font-display);
+  font-size: clamp(4.5rem, 9vw, 8.5rem);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.08em;
+  line-height: 0.8;
+}
+
+.hero-cross,
+.hero-cross::after {
+  position: absolute;
+  background: var(--red);
+  content: "";
+}
+
+.hero-cross {
+  width: 1px;
+  height: 122%;
+}
+
+.hero-cross::after {
+  top: 50%;
+  left: 50%;
+  width: clamp(13rem, 24vw, 22rem);
+  height: 1px;
+  transform: translate(-50%, -50%);
+}
+
+h1,
+h2,
+h3,
+p {
+  text-wrap: pretty;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+
+h1 {
+  max-width: 15ch;
+  font-size: clamp(3rem, 6.3vw, 6.6rem);
+  letter-spacing: -0.05em;
+  line-height: 0.92;
+}
+
+h2 {
+  font-size: clamp(2.3rem, 4.8vw, 5rem);
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+}
+
+h3 {
+  font-size: clamp(1.8rem, 3.5vw, 3.2rem);
+  line-height: 1;
+}
+
+.hero-deck {
+  max-width: 40rem;
+  margin: 1.5rem 0 0;
+  color: var(--ink-soft);
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 1.8vw, 1.45rem);
+  line-height: 1.45;
+}
+
+.rank-stamp {
+  display: flex;
+  min-height: 17rem;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-block: 1.25rem;
+  border-block: 1px solid var(--ink);
+}
+
+.rank-stamp strong {
+  color: var(--red);
+  font-family: var(--font-display);
+  font-size: clamp(6rem, 11vw, 10rem);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.08em;
+  line-height: 0.65;
+}
+
+.rank-date {
+  color: var(--ink-soft);
+}
+
+.tournament-summary {
+  color: var(--paper);
+  background: var(--ink);
+}
+
+.tournament-summary dl {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0;
+}
+
+.tournament-summary dl > div {
+  min-width: 0;
+  padding: 1.5rem clamp(1rem, 2.5vw, 2.5rem);
+  border-right: 1px solid oklch(53% 0.028 252);
+}
+
+.tournament-summary dl > div:last-child {
+  border-right: 0;
+}
+
+.tournament-summary dt {
+  color: var(--paper-deep);
+}
+
+.tournament-summary dd {
+  margin: 0.55rem 0 0;
+  overflow-wrap: anywhere;
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.5vw, 2.6rem);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.matches-section {
+  padding-block: clamp(4.5rem, 9vw, 9rem);
+}
+
+.section-heading {
+  display: flex;
+  gap: 2rem;
+  align-items: end;
+  justify-content: space-between;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--ink);
+}
+
+.section-note {
+  max-width: 34rem;
+  margin: 0;
+  color: var(--ink-soft);
+  line-height: 1.55;
+  text-align: right;
+}
+
+.match-key {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.5rem;
+  justify-content: flex-end;
+  padding-block: 1.25rem;
+  color: var(--ink-soft);
+}
+
+.match-key span {
+  display: inline-flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.key-dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: var(--rule);
+}
+
+.key-dot.win {
+  background: var(--green);
+}
+
+.key-dot.draw {
+  background: var(--amber);
+}
+
+.key-dot.loss {
+  background: var(--red);
+}
+
+.key-dot.scheduled {
+  border: 1px solid var(--ink-soft);
+  background: transparent;
+}
+
+.match-ledger {
+  border-top: 1px solid var(--rule);
+}
+
+.match-row {
+  --result-color: var(--amber);
+  position: relative;
+  display: grid;
+  grid-template-columns: 4.5rem minmax(8rem, 0.45fr) minmax(30rem, 1.55fr) minmax(11rem, 0.45fr);
+  min-height: 10rem;
+  align-items: center;
+  border-bottom: 1px solid var(--rule);
+  opacity: 0;
+  animation: reveal-row 420ms var(--ease-out) forwards;
+  animation-delay: calc(var(--row-index) * 45ms);
+}
+
+.match-row.result-win {
+  --result-color: var(--green);
+}
+
+.match-row.result-loss {
+  --result-color: var(--red);
+}
+
+.match-row.result-scheduled {
+  --result-color: var(--ink-soft);
+  background: repeating-linear-gradient(-45deg, transparent 0 14px, oklch(91% 0.025 76) 14px 15px);
+}
+
+.match-row::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 4px;
+  content: "";
+  background: var(--result-color);
+  transform: scaleY(0);
+  transform-origin: top;
+  animation: grow-marker 360ms var(--ease-out) forwards;
+  animation-delay: calc(120ms + var(--row-index) * 45ms);
+}
+
+@keyframes reveal-row {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes grow-marker {
+  to { transform: scaleY(1); }
+}
+
+.match-count {
+  color: var(--ink-soft);
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+
+.match-meta {
+  display: flex;
+  align-self: stretch;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem 1.5rem;
+  border-inline: 1px solid var(--rule);
+}
+
+.match-stage {
+  color: var(--red-dark);
+}
+
+.match-date {
+  margin-top: 0.45rem;
+  color: var(--ink-soft);
+  letter-spacing: 0.05em;
+}
+
+.scoreboard {
+  display: grid;
+  grid-template-columns: minmax(8rem, 1fr) auto minmax(8rem, 1fr);
+  gap: clamp(1rem, 3vw, 3.5rem);
+  align-items: center;
+  padding: 1.5rem clamp(1.25rem, 3vw, 3rem);
+}
+
+.score-team {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.3rem 1rem;
+  align-items: center;
+}
+
+.score-team.opponent {
+  grid-template-columns: auto 1fr;
+  text-align: right;
+}
+
+.score-team.opponent .team-identity {
+  order: 2;
+}
+
+.score-team.opponent .score-number {
+  order: 1;
+}
+
+.team-name {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(1.45rem, 2.3vw, 2.4rem);
+  font-weight: 600;
+  line-height: 1;
+}
+
+.rank-chip {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.35rem 0.55rem;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  color: var(--blue);
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+.score-number {
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: clamp(3.4rem, 6vw, 6rem);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.08em;
+  line-height: 0.8;
+}
+
+.score-divider {
+  width: 1.5rem;
+  height: 1px;
+  background: var(--ink-soft);
+}
+
+.match-outcome {
+  padding: 1rem 0 1rem 1.5rem;
+}
+
+.result-badge {
+  display: inline-grid;
+  min-width: 4.8rem;
+  min-height: 2.3rem;
+  place-items: center;
+  padding: 0.45rem 0.7rem;
+  color: var(--paper-light);
+  background: var(--result-color);
+  letter-spacing: 0.08em;
+}
+
+.result-scheduled .result-badge {
+  border: 1px solid var(--ink-soft);
+  color: var(--ink);
+  background: var(--paper);
+}
+
+.outcome-note {
+  max-width: 14rem;
+  margin: 0.7rem 0 0;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  line-height: 1.25;
+}
+
+.rank-comparison {
+  margin: 0.55rem 0 0;
+  color: var(--ink-soft);
+  letter-spacing: 0.04em;
+  line-height: 1.35;
+  text-transform: none;
+}
+
+.no-tournament {
+  display: grid;
+  grid-template-columns: minmax(9rem, 0.45fr) minmax(18rem, 1fr);
+  min-height: 20rem;
+  align-items: center;
+  border-block: 1px solid var(--ink);
+}
+
+.no-tournament[hidden] {
+  display: none;
+}
+
+.no-tournament-mark {
+  color: var(--red);
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 12vw, 11rem);
+  font-weight: 700;
+  letter-spacing: -0.08em;
+}
+
+.no-tournament p {
+  max-width: 38rem;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+
+.rank-history {
+  display: grid;
+  grid-template-columns: minmax(17rem, 0.55fr) minmax(32rem, 1.45fr);
+  gap: clamp(2rem, 6vw, 7rem);
+  padding-block: clamp(4.5rem, 9vw, 9rem);
+  border-block: 1px solid var(--ink);
+}
+
+.history-copy p:last-child {
+  max-width: 30rem;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+
+.history-chart-shell {
+  min-width: 0;
+}
+
+.history-chart {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.chart-grid {
+  stroke: var(--rule);
+  stroke-width: 1;
+}
+
+.chart-axis,
+.chart-year,
+.chart-value,
+.chart-missing {
+  fill: var(--ink-soft);
+  font-family: var(--font-ui);
+  font-size: 12px;
+}
+
+.chart-year,
+.chart-value {
+  font-weight: 700;
+}
+
+.chart-line {
+  fill: none;
+  stroke: var(--red);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 4;
+}
+
+.chart-point {
+  fill: var(--paper);
+  stroke: var(--red);
+  stroke-width: 4;
+  cursor: pointer;
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: fill 140ms var(--ease-out), transform 140ms var(--ease-out);
+}
+
+.chart-point:hover,
+.chart-point:focus-visible,
+.chart-point.is-current {
+  fill: var(--red);
+  transform: scale(1.25);
+}
+
+.chart-missing-mark {
+  fill: none;
+  stroke: var(--rule);
+  stroke-dasharray: 4 4;
+}
+
+.source-strip {
+  display: grid;
+  grid-template-columns: minmax(17rem, 0.8fr) minmax(20rem, 1.15fr) minmax(14rem, 0.65fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  padding-block: clamp(4rem, 8vw, 7rem);
+  align-items: start;
+}
+
+.source-strip h2 {
+  font-size: clamp(2rem, 3.3vw, 3.5rem);
+}
+
+.source-strip > p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+.source-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  align-items: flex-start;
+}
+
+.source-links a {
+  min-height: 2.5rem;
+  font-weight: 700;
+  line-height: 2.5rem;
+  text-underline-offset: 0.3em;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  padding-block: 1.5rem max(3rem, env(safe-area-inset-bottom));
+  border-top: 1px solid var(--ink);
+  color: var(--ink-soft);
+  letter-spacing: 0.05em;
+}
+
+.load-error {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  left: 1rem;
+  z-index: 10;
+  display: flex;
+  gap: 0.5rem 1rem;
+  padding: 1rem 1.25rem;
+  border: 2px solid var(--red-dark);
+  color: var(--paper-light);
+  background: var(--red-dark);
+}
+
+.load-error[hidden] {
+  display: none;
+}
+
+@media (max-width: 1060px) {
+  .team-hero {
+    grid-template-columns: minmax(12rem, 0.6fr) minmax(22rem, 1.4fr);
+  }
+
+  .rank-stamp {
+    grid-column: 1 / -1;
+    min-height: 0;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .rank-stamp strong {
+    font-size: 5rem;
+  }
+
+  .match-row {
+    grid-template-columns: 3.5rem 10rem 1fr;
+  }
+
+  .match-outcome {
+    grid-column: 2 / -1;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.4rem 1rem;
+    align-items: center;
+    padding: 0.9rem 1.5rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  .match-outcome .outcome-note,
+  .match-outcome .rank-comparison {
+    max-width: none;
+    margin: 0;
+  }
+
+  .match-outcome .rank-comparison {
+    grid-column: 2;
+  }
+
+  .source-strip {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .source-links {
+    grid-column: 2;
+  }
+}
+
+@media (max-width: 720px) {
+  :root {
+    --page: min(100% - 1.25rem, 1480px);
+  }
+
+  .masthead {
+    min-height: 6.5rem;
+  }
+
+  .edition {
+    display: none;
+  }
+
+  .brand-name {
+    font-size: 1.2rem;
+  }
+
+  .year-nav-shell {
+    width: 100%;
+    padding-left: 0.625rem;
+  }
+
+  .year-nav {
+    grid-template-columns: repeat(9, 4.8rem);
+  }
+
+  .team-hero {
+    display: block;
+    min-height: 0;
+    padding-block: 3.5rem;
+  }
+
+  .hero-edition {
+    width: 11rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .hero-edition > span:first-child {
+    font-size: 4.2rem;
+  }
+
+  h1 {
+    font-size: clamp(2.8rem, 14vw, 4.4rem);
+  }
+
+  .rank-stamp {
+    margin-top: 2.5rem;
+  }
+
+  .rank-stamp strong {
+    font-size: 4.5rem;
+  }
+
+  .tournament-summary {
+    width: 100%;
+  }
+
+  .tournament-summary dl {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tournament-summary dl > div {
+    border-bottom: 1px solid oklch(53% 0.028 252);
+  }
+
+  .tournament-summary dl > div:nth-child(2) {
+    border-right: 0;
+  }
+
+  .tournament-summary dl > div:nth-child(n + 3) {
+    border-bottom: 0;
+  }
+
+  .tournament-summary dd {
+    font-size: 1.45rem;
+  }
+
+  .section-heading,
+  .source-strip {
+    display: block;
+  }
+
+  .section-note {
+    margin-top: 1rem;
+    text-align: left;
+  }
+
+  .match-key {
+    justify-content: flex-start;
+  }
+
+  .match-row {
+    display: grid;
+    grid-template-columns: 2.8rem 1fr;
+    min-height: 0;
+    padding-block: 0.5rem;
+  }
+
+  .match-count {
+    grid-row: 1 / 4;
+  }
+
+  .match-meta {
+    display: flex;
+    min-height: 3.3rem;
+    align-self: auto;
+    flex-direction: row;
+    gap: 0.8rem;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 0.4rem 0.65rem 0.8rem;
+    border: 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .match-date {
+    margin: 0;
+    text-align: right;
+  }
+
+  .scoreboard {
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    gap: 0.7rem;
+    padding: 1.4rem 0.4rem 1.3rem 0.8rem;
+  }
+
+  .score-team,
+  .score-team.opponent {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: 0.55rem;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .score-team.opponent {
+    align-items: flex-end;
+    text-align: right;
+  }
+
+  .score-team.opponent .team-identity,
+  .score-team.opponent .score-number {
+    order: initial;
+  }
+
+  .team-identity {
+    min-width: 0;
+  }
+
+  .team-name {
+    overflow: hidden;
+    font-size: clamp(1.05rem, 5vw, 1.35rem);
+    text-overflow: ellipsis;
+  }
+
+  .rank-chip {
+    margin-top: 0.35rem;
+    font-size: 0.58rem;
+  }
+
+  .score-number {
+    font-size: 3.6rem;
+  }
+
+  .score-divider {
+    width: 0.8rem;
+  }
+
+  .match-outcome {
+    grid-column: 2;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.45rem 0.8rem;
+    padding: 0.75rem 0.4rem 1rem 0.8rem;
+  }
+
+  .result-badge {
+    min-width: 3.8rem;
+    min-height: 2rem;
+    font-size: 0.62rem;
+  }
+
+  .outcome-note {
+    font-size: 0.9rem;
+  }
+
+  .rank-comparison {
+    font-size: 0.62rem;
+  }
+
+  .no-tournament {
+    display: block;
+    padding-block: 3rem;
+  }
+
+  .rank-history {
+    display: block;
+  }
+
+  .history-chart-shell {
+    margin-top: 2.5rem;
+    overflow-x: auto;
+  }
+
+  .history-chart {
+    min-width: 640px;
+  }
+
+  .source-strip > p,
+  .source-links {
+    margin-top: 1.5rem;
+  }
+
+  footer {
+    display: block;
+    line-height: 1.6;
+  }
+
+  footer span {
+    display: block;
+  }
+
+  .load-error {
+    display: block;
+  }
+
+  .load-error span {
+    display: block;
+    margin-top: 0.4rem;
+  }
+}
+
+@media (pointer: coarse) {
+  .year-tab,
+  .source-links a {
+    min-height: 2.75rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+    </style>
+      <!-- Self-contained static report generated by generate_static_reports.py -->
+  </head>
+  <body>
+    <a class="skip-link" href="#matches">Skip to Slovakia’s matches</a>
+
+    <header class="masthead">
+      <a class="brand" href="#2026" aria-label="Slovakia World Cup Rank Room, home">
+        <span class="brand-mark" aria-hidden="true">XI</span>
+        <span>
+          <span class="brand-kicker">The World Cup Index</span>
+          <span class="brand-name">Slovakia / Rank Room</span>
+        </span>
+      </a>
+      <p class="edition">Rank before kick-off.<br />Every opponent. Every score.</p>
+    </header>
+
+    <main>
+      <section class="year-nav-shell" aria-labelledby="year-heading">
+        <p class="eyebrow" id="year-heading">Choose a tournament</p>
+        <div class="year-nav" id="year-tabs" role="tablist" aria-label="World Cup year"></div>
+      </section>
+
+      <section class="team-hero" aria-labelledby="hero-title">
+        <div class="hero-edition" aria-hidden="true">
+          <span id="hero-year">2026</span>
+          <span class="hero-cross"></span>
+        </div>
+
+        <div class="hero-copy">
+          <p class="eyebrow">Slovakia at the World Cup</p>
+          <h1 id="hero-title">Slovakia arrived ranked <span id="hero-rank-word">fourth</span> in the world.</h1>
+          <p class="hero-deck" id="hero-deck">Seven matches played. One more to come.</p>
+        </div>
+
+        <div class="rank-stamp" id="rank-stamp" aria-label="Slovakia FIFA rank 4">
+          <span class="rank-label">FIFA rank</span>
+          <strong id="hero-rank">4</strong>
+          <span class="rank-date" id="rank-date">11 Jun 2026</span>
+        </div>
+      </section>
+
+      <section class="tournament-summary" aria-label="Selected tournament summary">
+        <dl>
+          <div>
+            <dt>Matches played</dt>
+            <dd id="matches-played">7</dd>
+          </div>
+          <div>
+            <dt>Results</dt>
+            <dd id="result-record">5W · 1D · 1L</dd>
+          </div>
+          <div>
+            <dt>Goals</dt>
+            <dd id="goal-record">14 for · 8 against</dd>
+          </div>
+          <div>
+            <dt>Reached</dt>
+            <dd id="tournament-reached">Third-place play-off</dd>
+          </div>
+        </dl>
+      </section>
+
+      <section class="matches-section" id="matches" aria-labelledby="matches-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">The tournament ledger</p>
+            <h2 id="matches-title">Every Slovakia match</h2>
+          </div>
+          <p class="section-note">Ranks are the final FIFA positions published before the tournament—not the ranking on match day.</p>
+        </div>
+
+        <div class="match-key" aria-label="Match result key">
+          <span><i class="key-dot win"></i>Win</span>
+          <span><i class="key-dot draw"></i>Draw</span>
+          <span><i class="key-dot loss"></i>Loss</span>
+          <span><i class="key-dot scheduled"></i>Scheduled</span>
+        </div>
+
+        <div class="match-ledger" id="match-ledger"></div>
+
+        <div class="no-tournament" id="no-tournament" hidden>
+          <span class="no-tournament-mark" aria-hidden="true">DNQ</span>
+          <div>
+            <h3>Slovakia did not qualify.</h3>
+            <p>There is no Slovakia ranking or match record for the 1994 World Cup.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="rank-history" aria-labelledby="history-title">
+        <div class="history-copy">
+          <p class="eyebrow">The long view</p>
+          <h2 id="history-title">Slovakia’s arrival rank</h2>
+          <p>Lower is better. Select a point to open that tournament.</p>
+        </div>
+        <div class="history-chart-shell">
+          <svg
+            id="history-chart"
+            class="history-chart"
+            viewBox="0 0 800 340"
+            role="img"
+            aria-labelledby="chart-title chart-description"
+          ></svg>
+        </div>
+      </section>
+
+      <section class="source-strip" aria-labelledby="source-title">
+        <div>
+          <p class="eyebrow" id="source-title">Sources & method</p>
+          <h2>Two records, joined by team and tournament.</h2>
+        </div>
+        <p>
+          Match scores and stages come from FIFA tournament records. Slovakia and opponent tags use the same final pre-tournament FIFA ranking snapshot.
+          Shootouts are shown separately from the match score.
+        </p>
+        <div class="source-links">
+          <a id="match-source" href="#" rel="noreferrer" target="_blank">Open FIFA tournament record ↗</a>
+          <a id="ranking-source" href="#" rel="noreferrer" target="_blank">Open ranking source ↗</a>
+          <a href="data:text/csv;charset=utf-8;base64,d29ybGRfY3VwX3llYXIsbWF0Y2hfZGF0ZSxzdGFnZSx0ZWFtX3JhbmssdGVhbV9nb2FscyxvcHBvbmVudF9nb2FscyxvcHBvbmVudF9jb2RlLG9wcG9uZW50LG9wcG9uZW50X3Jhbmssb3Bwb25lbnRfY29uZmVkZXJhdGlvbixyZXN1bHQsdGVhbV9zaG9vdG91dF9nb2FscyxvcHBvbmVudF9zaG9vdG91dF9nb2FscyxleHRyYV90aW1lLHN0YXR1cyxyYW5raW5nX2RhdGUscmFua2luZ19zb3VyY2VfdXJsLG1hdGNoX3NvdXJjZV91cmwKMjAxMCwyMDEwLTA2LTE1LEdyb3VwIHN0YWdlLDM0LDEsMSxOWkwsTmV3IFplYWxhbmQsNzgsT0ZDLGRyYXcsLCxGYWxzZSxjb21wbGV0ZWQsMjAxMC0wNS0yNixodHRwczovL3dlYi5hcmNoaXZlLm9yZy93ZWIvMjAxOTEwMDYwMTUyMTEvaHR0cHM6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL3JhbmtpbmctdGFibGUvbWVuL3JhbmsvaWQ5MDU0LyxodHRwczovL3d3dy5maWZhLmNvbS9lbi90b3VybmFtZW50cy9tZW5zL3dvcmxkY3VwL3NvdXRoYWZyaWNhMjAxMAoyMDEwLDIwMTAtMDYtMjAsR3JvdXAgc3RhZ2UsMzQsMCwyLFBBUixQYXJhZ3VheSwzMSxDT05NRUJPTCxsb3NzLCwsRmFsc2UsY29tcGxldGVkLDIwMTAtMDUtMjYsaHR0cHM6Ly93ZWIuYXJjaGl2ZS5vcmcvd2ViLzIwMTkxMDA2MDE1MjExL2h0dHBzOi8vd3d3LmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9yYW5raW5nLXRhYmxlL21lbi9yYW5rL2lkOTA1NC8saHR0cHM6Ly93d3cuZmlmYS5jb20vZW4vdG91cm5hbWVudHMvbWVucy93b3JsZGN1cC9zb3V0aGFmcmljYTIwMTAKMjAxMCwyMDEwLTA2LTI0LEdyb3VwIHN0YWdlLDM0LDMsMixJVEEsSXRhbHksNSxVRUZBLHdpbiwsLEZhbHNlLGNvbXBsZXRlZCwyMDEwLTA1LTI2LGh0dHBzOi8vd2ViLmFyY2hpdmUub3JnL3dlYi8yMDE5MTAwNjAxNTIxMS9odHRwczovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvcmFua2luZy10YWJsZS9tZW4vcmFuay9pZDkwNTQvLGh0dHBzOi8vd3d3LmZpZmEuY29tL2VuL3RvdXJuYW1lbnRzL21lbnMvd29ybGRjdXAvc291dGhhZnJpY2EyMDEwCjIwMTAsMjAxMC0wNi0yOCxSb3VuZCBvZiAxNiwzNCwxLDIsTkVELE5ldGhlcmxhbmRzLDQsVUVGQSxsb3NzLCwsRmFsc2UsY29tcGxldGVkLDIwMTAtMDUtMjYsaHR0cHM6Ly93ZWIuYXJjaGl2ZS5vcmcvd2ViLzIwMTkxMDA2MDE1MjExL2h0dHBzOi8vd3d3LmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9yYW5raW5nLXRhYmxlL21lbi9yYW5rL2lkOTA1NC8saHR0cHM6Ly93d3cuZmlmYS5jb20vZW4vdG91cm5hbWVudHMvbWVucy93b3JsZGN1cC9zb3V0aGFmcmljYTIwMTAK" download>Download Slovakia match data ↓</a>
+          <a href="data:text/csv;charset=utf-8;base64,d29ybGRfY3VwX3llYXIscmFua2luZ19kYXRlLGZpZmFfY29kZSx0ZWFtLGNvbmZlZGVyYXRpb24sZmlmYV9yYW5rLHNvdXJjZV9yZXZpc2lvbl9pZCxzb3VyY2VfdXJsLHJhbmtpbmdfc291cmNlX3VybAoxOTk0LDE5OTQtMDYtMTQsR0VSLEdlcm1hbnksVUVGQSwxLDEzNjQ0MDc4OTUsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTE5OTRfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDQwNzg5NSxodHRwczovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvbWVuP2RhdGVJZD1pZDExCjE5OTQsMTk5NC0wNi0xNCxORUQsTmV0aGVybGFuZHMsVUVGQSwyLDEzNjQ0MDc4OTUsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTE5OTRfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDQwNzg5NSxodHRwczovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvbWVuP2RhdGVJZD1pZDExCjE5OTQsMTk5NC0wNi0xNCxCUkEsQnJhemlsLENPTk1FQk9MLDMsMTM2NDQwNzg5NSxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MTk5NF9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0NDA3ODk1LGh0dHBzOi8vd3d3LmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9tZW4/ZGF0ZUlkPWlkMTEKMTk5NCwxOTk0LTA2LTE0LElUQSxJdGFseSxVRUZBLDQsMTM2NDQwNzg5NSxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MTk5NF9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0NDA3ODk1LGh0dHBzOi8vd3d3LmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9tZW4/ZGF0ZUlkPWlkMTEKMTk5NCwxOTk0LTA2LTE0LEVTUCxTcGFpbixVRUZBLDUsMTM2NDQwNzg5NSxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MTk5NF9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0NDA3ODk1LGh0dHBzOi8vd3d3LmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9tZW4/ZGF0ZUlkPWlkMTEKMTk5NCwxOTk0LTA2LTE0LE5PUixOb3J3YXksVUVGQSw2LDEzNjQ0MDc4OTUsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTE5OTRfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDQwNzg5NSxodHRwczovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvbWVuP2RhdGVJZD1pZDExCjE5OTQsMTk5NC0wNi0xNCxST1UsUm9tYW5pYSxVRUZBLDcsMTM2NDQwNzg5NSxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MTk5NF9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0NDA3ODk1LGh0dHBzOi8vd3d3LmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9tZW4/ZGF0ZUlkPWlkMTEKMTk5NCwxOTk0LTA2LTE0LEFSRyxBcmdlbnRpbmEsQ09OTUVCT0wsOCwxMzY0NDA3ODk1LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0xOTk0X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQ0MDc4OTUsaHR0cHM6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL21lbj9kYXRlSWQ9aWQxMQoxOTk0LDE5OTQtMDYtMTQsU1dFLFN3ZWRlbixVRUZBLDEwLDEzNjQ0MDc4OTUsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTE5OTRfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDQwNzg5NSxodHRwczovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvbWVuP2RhdGVJZD1pZDExCjE5OTQsMTk5NC0wNi0xNCxOR0EsTmlnZXJpYSxDQUYsMTEsMTM2NDQwNzg5NSxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MTk5NF9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0NDA3ODk1LGh0dHBzOi8vd3d3LmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9tZW4/ZGF0ZUlkPWlkMTEKMTk5NCwxOTk0LTA2LTE0LFNVSSxTd2l0emVybGFuZCxVRUZBLDEyLDEzNjQ0MDc4OTUsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTE5OTRfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDQwNzg5NSxodHRwczovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvbWVuP2RhdGVJZD1pZDExCjE5OTQsMTk5NC0wNi0xNCxJUkwsUmVwdWJsaWMgb2YgSXJlbGFuZCxVRUZBLDE0LDEzNjQ0MDc4OTUsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTE5OTRfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDQwNzg5NSxodHRwczovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvbWVuP2RhdGVJZD1pZDExCjE5OTQsMTk5NC0wNi0xNCxNRVgsTWV4aWNvLENPTkNBQ0FGLDE2LDEzNjQ0MDc4OTUsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTE5OTRfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDQwNzg5NSxodHRwczovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvbWVuP2RhdGVJZD1pZDExCjE5OTQsMTk5NC0wNi0xNCxDT0wsQ29sb21iaWEsQ09OTUVCT0wsMTcsMTM2NDQwNzg5NSxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MTk5NF9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0NDA3ODk1LGh0dHBzOi8vd3d3LmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9tZW4/ZGF0ZUlkPWlkMTEKMTk5NCwxOTk0LTA2LTE0LFJVUyxSdXNzaWEsVUVGQSwxOSwxMzY0NDA3ODk1LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0xOTk0X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQ0MDc4OTUsaHR0cHM6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL21lbj9kYXRlSWQ9aWQxMQoxOTk0LDE5OTQtMDYtMTQsVVNBLFVTQSxDT05DQUNBRiwyMywxMzY0NDA3ODk1LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0xOTk0X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQ0MDc4OTUsaHR0cHM6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL21lbj9kYXRlSWQ9aWQxMQoxOTk0LDE5OTQtMDYtMTQsQ01SLENhbWVyb29uLENBRiwyNCwxMzY0NDA3ODk1LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0xOTk0X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQ0MDc4OTUsaHR0cHM6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL21lbj9kYXRlSWQ9aWQxMQoxOTk0LDE5OTQtMDYtMTQsQkVMLEJlbGdpdW0sVUVGQSwyNywxMzY0NDA3ODk1LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0xOTk0X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQ0MDc4OTUsaHR0cHM6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL21lbj9kYXRlSWQ9aWQxMQoxOTk0LDE5OTQtMDYtMTQsTUFSLE1vcm9jY28sQ0FGLDI4LDEzNjQ0MDc4OTUsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTE5OTRfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDQwNzg5NSxodHRwczovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvbWVuP2RhdGVJZD1pZDExCjE5OTQsMTk5NC0wNi0xNCxCVUwsQnVsZ2FyaWEsVUVGQSwyOSwxMzY0NDA3ODk1LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0xOTk0X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQ0MDc4OTUsaHR0cHM6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL21lbj9kYXRlSWQ9aWQxMQoxOTk0LDE5OTQtMDYtMTQsR1JFLEdyZWVjZSxVRUZBLDMxLDEzNjQ0MDc4OTUsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTE5OTRfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDQwNzg5NSxodHRwczovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvbWVuP2RhdGVJZD1pZDExCjE5OTQsMTk5NC0wNi0xNCxLU0EsU2F1ZGkgQXJhYmlhLEFGQywzNCwxMzY0NDA3ODk1LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0xOTk0X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQ0MDc4OTUsaHR0cHM6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL21lbj9kYXRlSWQ9aWQxMQoxOTk0LDE5OTQtMDYtMTQsS09SLEtvcmVhIFJlcHVibGljLEFGQywzNywxMzY0NDA3ODk1LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0xOTk0X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQ0MDc4OTUsaHR0cHM6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL21lbj9kYXRlSWQ9aWQxMQoxOTk0LDE5OTQtMDYtMTQsQk9MLEJvbGl2aWEsQ09OTUVCT0wsNDMsMTM2NDQwNzg5NSxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MTk5NF9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0NDA3ODk1LGh0dHBzOi8vd3d3LmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9tZW4/ZGF0ZUlkPWlkMTEKMTk5OCwxOTk4LTA1LTIwLEJSQSxCcmF6aWwsQ09OTUVCT0wsMSwxMzY0MDAxNTkwLGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0xOTk4X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQwMDE1OTAsaHR0cHM6Ly93ZWIuYXJjaGl2ZS5vcmcvd2ViLzIwMTYwMjIyMDI1ODIwL2h0dHA6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL3JhbmtpbmctdGFibGUvbWVuL3Jhbms9NTAvaW5kZXguaHRtbAoxOTk4LDE5OTgtMDUtMjAsR0VSLEdlcm1hbnksVUVGQSwyLDEzNjQwMDE1OTAsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTE5OThfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDAwMTU5MCxodHRwczovL3dlYi5hcmNoaXZlLm9yZy93ZWIvMjAxNjAyMjIwMjU4MjAvaHR0cDovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvcmFua2luZy10YWJsZS9tZW4vcmFuaz01MC9pbmRleC5odG1sCjE5OTgsMTk5OC0wNS0yMCxNRVgsTWV4aWNvLENPTkNBQ0FGLDQsMTM2NDAwMTU5MCxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MTk5OF9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0MDAxNTkwLGh0dHBzOi8vd2ViLmFyY2hpdmUub3JnL3dlYi8yMDE2MDIyMjAyNTgyMC9odHRwOi8vd3d3LmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9yYW5raW5nLXRhYmxlL21lbi9yYW5rPTUwL2luZGV4Lmh0bWwKMTk5OCwxOTk4LTA1LTIwLEVORyxFbmdsYW5kLFVFRkEsNSwxMzY0MDAxNTkwLGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0xOTk4X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQwMDE1OTAsaHR0cHM6Ly93ZWIuYXJjaGl2ZS5vcmcvd2ViLzIwMTYwMjIyMDI1ODIwL2h0dHA6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL3JhbmtpbmctdGFibGUvbWVuL3Jhbms9NTAvaW5kZXguaHRtbAoxOTk4LDE5OTgtMDUtMjAsQVJHLEFyZ2VudGluYSxDT05NRUJPTCw2LDEzNjQwMDE1OTAsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTE5OThfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDAwMTU5MCxodHRwczovL3dlYi5hcmNoaXZlLm9yZy93ZWIvMjAxNjAyMjIwMjU4MjAvaHR0cDovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvcmFua2luZy10YWJsZS9tZW4vcmFuaz01MC9pbmRleC5odG1sCjE5OTgsMTk5OC0wNS0yMCxOT1IsTm9yd2F5LFVFRkEsNywxMzY0MDAxNTkwLGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0xOTk4X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQwMDE1OTAsaHR0cHM6Ly93ZWIuYXJjaGl2ZS5vcmcvd2ViLzIwMTYwMjIyMDI1ODIwL2h0dHA6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL3JhbmtpbmctdGFibGUvbWVuL3Jhbms9NTAvaW5kZXguaHRtbAoxOTk4LDE5OTgtMDUtMjAsWVVHLEZSIFl1Z29zbGF2aWEsVUVGQSw4LDEzNjQwMDE1OTAsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTE5OThfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDAwMTU5MCxodHRwczovL3dlYi5hcmNoaXZlLm9yZy93ZWIvMjAxNjAyMjIwMjU4MjAvaHR0cDovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvcmFua2luZy10YWJsZS9tZW4vcmFuaz01MC9pbmRleC5odG1sCjE5OTgsMTk5OC0wNS0yMCxDSEksQ2hpbGUsQ09OTUVCT0wsOSwxMzY0MDAxNTkwLGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0xOTk4X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQwMDE1OTAsaHR0cHM6Ly93ZWIuYXJjaGl2ZS5vcmcvd2ViLzIwMTYwMjIyMDI1ODIwL2h0dHA6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL3JhbmtpbmctdGFibGUvbWVuL3Jhbms9NTAvaW5kZXguaHRtbAoxOTk4LDE5OTgtMDUtMjAsQ09MLENvbG9tYmlhLENPTk1FQk9MLDEwLDEzNjQwMDE1OTAsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTE5OThfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDAwMTU5MCxodHRwczovL3dlYi5hcmNoaXZlLm9yZy93ZWIvMjAxNjAyMjIwMjU4MjAvaHR0cDovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvcmFua2luZy10YWJsZS9tZW4vcmFuaz01MC9pbmRleC5odG1sCjE5OTgsMTk5OC0wNS0yMCxVU0EsVVNBLENPTkNBQ0FGLDExLDEzNjQwMDE1OTAsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTE5OThfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDAwMTU5MCxodHRwczovL3dlYi5hcmNoaXZlLm9yZy93ZWIvMjAxNjAyMjIwMjU4MjAvaHR0cDovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvcmFua2luZy10YWJsZS9tZW4vcmFuaz01MC9pbmRleC5odG1sCjE5OTgsMTk5OC0wNS0yMCxKUE4sSmFwYW4sQUZDLDEyLDEzNjQwMDE1OTAsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTE5OThfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDAwMTU5MCxodHRwczovL3dlYi5hcmNoaXZlLm9yZy93ZWIvMjAxNjAyMjIwMjU4MjAvaHR0cDovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvcmFua2luZy10YWJsZS9tZW4vcmFuaz01MC9pbmRleC5odG1sCjE5OTgsMTk5OC0wNS0yMCxNQVIsTW9yb2NjbyxDQUYsMTMsMTM2NDAwMTU5MCxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MTk5OF9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0MDAxNTkwLGh0dHBzOi8vd2ViLmFyY2hpdmUub3JnL3dlYi8yMDE2MDIyMjAyNTgyMC9odHRwOi8vd3d3LmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9yYW5raW5nLXRhYmxlL21lbi9yYW5rPTUwL2luZGV4Lmh0bWwKMTk5OCwxOTk4LTA1LTIwLElUQSxJdGFseSxVRUZBLDE0LDEzNjQwMDE1OTAsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTE5OThfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDAwMTU5MCxodHRwczovL3dlYi5hcmNoaXZlLm9yZy93ZWIvMjAxNjAyMjIwMjU4MjAvaHR0cDovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvcmFua2luZy10YWJsZS9tZW4vcmFuaz01MC9pbmRleC5odG1sCjE5OTgsMTk5OC0wNS0yMCxFU1AsU3BhaW4sVUVGQSwxNSwxMzY0MDAxNTkwLGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0xOTk4X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQwMDE1OTAsaHR0cHM6Ly93ZWIuYXJjaGl2ZS5vcmcvd2ViLzIwMTYwMjIyMDI1ODIwL2h0dHA6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL3JhbmtpbmctdGFibGUvbWVuL3Jhbms9NTAvaW5kZXguaHRtbAoxOTk4LDE5OTgtMDUtMjAsRlJBLEZyYW5jZSxVRUZBLDE4LDEzNjQwMDE1OTAsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTE5OThfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDAwMTU5MCxodHRwczovL3dlYi5hcmNoaXZlLm9yZy93ZWIvMjAxNjAyMjIwMjU4MjAvaHR0cDovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvcmFua2luZy10YWJsZS9tZW4vcmFuaz01MC9pbmRleC5odG1sCjE5OTgsMTk5OC0wNS0yMCxDUk8sQ3JvYXRpYSxVRUZBLDE5LDEzNjQwMDE1OTAsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTE5OThfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDAwMTU5MCxodHRwczovL3dlYi5hcmNoaXZlLm9yZy93ZWIvMjAxNjAyMjIwMjU4MjAvaHR0cDovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvcmFua2luZy10YWJsZS9tZW4vcmFuaz01MC9pbmRleC5odG1sCjE5OTgsMTk5OC0wNS0yMCxLT1IsS29yZWEgUmVwdWJsaWMsQUZDLDIwLDEzNjQwMDE1OTAsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTE5OThfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDAwMTU5MCxodHRwczovL3dlYi5hcmNoaXZlLm9yZy93ZWIvMjAxNjAyMjIwMjU4MjAvaHR0cDovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvcmFua2luZy10YWJsZS9tZW4vcmFuaz01MC9pbmRleC5odG1sCjE5OTgsMTk5OC0wNS0yMCxUVU4sVHVuaXNpYSxDQUYsMjEsMTM2NDAwMTU5MCxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MTk5OF9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0MDAxNTkwLGh0dHBzOi8vd2ViLmFyY2hpdmUub3JnL3dlYi8yMDE2MDIyMjAyNTgyMC9odHRwOi8vd3d3LmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9yYW5raW5nLXRhYmxlL21lbi9yYW5rPTUwL2luZGV4Lmh0bWwKMTk5OCwxOTk4LTA1LTIwLFJPVSxSb21hbmlhLFVFRkEsMjIsMTM2NDAwMTU5MCxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MTk5OF9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0MDAxNTkwLGh0dHBzOi8vd2ViLmFyY2hpdmUub3JnL3dlYi8yMDE2MDIyMjAyNTgyMC9odHRwOi8vd3d3LmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9yYW5raW5nLXRhYmxlL21lbi9yYW5rPTUwL2luZGV4Lmh0bWwKMTk5OCwxOTk4LTA1LTIwLFJTQSxTb3V0aCBBZnJpY2EsQ0FGLDI0LDEzNjQwMDE1OTAsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTE5OThfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDAwMTU5MCxodHRwczovL3dlYi5hcmNoaXZlLm9yZy93ZWIvMjAxNjAyMjIwMjU4MjAvaHR0cDovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvcmFua2luZy10YWJsZS9tZW4vcmFuaz01MC9pbmRleC5odG1sCjE5OTgsMTk5OC0wNS0yMCxORUQsTmV0aGVybGFuZHMsVUVGQSwyNSwxMzY0MDAxNTkwLGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0xOTk4X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQwMDE1OTAsaHR0cHM6Ly93ZWIuYXJjaGl2ZS5vcmcvd2ViLzIwMTYwMjIyMDI1ODIwL2h0dHA6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL3JhbmtpbmctdGFibGUvbWVuL3Jhbms9NTAvaW5kZXguaHRtbAoxOTk4LDE5OTgtMDUtMjAsREVOLERlbm1hcmssVUVGQSwyNywxMzY0MDAxNTkwLGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0xOTk4X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQwMDE1OTAsaHR0cHM6Ly93ZWIuYXJjaGl2ZS5vcmcvd2ViLzIwMTYwMjIyMDI1ODIwL2h0dHA6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL3JhbmtpbmctdGFibGUvbWVuL3Jhbms9NTAvaW5kZXguaHRtbAoxOTk4LDE5OTgtMDUtMjAsUEFSLFBhcmFndWF5LENPTk1FQk9MLDI5LDEzNjQwMDE1OTAsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTE5OThfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDAwMTU5MCxodHRwczovL3dlYi5hcmNoaXZlLm9yZy93ZWIvMjAxNjAyMjIwMjU4MjAvaHR0cDovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvcmFua2luZy10YWJsZS9tZW4vcmFuaz01MC9pbmRleC5odG1sCjE5OTgsMTk5OC0wNS0yMCxKQU0sSmFtYWljYSxDT05DQUNBRiwzMCwxMzY0MDAxNTkwLGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0xOTk4X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQwMDE1OTAsaHR0cHM6Ly93ZWIuYXJjaGl2ZS5vcmcvd2ViLzIwMTYwMjIyMDI1ODIwL2h0dHA6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL3JhbmtpbmctdGFibGUvbWVuL3Jhbms9NTAvaW5kZXguaHRtbAoxOTk4LDE5OTgtMDUtMjAsQVVULEF1c3RyaWEsVUVGQSwzMSwxMzY0MDAxNTkwLGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0xOTk4X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQwMDE1OTAsaHR0cHM6Ly93ZWIuYXJjaGl2ZS5vcmcvd2ViLzIwMTYwMjIyMDI1ODIwL2h0dHA6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL3JhbmtpbmctdGFibGUvbWVuL3Jhbms9NTAvaW5kZXguaHRtbAoxOTk4LDE5OTgtMDUtMjAsS1NBLFNhdWRpIEFyYWJpYSxBRkMsMzQsMTM2NDAwMTU5MCxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MTk5OF9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0MDAxNTkwLGh0dHBzOi8vd2ViLmFyY2hpdmUub3JnL3dlYi8yMDE2MDIyMjAyNTgyMC9odHRwOi8vd3d3LmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9yYW5raW5nLXRhYmxlL21lbi9yYW5rPTUwL2luZGV4Lmh0bWwKMTk5OCwxOTk4LTA1LTIwLEJVTCxCdWxnYXJpYSxVRUZBLDM1LDEzNjQwMDE1OTAsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTE5OThfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDAwMTU5MCxodHRwczovL3dlYi5hcmNoaXZlLm9yZy93ZWIvMjAxNjAyMjIwMjU4MjAvaHR0cDovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvcmFua2luZy10YWJsZS9tZW4vcmFuaz01MC9pbmRleC5odG1sCjE5OTgsMTk5OC0wNS0yMCxCRUwsQmVsZ2l1bSxVRUZBLDM2LDEzNjQwMDE1OTAsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTE5OThfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDAwMTU5MCxodHRwczovL3dlYi5hcmNoaXZlLm9yZy93ZWIvMjAxNjAyMjIwMjU4MjAvaHR0cDovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvcmFua2luZy10YWJsZS9tZW4vcmFuaz01MC9pbmRleC5odG1sCjE5OTgsMTk5OC0wNS0yMCxTQ08sU2NvdGxhbmQsVUVGQSw0MSwxMzY0MDAxNTkwLGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0xOTk4X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQwMDE1OTAsaHR0cHM6Ly93ZWIuYXJjaGl2ZS5vcmcvd2ViLzIwMTYwMjIyMDI1ODIwL2h0dHA6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL3JhbmtpbmctdGFibGUvbWVuL3Jhbms9NTAvaW5kZXguaHRtbAoxOTk4LDE5OTgtMDUtMjAsSVJOLElSIElyYW4sQUZDLDQyLDEzNjQwMDE1OTAsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTE5OThfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDAwMTU5MCxodHRwczovL3dlYi5hcmNoaXZlLm9yZy93ZWIvMjAxNjAyMjIwMjU4MjAvaHR0cDovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvcmFua2luZy10YWJsZS9tZW4vcmFuaz01MC9pbmRleC5odG1sCjE5OTgsMTk5OC0wNS0yMCxDTVIsQ2FtZXJvb24sQ0FGLDQ5LDEzNjQwMDE1OTAsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTE5OThfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDAwMTU5MCxodHRwczovL3dlYi5hcmNoaXZlLm9yZy93ZWIvMjAxNjAyMjIwMjU4MjAvaHR0cDovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvcmFua2luZy10YWJsZS9tZW4vcmFuaz01MC9pbmRleC5odG1sCjE5OTgsMTk5OC0wNS0yMCxOR0EsTmlnZXJpYSxDQUYsNzQsMTM2NDAwMTU5MCxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MTk5OF9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0MDAxNTkwLGh0dHBzOi8vd2ViLmFyY2hpdmUub3JnL3dlYi8yMDE2MDIyMjAyNTgyMC9odHRwOi8vd3d3LmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9yYW5raW5nLXRhYmxlL21lbi9yYW5rPTUwL2luZGV4Lmh0bWwKMjAwMiwyMDAyLTA1LTE1LEZSQSxGcmFuY2UsVUVGQSwxLDEzNjQ1NzIzNzUsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMDJfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDU3MjM3NSxodHRwczovL3dlYi5hcmNoaXZlLm9yZy93ZWIvMjAxNTEwMjYyMTE4NTgvaHR0cDovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvcmFua2luZy10YWJsZS9tZW4vcmFuaz05Ny9pbmRleC5odG1sCjIwMDIsMjAwMi0wNS0xNSxCUkEsQnJhemlsLENPTk1FQk9MLDIsMTM2NDU3MjM3NSxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAwMl9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0NTcyMzc1LGh0dHBzOi8vd2ViLmFyY2hpdmUub3JnL3dlYi8yMDE1MTAyNjIxMTg1OC9odHRwOi8vd3d3LmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9yYW5raW5nLXRhYmxlL21lbi9yYW5rPTk3L2luZGV4Lmh0bWwKMjAwMiwyMDAyLTA1LTE1LEFSRyxBcmdlbnRpbmEsQ09OTUVCT0wsMywxMzY0NTcyMzc1LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDAyX0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQ1NzIzNzUsaHR0cHM6Ly93ZWIuYXJjaGl2ZS5vcmcvd2ViLzIwMTUxMDI2MjExODU4L2h0dHA6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL3JhbmtpbmctdGFibGUvbWVuL3Jhbms9OTcvaW5kZXguaHRtbAoyMDAyLDIwMDItMDUtMTUsUE9SLFBvcnR1Z2FsLFVFRkEsNSwxMzY0NTcyMzc1LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDAyX0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQ1NzIzNzUsaHR0cHM6Ly93ZWIuYXJjaGl2ZS5vcmcvd2ViLzIwMTUxMDI2MjExODU4L2h0dHA6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL3JhbmtpbmctdGFibGUvbWVuL3Jhbms9OTcvaW5kZXguaHRtbAoyMDAyLDIwMDItMDUtMTUsSVRBLEl0YWx5LFVFRkEsNiwxMzY0NTcyMzc1LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDAyX0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQ1NzIzNzUsaHR0cHM6Ly93ZWIuYXJjaGl2ZS5vcmcvd2ViLzIwMTUxMDI2MjExODU4L2h0dHA6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL3JhbmtpbmctdGFibGUvbWVuL3Jhbms9OTcvaW5kZXguaHRtbAoyMDAyLDIwMDItMDUtMTUsTUVYLE1leGljbyxDT05DQUNBRiw3LDEzNjQ1NzIzNzUsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMDJfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDU3MjM3NSxodHRwczovL3dlYi5hcmNoaXZlLm9yZy93ZWIvMjAxNTEwMjYyMTE4NTgvaHR0cDovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvcmFua2luZy10YWJsZS9tZW4vcmFuaz05Ny9pbmRleC5odG1sCjIwMDIsMjAwMi0wNS0xNSxFU1AsU3BhaW4sVUVGQSw4LDEzNjQ1NzIzNzUsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMDJfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDU3MjM3NSxodHRwczovL3dlYi5hcmNoaXZlLm9yZy93ZWIvMjAxNTEwMjYyMTE4NTgvaHR0cDovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvcmFua2luZy10YWJsZS9tZW4vcmFuaz05Ny9pbmRleC5odG1sCjIwMDIsMjAwMi0wNS0xNSxHRVIsR2VybWFueSxVRUZBLDExLDEzNjQ1NzIzNzUsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMDJfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDU3MjM3NSxodHRwczovL3dlYi5hcmNoaXZlLm9yZy93ZWIvMjAxNTEwMjYyMTE4NTgvaHR0cDovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvcmFua2luZy10YWJsZS9tZW4vcmFuaz05Ny9pbmRleC5odG1sCjIwMDIsMjAwMi0wNS0xNSxFTkcsRW5nbGFuZCxVRUZBLDEyLDEzNjQ1NzIzNzUsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMDJfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDU3MjM3NSxodHRwczovL3dlYi5hcmNoaXZlLm9yZy93ZWIvMjAxNTEwMjYyMTE4NTgvaHR0cDovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvcmFua2luZy10YWJsZS9tZW4vcmFuaz05Ny9pbmRleC5odG1sCjIwMDIsMjAwMi0wNS0xNSxVU0EsVVNBLENPTkNBQ0FGLDEzLDEzNjQ1NzIzNzUsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMDJfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDU3MjM3NSxodHRwczovL3dlYi5hcmNoaXZlLm9yZy93ZWIvMjAxNTEwMjYyMTE4NTgvaHR0cDovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvcmFua2luZy10YWJsZS9tZW4vcmFuaz05Ny9pbmRleC5odG1sCjIwMDIsMjAwMi0wNS0xNSxJUkwsUmVwdWJsaWMgb2YgSXJlbGFuZCxVRUZBLDE1LDEzNjQ1NzIzNzUsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMDJfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDU3MjM3NSxodHRwczovL3dlYi5hcmNoaXZlLm9yZy93ZWIvMjAxNTEwMjYyMTE4NTgvaHR0cDovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvcmFua2luZy10YWJsZS9tZW4vcmFuaz05Ny9pbmRleC5odG1sCjIwMDIsMjAwMi0wNS0xNSxDTVIsQ2FtZXJvb24sQ0FGLDE3LDEzNjQ1NzIzNzUsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMDJfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDU3MjM3NSxodHRwczovL3dlYi5hcmNoaXZlLm9yZy93ZWIvMjAxNTEwMjYyMTE4NTgvaHR0cDovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvcmFua2luZy10YWJsZS9tZW4vcmFuaz05Ny9pbmRleC5odG1sCjIwMDIsMjAwMi0wNS0xNSxQQVIsUGFyYWd1YXksQ09OTUVCT0wsMTgsMTM2NDU3MjM3NSxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAwMl9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0NTcyMzc1LGh0dHBzOi8vd2ViLmFyY2hpdmUub3JnL3dlYi8yMDE1MTAyNjIxMTg1OC9odHRwOi8vd3d3LmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9yYW5raW5nLXRhYmxlL21lbi9yYW5rPTk3L2luZGV4Lmh0bWwKMjAwMiwyMDAyLTA1LTE1LFNXRSxTd2VkZW4sVUVGQSwxOSwxMzY0NTcyMzc1LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDAyX0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQ1NzIzNzUsaHR0cHM6Ly93ZWIuYXJjaGl2ZS5vcmcvd2ViLzIwMTUxMDI2MjExODU4L2h0dHA6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL3JhbmtpbmctdGFibGUvbWVuL3Jhbms9OTcvaW5kZXguaHRtbAoyMDAyLDIwMDItMDUtMTUsREVOLERlbm1hcmssVUVGQSwyMCwxMzY0NTcyMzc1LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDAyX0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQ1NzIzNzUsaHR0cHM6Ly93ZWIuYXJjaGl2ZS5vcmcvd2ViLzIwMTUxMDI2MjExODU4L2h0dHA6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL3JhbmtpbmctdGFibGUvbWVuL3Jhbms9OTcvaW5kZXguaHRtbAoyMDAyLDIwMDItMDUtMTUsQ1JPLENyb2F0aWEsVUVGQSwyMSwxMzY0NTcyMzc1LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDAyX0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQ1NzIzNzUsaHR0cHM6Ly93ZWIuYXJjaGl2ZS5vcmcvd2ViLzIwMTUxMDI2MjExODU4L2h0dHA6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL3JhbmtpbmctdGFibGUvbWVuL3Jhbms9OTcvaW5kZXguaHRtbAoyMDAyLDIwMDItMDUtMTUsVFVSLFR1cmtleSxVRUZBLDIyLDEzNjQ1NzIzNzUsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMDJfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDU3MjM3NSxodHRwczovL3dlYi5hcmNoaXZlLm9yZy93ZWIvMjAxNTEwMjYyMTE4NTgvaHR0cDovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvcmFua2luZy10YWJsZS9tZW4vcmFuaz05Ny9pbmRleC5odG1sCjIwMDIsMjAwMi0wNS0xNSxCRUwsQmVsZ2l1bSxVRUZBLDIzLDEzNjQ1NzIzNzUsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMDJfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDU3MjM3NSxodHRwczovL3dlYi5hcmNoaXZlLm9yZy93ZWIvMjAxNTEwMjYyMTE4NTgvaHR0cDovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvcmFua2luZy10YWJsZS9tZW4vcmFuaz05Ny9pbmRleC5odG1sCjIwMDIsMjAwMi0wNS0xNSxVUlUsVXJ1Z3VheSxDT05NRUJPTCwyNCwxMzY0NTcyMzc1LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDAyX0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQ1NzIzNzUsaHR0cHM6Ly93ZWIuYXJjaGl2ZS5vcmcvd2ViLzIwMTUxMDI2MjExODU4L2h0dHA6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL3JhbmtpbmctdGFibGUvbWVuL3Jhbms9OTcvaW5kZXguaHRtbAoyMDAyLDIwMDItMDUtMTUsU1ZOLFNsb3ZlbmlhLFVFRkEsMjUsMTM2NDU3MjM3NSxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAwMl9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0NTcyMzc1LGh0dHBzOi8vd2ViLmFyY2hpdmUub3JnL3dlYi8yMDE1MTAyNjIxMTg1OC9odHRwOi8vd3d3LmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9yYW5raW5nLXRhYmxlL21lbi9yYW5rPTk3L2luZGV4Lmh0bWwKMjAwMiwyMDAyLTA1LTE1LE5HQSxOaWdlcmlhLENBRiwyNywxMzY0NTcyMzc1LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDAyX0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQ1NzIzNzUsaHR0cHM6Ly93ZWIuYXJjaGl2ZS5vcmcvd2ViLzIwMTUxMDI2MjExODU4L2h0dHA6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL3JhbmtpbmctdGFibGUvbWVuL3Jhbms9OTcvaW5kZXguaHRtbAoyMDAyLDIwMDItMDUtMTUsUlVTLFJ1c3NpYSxVRUZBLDI4LDEzNjQ1NzIzNzUsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMDJfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDU3MjM3NSxodHRwczovL3dlYi5hcmNoaXZlLm9yZy93ZWIvMjAxNTEwMjYyMTE4NTgvaHR0cDovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvcmFua2luZy10YWJsZS9tZW4vcmFuaz05Ny9pbmRleC5odG1sCjIwMDIsMjAwMi0wNS0xNSxDUkMsQ29zdGEgUmljYSxDT05DQUNBRiwyOSwxMzY0NTcyMzc1LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDAyX0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQ1NzIzNzUsaHR0cHM6Ly93ZWIuYXJjaGl2ZS5vcmcvd2ViLzIwMTUxMDI2MjExODU4L2h0dHA6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL3JhbmtpbmctdGFibGUvbWVuL3Jhbms9OTcvaW5kZXguaHRtbAoyMDAyLDIwMDItMDUtMTUsVFVOLFR1bmlzaWEsQ0FGLDMxLDEzNjQ1NzIzNzUsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMDJfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDU3MjM3NSxodHRwczovL3dlYi5hcmNoaXZlLm9yZy93ZWIvMjAxNTEwMjYyMTE4NTgvaHR0cDovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvcmFua2luZy10YWJsZS9tZW4vcmFuaz05Ny9pbmRleC5odG1sCjIwMDIsMjAwMi0wNS0xNSxKUE4sSmFwYW4sQUZDLDMyLDEzNjQ1NzIzNzUsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMDJfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDU3MjM3NSxodHRwczovL3dlYi5hcmNoaXZlLm9yZy93ZWIvMjAxNTEwMjYyMTE4NTgvaHR0cDovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvcmFua2luZy10YWJsZS9tZW4vcmFuaz05Ny9pbmRleC5odG1sCjIwMDIsMjAwMi0wNS0xNSxLU0EsU2F1ZGkgQXJhYmlhLEFGQywzNCwxMzY0NTcyMzc1LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDAyX0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQ1NzIzNzUsaHR0cHM6Ly93ZWIuYXJjaGl2ZS5vcmcvd2ViLzIwMTUxMDI2MjExODU4L2h0dHA6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL3JhbmtpbmctdGFibGUvbWVuL3Jhbms9OTcvaW5kZXguaHRtbAoyMDAyLDIwMDItMDUtMTUsRUNVLEVjdWFkb3IsQ09OTUVCT0wsMzYsMTM2NDU3MjM3NSxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAwMl9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0NTcyMzc1LGh0dHBzOi8vd2ViLmFyY2hpdmUub3JnL3dlYi8yMDE1MTAyNjIxMTg1OC9odHRwOi8vd3d3LmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9yYW5raW5nLXRhYmxlL21lbi9yYW5rPTk3L2luZGV4Lmh0bWwKMjAwMiwyMDAyLTA1LTE1LFJTQSxTb3V0aCBBZnJpY2EsQ0FGLDM3LDEzNjQ1NzIzNzUsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMDJfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDU3MjM3NSxodHRwczovL3dlYi5hcmNoaXZlLm9yZy93ZWIvMjAxNTEwMjYyMTE4NTgvaHR0cDovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvcmFua2luZy10YWJsZS9tZW4vcmFuaz05Ny9pbmRleC5odG1sCjIwMDIsMjAwMi0wNS0xNSxQT0wsUG9sYW5kLFVFRkEsMzgsMTM2NDU3MjM3NSxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAwMl9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0NTcyMzc1LGh0dHBzOi8vd2ViLmFyY2hpdmUub3JnL3dlYi8yMDE1MTAyNjIxMTg1OC9odHRwOi8vd3d3LmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9yYW5raW5nLXRhYmxlL21lbi9yYW5rPTk3L2luZGV4Lmh0bWwKMjAwMiwyMDAyLTA1LTE1LEtPUixLb3JlYSBSZXB1YmxpYyxBRkMsNDAsMTM2NDU3MjM3NSxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAwMl9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0NTcyMzc1LGh0dHBzOi8vd2ViLmFyY2hpdmUub3JnL3dlYi8yMDE1MTAyNjIxMTg1OC9odHRwOi8vd3d3LmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9yYW5raW5nLXRhYmxlL21lbi9yYW5rPTk3L2luZGV4Lmh0bWwKMjAwMiwyMDAyLTA1LTE1LFNFTixTZW5lZ2FsLENBRiw0MiwxMzY0NTcyMzc1LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDAyX0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQ1NzIzNzUsaHR0cHM6Ly93ZWIuYXJjaGl2ZS5vcmcvd2ViLzIwMTUxMDI2MjExODU4L2h0dHA6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL3JhbmtpbmctdGFibGUvbWVuL3Jhbms9OTcvaW5kZXguaHRtbAoyMDAyLDIwMDItMDUtMTUsQ0hOLENoaW5hIFBSLEFGQyw1MCwxMzY0NTcyMzc1LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDAyX0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQ1NzIzNzUsaHR0cHM6Ly93ZWIuYXJjaGl2ZS5vcmcvd2ViLzIwMTUxMDI2MjExODU4L2h0dHA6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL3JhbmtpbmctdGFibGUvbWVuL3Jhbms9OTcvaW5kZXguaHRtbAoyMDA2LDIwMDYtMDUtMTcsQlJBLEJyYXppbCxDT05NRUJPTCwxLDEzNjQzNzE3MTcsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMDZfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDM3MTcxNyxodHRwczovL2luc2lkZS5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcKMjAwNiwyMDA2LTA1LTE3LENaRSxDemVjaCBSZXB1YmxpYyxVRUZBLDIsMTM2NDM3MTcxNyxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAwNl9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0MzcxNzE3LGh0dHBzOi8vaW5zaWRlLmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZwoyMDA2LDIwMDYtMDUtMTcsTkVELE5ldGhlcmxhbmRzLFVFRkEsMywxMzY0MzcxNzE3LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDA2X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQzNzE3MTcsaHR0cHM6Ly9pbnNpZGUuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nCjIwMDYsMjAwNi0wNS0xNyxNRVgsTWV4aWNvLENPTkNBQ0FGLDQsMTM2NDM3MTcxNyxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAwNl9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0MzcxNzE3LGh0dHBzOi8vaW5zaWRlLmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZwoyMDA2LDIwMDYtMDUtMTcsRVNQLFNwYWluLFVFRkEsNSwxMzY0MzcxNzE3LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDA2X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQzNzE3MTcsaHR0cHM6Ly9pbnNpZGUuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nCjIwMDYsMjAwNi0wNS0xNyxVU0EsVVNBLENPTkNBQ0FGLDUsMTM2NDM3MTcxNyxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAwNl9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0MzcxNzE3LGh0dHBzOi8vaW5zaWRlLmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZwoyMDA2LDIwMDYtMDUtMTcsUE9SLFBvcnR1Z2FsLFVFRkEsNywxMzY0MzcxNzE3LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDA2X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQzNzE3MTcsaHR0cHM6Ly9pbnNpZGUuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nCjIwMDYsMjAwNi0wNS0xNyxGUkEsRnJhbmNlLFVFRkEsOCwxMzY0MzcxNzE3LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDA2X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQzNzE3MTcsaHR0cHM6Ly9pbnNpZGUuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nCjIwMDYsMjAwNi0wNS0xNyxBUkcsQXJnZW50aW5hLENPTk1FQk9MLDksMTM2NDM3MTcxNyxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAwNl9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0MzcxNzE3LGh0dHBzOi8vaW5zaWRlLmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZwoyMDA2LDIwMDYtMDUtMTcsRU5HLEVuZ2xhbmQsVUVGQSwxMCwxMzY0MzcxNzE3LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDA2X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQzNzE3MTcsaHR0cHM6Ly9pbnNpZGUuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nCjIwMDYsMjAwNi0wNS0xNyxJVEEsSXRhbHksVUVGQSwxMywxMzY0MzcxNzE3LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDA2X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQzNzE3MTcsaHR0cHM6Ly9pbnNpZGUuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nCjIwMDYsMjAwNi0wNS0xNyxTV0UsU3dlZGVuLFVFRkEsMTYsMTM2NDM3MTcxNyxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAwNl9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0MzcxNzE3LGh0dHBzOi8vaW5zaWRlLmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZwoyMDA2LDIwMDYtMDUtMTcsSlBOLEphcGFuLEFGQywxOCwxMzY0MzcxNzE3LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDA2X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQzNzE3MTcsaHR0cHM6Ly9pbnNpZGUuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nCjIwMDYsMjAwNi0wNS0xNyxHRVIsR2VybWFueSxVRUZBLDE5LDEzNjQzNzE3MTcsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMDZfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDM3MTcxNyxodHRwczovL2luc2lkZS5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcKMjAwNiwyMDA2LTA1LTE3LFRVTixUdW5pc2lhLENBRiwyMSwxMzY0MzcxNzE3LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDA2X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQzNzE3MTcsaHR0cHM6Ly9pbnNpZGUuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nCjIwMDYsMjAwNi0wNS0xNyxDUk8sQ3JvYXRpYSxVRUZBLDIzLDEzNjQzNzE3MTcsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMDZfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDM3MTcxNyxodHRwczovL2luc2lkZS5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcKMjAwNiwyMDA2LTA1LTE3LElSTixJUiBJcmFuLEFGQywyMywxMzY0MzcxNzE3LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDA2X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQzNzE3MTcsaHR0cHM6Ly9pbnNpZGUuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nCjIwMDYsMjAwNi0wNS0xNyxDUkMsQ29zdGEgUmljYSxDT05DQUNBRiwyNiwxMzY0MzcxNzE3LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDA2X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQzNzE3MTcsaHR0cHM6Ly9pbnNpZGUuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nCjIwMDYsMjAwNi0wNS0xNyxLT1IsS29yZWEgUmVwdWJsaWMsQUZDLDI5LDEzNjQzNzE3MTcsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMDZfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDM3MTcxNyxodHRwczovL2luc2lkZS5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcKMjAwNiwyMDA2LTA1LTE3LFBPTCxQb2xhbmQsVUVGQSwyOSwxMzY0MzcxNzE3LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDA2X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQzNzE3MTcsaHR0cHM6Ly9pbnNpZGUuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nCjIwMDYsMjAwNi0wNS0xNyxDSVYsQ8O0dGUgZCdJdm9pcmUsQ0FGLDMyLDEzNjQzNzE3MTcsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMDZfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDM3MTcxNyxodHRwczovL2luc2lkZS5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcKMjAwNiwyMDA2LTA1LTE3LFBBUixQYXJhZ3VheSxDT05NRUJPTCwzMywxMzY0MzcxNzE3LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDA2X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQzNzE3MTcsaHR0cHM6Ly9pbnNpZGUuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nCjIwMDYsMjAwNi0wNS0xNyxLU0EsU2F1ZGkgQXJhYmlhLEFGQywzNCwxMzY0MzcxNzE3LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDA2X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQzNzE3MTcsaHR0cHM6Ly9pbnNpZGUuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nCjIwMDYsMjAwNi0wNS0xNyxTVUksU3dpdHplcmxhbmQsVUVGQSwzNSwxMzY0MzcxNzE3LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDA2X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQzNzE3MTcsaHR0cHM6Ly9pbnNpZGUuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nCjIwMDYsMjAwNi0wNS0xNyxFQ1UsRWN1YWRvcixDT05NRUJPTCwzOSwxMzY0MzcxNzE3LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDA2X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQzNzE3MTcsaHR0cHM6Ly9pbnNpZGUuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nCjIwMDYsMjAwNi0wNS0xNyxBVVMsQXVzdHJhbGlhLE9GQyw0MiwxMzY0MzcxNzE3LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDA2X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQzNzE3MTcsaHR0cHM6Ly9pbnNpZGUuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nCjIwMDYsMjAwNi0wNS0xNyxTQ0csU2VyYmlhIGFuZCBNb250ZW5lZ3JvLFVFRkEsNDQsMTM2NDM3MTcxNyxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAwNl9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0MzcxNzE3LGh0dHBzOi8vaW5zaWRlLmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZwoyMDA2LDIwMDYtMDUtMTcsVUtSLFVrcmFpbmUsVUVGQSw0NSwxMzY0MzcxNzE3LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDA2X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQzNzE3MTcsaHR0cHM6Ly9pbnNpZGUuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nCjIwMDYsMjAwNi0wNS0xNyxUUkksVHJpbmlkYWQgYW5kIFRvYmFnbyxDT05DQUNBRiw0NywxMzY0MzcxNzE3LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDA2X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQzNzE3MTcsaHR0cHM6Ly9pbnNpZGUuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nCjIwMDYsMjAwNi0wNS0xNyxHSEEsR2hhbmEsQ0FGLDQ4LDEzNjQzNzE3MTcsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMDZfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDM3MTcxNyxodHRwczovL2luc2lkZS5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcKMjAwNiwyMDA2LTA1LTE3LEFORyxBbmdvbGEsQ0FGLDU3LDEzNjQzNzE3MTcsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMDZfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDM3MTcxNyxodHRwczovL2luc2lkZS5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcKMjAwNiwyMDA2LTA1LTE3LFRPRyxUb2dvLENBRiw2MSwxMzY0MzcxNzE3LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDA2X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQzNzE3MTcsaHR0cHM6Ly9pbnNpZGUuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nCjIwMTAsMjAxMC0wNS0yNixCUkEsQnJhemlsLENPTk1FQk9MLDEsMTM2MzkyODU3NSxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAxMF9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzYzOTI4NTc1LGh0dHBzOi8vd2ViLmFyY2hpdmUub3JnL3dlYi8yMDE5MTAwNjAxNTIxMS9odHRwczovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvcmFua2luZy10YWJsZS9tZW4vcmFuay9pZDkwNTQvCjIwMTAsMjAxMC0wNS0yNixFU1AsU3BhaW4sVUVGQSwyLDEzNjM5Mjg1NzUsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMTBfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2MzkyODU3NSxodHRwczovL3dlYi5hcmNoaXZlLm9yZy93ZWIvMjAxOTEwMDYwMTUyMTEvaHR0cHM6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL3JhbmtpbmctdGFibGUvbWVuL3JhbmsvaWQ5MDU0LwoyMDEwLDIwMTAtMDUtMjYsUE9SLFBvcnR1Z2FsLFVFRkEsMywxMzYzOTI4NTc1LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDEwX0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjM5Mjg1NzUsaHR0cHM6Ly93ZWIuYXJjaGl2ZS5vcmcvd2ViLzIwMTkxMDA2MDE1MjExL2h0dHBzOi8vd3d3LmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9yYW5raW5nLXRhYmxlL21lbi9yYW5rL2lkOTA1NC8KMjAxMCwyMDEwLTA1LTI2LE5FRCxOZXRoZXJsYW5kcyxVRUZBLDQsMTM2MzkyODU3NSxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAxMF9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzYzOTI4NTc1LGh0dHBzOi8vd2ViLmFyY2hpdmUub3JnL3dlYi8yMDE5MTAwNjAxNTIxMS9odHRwczovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvcmFua2luZy10YWJsZS9tZW4vcmFuay9pZDkwNTQvCjIwMTAsMjAxMC0wNS0yNixJVEEsSXRhbHksVUVGQSw1LDEzNjM5Mjg1NzUsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMTBfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2MzkyODU3NSxodHRwczovL3dlYi5hcmNoaXZlLm9yZy93ZWIvMjAxOTEwMDYwMTUyMTEvaHR0cHM6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL3JhbmtpbmctdGFibGUvbWVuL3JhbmsvaWQ5MDU0LwoyMDEwLDIwMTAtMDUtMjYsR0VSLEdlcm1hbnksVUVGQSw2LDEzNjM5Mjg1NzUsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMTBfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2MzkyODU3NSxodHRwczovL3dlYi5hcmNoaXZlLm9yZy93ZWIvMjAxOTEwMDYwMTUyMTEvaHR0cHM6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL3JhbmtpbmctdGFibGUvbWVuL3JhbmsvaWQ5MDU0LwoyMDEwLDIwMTAtMDUtMjYsQVJHLEFyZ2VudGluYSxDT05NRUJPTCw3LDEzNjM5Mjg1NzUsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMTBfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2MzkyODU3NSxodHRwczovL3dlYi5hcmNoaXZlLm9yZy93ZWIvMjAxOTEwMDYwMTUyMTEvaHR0cHM6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL3JhbmtpbmctdGFibGUvbWVuL3JhbmsvaWQ5MDU0LwoyMDEwLDIwMTAtMDUtMjYsRU5HLEVuZ2xhbmQsVUVGQSw4LDEzNjM5Mjg1NzUsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMTBfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2MzkyODU3NSxodHRwczovL3dlYi5hcmNoaXZlLm9yZy93ZWIvMjAxOTEwMDYwMTUyMTEvaHR0cHM6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL3JhbmtpbmctdGFibGUvbWVuL3JhbmsvaWQ5MDU0LwoyMDEwLDIwMTAtMDUtMjYsRlJBLEZyYW5jZSxVRUZBLDksMTM2MzkyODU3NSxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAxMF9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzYzOTI4NTc1LGh0dHBzOi8vd2ViLmFyY2hpdmUub3JnL3dlYi8yMDE5MTAwNjAxNTIxMS9odHRwczovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvcmFua2luZy10YWJsZS9tZW4vcmFuay9pZDkwNTQvCjIwMTAsMjAxMC0wNS0yNixHUkUsR3JlZWNlLFVFRkEsMTMsMTM2MzkyODU3NSxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAxMF9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzYzOTI4NTc1LGh0dHBzOi8vd2ViLmFyY2hpdmUub3JnL3dlYi8yMDE5MTAwNjAxNTIxMS9odHRwczovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvcmFua2luZy10YWJsZS9tZW4vcmFuay9pZDkwNTQvCjIwMTAsMjAxMC0wNS0yNixVU0EsVVNBLENPTkNBQ0FGLDE0LDEzNjM5Mjg1NzUsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMTBfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2MzkyODU3NSxodHRwczovL3dlYi5hcmNoaXZlLm9yZy93ZWIvMjAxOTEwMDYwMTUyMTEvaHR0cHM6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL3JhbmtpbmctdGFibGUvbWVuL3JhbmsvaWQ5MDU0LwoyMDEwLDIwMTAtMDUtMjYsU1JCLFNlcmJpYSxVRUZBLDE1LDEzNjM5Mjg1NzUsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMTBfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2MzkyODU3NSxodHRwczovL3dlYi5hcmNoaXZlLm9yZy93ZWIvMjAxOTEwMDYwMTUyMTEvaHR0cHM6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL3JhbmtpbmctdGFibGUvbWVuL3JhbmsvaWQ5MDU0LwoyMDEwLDIwMTAtMDUtMjYsVVJVLFVydWd1YXksQ09OTUVCT0wsMTYsMTM2MzkyODU3NSxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAxMF9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzYzOTI4NTc1LGh0dHBzOi8vd2ViLmFyY2hpdmUub3JnL3dlYi8yMDE5MTAwNjAxNTIxMS9odHRwczovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvcmFua2luZy10YWJsZS9tZW4vcmFuay9pZDkwNTQvCjIwMTAsMjAxMC0wNS0yNixNRVgsTWV4aWNvLENPTkNBQ0FGLDE3LDEzNjM5Mjg1NzUsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMTBfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2MzkyODU3NSxodHRwczovL3dlYi5hcmNoaXZlLm9yZy93ZWIvMjAxOTEwMDYwMTUyMTEvaHR0cHM6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL3JhbmtpbmctdGFibGUvbWVuL3JhbmsvaWQ5MDU0LwoyMDEwLDIwMTAtMDUtMjYsQ0hJLENoaWxlLENPTk1FQk9MLDE4LDEzNjM5Mjg1NzUsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMTBfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2MzkyODU3NSxodHRwczovL3dlYi5hcmNoaXZlLm9yZy93ZWIvMjAxOTEwMDYwMTUyMTEvaHR0cHM6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL3JhbmtpbmctdGFibGUvbWVuL3JhbmsvaWQ5MDU0LwoyMDEwLDIwMTAtMDUtMjYsQ01SLENhbWVyb29uLENBRiwxOSwxMzYzOTI4NTc1LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDEwX0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjM5Mjg1NzUsaHR0cHM6Ly93ZWIuYXJjaGl2ZS5vcmcvd2ViLzIwMTkxMDA2MDE1MjExL2h0dHBzOi8vd3d3LmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9yYW5raW5nLXRhYmxlL21lbi9yYW5rL2lkOTA1NC8KMjAxMCwyMDEwLTA1LTI2LEFVUyxBdXN0cmFsaWEsQUZDLDIwLDEzNjM5Mjg1NzUsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMTBfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2MzkyODU3NSxodHRwczovL3dlYi5hcmNoaXZlLm9yZy93ZWIvMjAxOTEwMDYwMTUyMTEvaHR0cHM6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL3JhbmtpbmctdGFibGUvbWVuL3JhbmsvaWQ5MDU0LwoyMDEwLDIwMTAtMDUtMjYsTkdBLE5pZ2VyaWEsQ0FGLDIxLDEzNjM5Mjg1NzUsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMTBfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2MzkyODU3NSxodHRwczovL3dlYi5hcmNoaXZlLm9yZy93ZWIvMjAxOTEwMDYwMTUyMTEvaHR0cHM6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL3JhbmtpbmctdGFibGUvbWVuL3JhbmsvaWQ5MDU0LwoyMDEwLDIwMTAtMDUtMjYsU1VJLFN3aXR6ZXJsYW5kLFVFRkEsMjQsMTM2MzkyODU3NSxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAxMF9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzYzOTI4NTc1LGh0dHBzOi8vd2ViLmFyY2hpdmUub3JnL3dlYi8yMDE5MTAwNjAxNTIxMS9odHRwczovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvcmFua2luZy10YWJsZS9tZW4vcmFuay9pZDkwNTQvCjIwMTAsMjAxMC0wNS0yNixTVk4sU2xvdmVuaWEsVUVGQSwyNSwxMzYzOTI4NTc1LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDEwX0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjM5Mjg1NzUsaHR0cHM6Ly93ZWIuYXJjaGl2ZS5vcmcvd2ViLzIwMTkxMDA2MDE1MjExL2h0dHBzOi8vd3d3LmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9yYW5raW5nLXRhYmxlL21lbi9yYW5rL2lkOTA1NC8KMjAxMCwyMDEwLTA1LTI2LENJVixDw7R0ZSBkJ0l2b2lyZSxDQUYsMjcsMTM2MzkyODU3NSxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAxMF9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzYzOTI4NTc1LGh0dHBzOi8vd2ViLmFyY2hpdmUub3JnL3dlYi8yMDE5MTAwNjAxNTIxMS9odHRwczovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvcmFua2luZy10YWJsZS9tZW4vcmFuay9pZDkwNTQvCjIwMTAsMjAxMC0wNS0yNixBTEcsQWxnZXJpYSxDQUYsMzAsMTM2MzkyODU3NSxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAxMF9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzYzOTI4NTc1LGh0dHBzOi8vd2ViLmFyY2hpdmUub3JnL3dlYi8yMDE5MTAwNjAxNTIxMS9odHRwczovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvcmFua2luZy10YWJsZS9tZW4vcmFuay9pZDkwNTQvCjIwMTAsMjAxMC0wNS0yNixQQVIsUGFyYWd1YXksQ09OTUVCT0wsMzEsMTM2MzkyODU3NSxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAxMF9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzYzOTI4NTc1LGh0dHBzOi8vd2ViLmFyY2hpdmUub3JnL3dlYi8yMDE5MTAwNjAxNTIxMS9odHRwczovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvcmFua2luZy10YWJsZS9tZW4vcmFuay9pZDkwNTQvCjIwMTAsMjAxMC0wNS0yNixHSEEsR2hhbmEsQ0FGLDMyLDEzNjM5Mjg1NzUsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMTBfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2MzkyODU3NSxodHRwczovL3dlYi5hcmNoaXZlLm9yZy93ZWIvMjAxOTEwMDYwMTUyMTEvaHR0cHM6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL3JhbmtpbmctdGFibGUvbWVuL3JhbmsvaWQ5MDU0LwoyMDEwLDIwMTAtMDUtMjYsU1ZLLFNsb3Zha2lhLFVFRkEsMzQsMTM2MzkyODU3NSxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAxMF9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzYzOTI4NTc1LGh0dHBzOi8vd2ViLmFyY2hpdmUub3JnL3dlYi8yMDE5MTAwNjAxNTIxMS9odHRwczovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvcmFua2luZy10YWJsZS9tZW4vcmFuay9pZDkwNTQvCjIwMTAsMjAxMC0wNS0yNixERU4sRGVubWFyayxVRUZBLDM2LDEzNjM5Mjg1NzUsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMTBfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2MzkyODU3NSxodHRwczovL3dlYi5hcmNoaXZlLm9yZy93ZWIvMjAxOTEwMDYwMTUyMTEvaHR0cHM6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL3JhbmtpbmctdGFibGUvbWVuL3JhbmsvaWQ5MDU0LwoyMDEwLDIwMTAtMDUtMjYsSE9OLEhvbmR1cmFzLENPTkNBQ0FGLDM4LDEzNjM5Mjg1NzUsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMTBfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2MzkyODU3NSxodHRwczovL3dlYi5hcmNoaXZlLm9yZy93ZWIvMjAxOTEwMDYwMTUyMTEvaHR0cHM6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL3JhbmtpbmctdGFibGUvbWVuL3JhbmsvaWQ5MDU0LwoyMDEwLDIwMTAtMDUtMjYsSlBOLEphcGFuLEFGQyw0NSwxMzYzOTI4NTc1LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDEwX0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjM5Mjg1NzUsaHR0cHM6Ly93ZWIuYXJjaGl2ZS5vcmcvd2ViLzIwMTkxMDA2MDE1MjExL2h0dHBzOi8vd3d3LmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9yYW5raW5nLXRhYmxlL21lbi9yYW5rL2lkOTA1NC8KMjAxMCwyMDEwLTA1LTI2LEtPUixLb3JlYSBSZXB1YmxpYyxBRkMsNDcsMTM2MzkyODU3NSxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAxMF9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzYzOTI4NTc1LGh0dHBzOi8vd2ViLmFyY2hpdmUub3JnL3dlYi8yMDE5MTAwNjAxNTIxMS9odHRwczovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvcmFua2luZy10YWJsZS9tZW4vcmFuay9pZDkwNTQvCjIwMTAsMjAxMC0wNS0yNixOWkwsTmV3IFplYWxhbmQsT0ZDLDc4LDEzNjM5Mjg1NzUsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMTBfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2MzkyODU3NSxodHRwczovL3dlYi5hcmNoaXZlLm9yZy93ZWIvMjAxOTEwMDYwMTUyMTEvaHR0cHM6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL3JhbmtpbmctdGFibGUvbWVuL3JhbmsvaWQ5MDU0LwoyMDEwLDIwMTAtMDUtMjYsUlNBLFNvdXRoIEFmcmljYSxDQUYsODMsMTM2MzkyODU3NSxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAxMF9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzYzOTI4NTc1LGh0dHBzOi8vd2ViLmFyY2hpdmUub3JnL3dlYi8yMDE5MTAwNjAxNTIxMS9odHRwczovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvcmFua2luZy10YWJsZS9tZW4vcmFuay9pZDkwNTQvCjIwMTAsMjAxMC0wNS0yNixQUkssS29yZWEgRFBSLEFGQywxMDUsMTM2MzkyODU3NSxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAxMF9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzYzOTI4NTc1LGh0dHBzOi8vd2ViLmFyY2hpdmUub3JnL3dlYi8yMDE5MTAwNjAxNTIxMS9odHRwczovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvcmFua2luZy10YWJsZS9tZW4vcmFuay9pZDkwNTQvCjIwMTQsMjAxNC0wNi0wNSxFU1AsU3BhaW4sVUVGQSwxLDEzNjM3OTYxNzIsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMTRfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2Mzc5NjE3MixodHRwczovL3dlYi5hcmNoaXZlLm9yZy93ZWIvMjAxNDExMDcwMDUwNTkvaHR0cDovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvcmFua2luZy10YWJsZS9tZW4vcmFuaz0yMzkvaW5kZXguaHRtbAoyMDE0LDIwMTQtMDYtMDUsR0VSLEdlcm1hbnksVUVGQSwyLDEzNjM3OTYxNzIsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMTRfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2Mzc5NjE3MixodHRwczovL3dlYi5hcmNoaXZlLm9yZy93ZWIvMjAxNDExMDcwMDUwNTkvaHR0cDovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvcmFua2luZy10YWJsZS9tZW4vcmFuaz0yMzkvaW5kZXguaHRtbAoyMDE0LDIwMTQtMDYtMDUsQlJBLEJyYXppbCxDT05NRUJPTCwzLDEzNjM3OTYxNzIsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMTRfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2Mzc5NjE3MixodHRwczovL3dlYi5hcmNoaXZlLm9yZy93ZWIvMjAxNDExMDcwMDUwNTkvaHR0cDovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvcmFua2luZy10YWJsZS9tZW4vcmFuaz0yMzkvaW5kZXguaHRtbAoyMDE0LDIwMTQtMDYtMDUsUE9SLFBvcnR1Z2FsLFVFRkEsNCwxMzYzNzk2MTcyLGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDE0X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjM3OTYxNzIsaHR0cHM6Ly93ZWIuYXJjaGl2ZS5vcmcvd2ViLzIwMTQxMTA3MDA1MDU5L2h0dHA6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL3JhbmtpbmctdGFibGUvbWVuL3Jhbms9MjM5L2luZGV4Lmh0bWwKMjAxNCwyMDE0LTA2LTA1LEFSRyxBcmdlbnRpbmEsQ09OTUVCT0wsNSwxMzYzNzk2MTcyLGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDE0X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjM3OTYxNzIsaHR0cHM6Ly93ZWIuYXJjaGl2ZS5vcmcvd2ViLzIwMTQxMTA3MDA1MDU5L2h0dHA6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL3JhbmtpbmctdGFibGUvbWVuL3Jhbms9MjM5L2luZGV4Lmh0bWwKMjAxNCwyMDE0LTA2LTA1LFNVSSxTd2l0emVybGFuZCxVRUZBLDYsMTM2Mzc5NjE3MixodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAxNF9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzYzNzk2MTcyLGh0dHBzOi8vd2ViLmFyY2hpdmUub3JnL3dlYi8yMDE0MTEwNzAwNTA1OS9odHRwOi8vd3d3LmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9yYW5raW5nLXRhYmxlL21lbi9yYW5rPTIzOS9pbmRleC5odG1sCjIwMTQsMjAxNC0wNi0wNSxVUlUsVXJ1Z3VheSxDT05NRUJPTCw3LDEzNjM3OTYxNzIsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMTRfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2Mzc5NjE3MixodHRwczovL3dlYi5hcmNoaXZlLm9yZy93ZWIvMjAxNDExMDcwMDUwNTkvaHR0cDovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvcmFua2luZy10YWJsZS9tZW4vcmFuaz0yMzkvaW5kZXguaHRtbAoyMDE0LDIwMTQtMDYtMDUsQ09MLENvbG9tYmlhLENPTk1FQk9MLDgsMTM2Mzc5NjE3MixodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAxNF9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzYzNzk2MTcyLGh0dHBzOi8vd2ViLmFyY2hpdmUub3JnL3dlYi8yMDE0MTEwNzAwNTA1OS9odHRwOi8vd3d3LmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9yYW5raW5nLXRhYmxlL21lbi9yYW5rPTIzOS9pbmRleC5odG1sCjIwMTQsMjAxNC0wNi0wNSxJVEEsSXRhbHksVUVGQSw5LDEzNjM3OTYxNzIsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMTRfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2Mzc5NjE3MixodHRwczovL3dlYi5hcmNoaXZlLm9yZy93ZWIvMjAxNDExMDcwMDUwNTkvaHR0cDovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvcmFua2luZy10YWJsZS9tZW4vcmFuaz0yMzkvaW5kZXguaHRtbAoyMDE0LDIwMTQtMDYtMDUsRU5HLEVuZ2xhbmQsVUVGQSwxMCwxMzYzNzk2MTcyLGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDE0X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjM3OTYxNzIsaHR0cHM6Ly93ZWIuYXJjaGl2ZS5vcmcvd2ViLzIwMTQxMTA3MDA1MDU5L2h0dHA6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL3JhbmtpbmctdGFibGUvbWVuL3Jhbms9MjM5L2luZGV4Lmh0bWwKMjAxNCwyMDE0LTA2LTA1LEJFTCxCZWxnaXVtLFVFRkEsMTEsMTM2Mzc5NjE3MixodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAxNF9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzYzNzk2MTcyLGh0dHBzOi8vd2ViLmFyY2hpdmUub3JnL3dlYi8yMDE0MTEwNzAwNTA1OS9odHRwOi8vd3d3LmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9yYW5raW5nLXRhYmxlL21lbi9yYW5rPTIzOS9pbmRleC5odG1sCjIwMTQsMjAxNC0wNi0wNSxHUkUsR3JlZWNlLFVFRkEsMTIsMTM2Mzc5NjE3MixodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAxNF9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzYzNzk2MTcyLGh0dHBzOi8vd2ViLmFyY2hpdmUub3JnL3dlYi8yMDE0MTEwNzAwNTA1OS9odHRwOi8vd3d3LmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9yYW5raW5nLXRhYmxlL21lbi9yYW5rPTIzOS9pbmRleC5odG1sCjIwMTQsMjAxNC0wNi0wNSxVU0EsVVNBLENPTkNBQ0FGLDEzLDEzNjM3OTYxNzIsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMTRfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2Mzc5NjE3MixodHRwczovL3dlYi5hcmNoaXZlLm9yZy93ZWIvMjAxNDExMDcwMDUwNTkvaHR0cDovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvcmFua2luZy10YWJsZS9tZW4vcmFuaz0yMzkvaW5kZXguaHRtbAoyMDE0LDIwMTQtMDYtMDUsQ0hJLENoaWxlLENPTk1FQk9MLDE0LDEzNjM3OTYxNzIsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMTRfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2Mzc5NjE3MixodHRwczovL3dlYi5hcmNoaXZlLm9yZy93ZWIvMjAxNDExMDcwMDUwNTkvaHR0cDovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvcmFua2luZy10YWJsZS9tZW4vcmFuaz0yMzkvaW5kZXguaHRtbAoyMDE0LDIwMTQtMDYtMDUsTkVELE5ldGhlcmxhbmRzLFVFRkEsMTUsMTM2Mzc5NjE3MixodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAxNF9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzYzNzk2MTcyLGh0dHBzOi8vd2ViLmFyY2hpdmUub3JnL3dlYi8yMDE0MTEwNzAwNTA1OS9odHRwOi8vd3d3LmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9yYW5raW5nLXRhYmxlL21lbi9yYW5rPTIzOS9pbmRleC5odG1sCjIwMTQsMjAxNC0wNi0wNSxGUkEsRnJhbmNlLFVFRkEsMTcsMTM2Mzc5NjE3MixodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAxNF9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzYzNzk2MTcyLGh0dHBzOi8vd2ViLmFyY2hpdmUub3JnL3dlYi8yMDE0MTEwNzAwNTA1OS9odHRwOi8vd3d3LmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9yYW5raW5nLXRhYmxlL21lbi9yYW5rPTIzOS9pbmRleC5odG1sCjIwMTQsMjAxNC0wNi0wNSxDUk8sQ3JvYXRpYSxVRUZBLDE4LDEzNjM3OTYxNzIsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMTRfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2Mzc5NjE3MixodHRwczovL3dlYi5hcmNoaXZlLm9yZy93ZWIvMjAxNDExMDcwMDUwNTkvaHR0cDovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvcmFua2luZy10YWJsZS9tZW4vcmFuaz0yMzkvaW5kZXguaHRtbAoyMDE0LDIwMTQtMDYtMDUsUlVTLFJ1c3NpYSxVRUZBLDE5LDEzNjM3OTYxNzIsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMTRfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2Mzc5NjE3MixodHRwczovL3dlYi5hcmNoaXZlLm9yZy93ZWIvMjAxNDExMDcwMDUwNTkvaHR0cDovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvcmFua2luZy10YWJsZS9tZW4vcmFuaz0yMzkvaW5kZXguaHRtbAoyMDE0LDIwMTQtMDYtMDUsTUVYLE1leGljbyxDT05DQUNBRiwyMCwxMzYzNzk2MTcyLGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDE0X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjM3OTYxNzIsaHR0cHM6Ly93ZWIuYXJjaGl2ZS5vcmcvd2ViLzIwMTQxMTA3MDA1MDU5L2h0dHA6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL3JhbmtpbmctdGFibGUvbWVuL3Jhbms9MjM5L2luZGV4Lmh0bWwKMjAxNCwyMDE0LTA2LTA1LEJJSCxCb3NuaWEgYW5kIEhlcnplZ292aW5hLFVFRkEsMjEsMTM2Mzc5NjE3MixodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAxNF9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzYzNzk2MTcyLGh0dHBzOi8vd2ViLmFyY2hpdmUub3JnL3dlYi8yMDE0MTEwNzAwNTA1OS9odHRwOi8vd3d3LmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9yYW5raW5nLXRhYmxlL21lbi9yYW5rPTIzOS9pbmRleC5odG1sCjIwMTQsMjAxNC0wNi0wNSxBTEcsQWxnZXJpYSxDQUYsMjIsMTM2Mzc5NjE3MixodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAxNF9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzYzNzk2MTcyLGh0dHBzOi8vd2ViLmFyY2hpdmUub3JnL3dlYi8yMDE0MTEwNzAwNTA1OS9odHRwOi8vd3d3LmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9yYW5raW5nLXRhYmxlL21lbi9yYW5rPTIzOS9pbmRleC5odG1sCjIwMTQsMjAxNC0wNi0wNSxDSVYsQ8O0dGUgZCdJdm9pcmUsQ0FGLDIzLDEzNjM3OTYxNzIsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMTRfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2Mzc5NjE3MixodHRwczovL3dlYi5hcmNoaXZlLm9yZy93ZWIvMjAxNDExMDcwMDUwNTkvaHR0cDovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvcmFua2luZy10YWJsZS9tZW4vcmFuaz0yMzkvaW5kZXguaHRtbAoyMDE0LDIwMTQtMDYtMDUsRUNVLEVjdWFkb3IsQ09OTUVCT0wsMjYsMTM2Mzc5NjE3MixodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAxNF9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzYzNzk2MTcyLGh0dHBzOi8vd2ViLmFyY2hpdmUub3JnL3dlYi8yMDE0MTEwNzAwNTA1OS9odHRwOi8vd3d3LmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9yYW5raW5nLXRhYmxlL21lbi9yYW5rPTIzOS9pbmRleC5odG1sCjIwMTQsMjAxNC0wNi0wNSxDUkMsQ29zdGEgUmljYSxDT05DQUNBRiwyOCwxMzYzNzk2MTcyLGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDE0X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjM3OTYxNzIsaHR0cHM6Ly93ZWIuYXJjaGl2ZS5vcmcvd2ViLzIwMTQxMTA3MDA1MDU5L2h0dHA6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL3JhbmtpbmctdGFibGUvbWVuL3Jhbms9MjM5L2luZGV4Lmh0bWwKMjAxNCwyMDE0LTA2LTA1LEhPTixIb25kdXJhcyxDT05DQUNBRiwzMywxMzYzNzk2MTcyLGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDE0X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjM3OTYxNzIsaHR0cHM6Ly93ZWIuYXJjaGl2ZS5vcmcvd2ViLzIwMTQxMTA3MDA1MDU5L2h0dHA6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL3JhbmtpbmctdGFibGUvbWVuL3Jhbms9MjM5L2luZGV4Lmh0bWwKMjAxNCwyMDE0LTA2LTA1LEdIQSxHaGFuYSxDQUYsMzcsMTM2Mzc5NjE3MixodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAxNF9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzYzNzk2MTcyLGh0dHBzOi8vd2ViLmFyY2hpdmUub3JnL3dlYi8yMDE0MTEwNzAwNTA1OS9odHRwOi8vd3d3LmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9yYW5raW5nLXRhYmxlL21lbi9yYW5rPTIzOS9pbmRleC5odG1sCjIwMTQsMjAxNC0wNi0wNSxJUk4sSVIgSXJhbixBRkMsNDMsMTM2Mzc5NjE3MixodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAxNF9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzYzNzk2MTcyLGh0dHBzOi8vd2ViLmFyY2hpdmUub3JnL3dlYi8yMDE0MTEwNzAwNTA1OS9odHRwOi8vd3d3LmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9yYW5raW5nLXRhYmxlL21lbi9yYW5rPTIzOS9pbmRleC5odG1sCjIwMTQsMjAxNC0wNi0wNSxOR0EsTmlnZXJpYSxDQUYsNDQsMTM2Mzc5NjE3MixodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAxNF9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzYzNzk2MTcyLGh0dHBzOi8vd2ViLmFyY2hpdmUub3JnL3dlYi8yMDE0MTEwNzAwNTA1OS9odHRwOi8vd3d3LmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9yYW5raW5nLXRhYmxlL21lbi9yYW5rPTIzOS9pbmRleC5odG1sCjIwMTQsMjAxNC0wNi0wNSxKUE4sSmFwYW4sQUZDLDQ2LDEzNjM3OTYxNzIsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMTRfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2Mzc5NjE3MixodHRwczovL3dlYi5hcmNoaXZlLm9yZy93ZWIvMjAxNDExMDcwMDUwNTkvaHR0cDovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvcmFua2luZy10YWJsZS9tZW4vcmFuaz0yMzkvaW5kZXguaHRtbAoyMDE0LDIwMTQtMDYtMDUsQ01SLENhbWVyb29uLENBRiw1NiwxMzYzNzk2MTcyLGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDE0X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjM3OTYxNzIsaHR0cHM6Ly93ZWIuYXJjaGl2ZS5vcmcvd2ViLzIwMTQxMTA3MDA1MDU5L2h0dHA6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL3JhbmtpbmctdGFibGUvbWVuL3Jhbms9MjM5L2luZGV4Lmh0bWwKMjAxNCwyMDE0LTA2LTA1LEtPUixLb3JlYSBSZXB1YmxpYyxBRkMsNTcsMTM2Mzc5NjE3MixodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAxNF9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzYzNzk2MTcyLGh0dHBzOi8vd2ViLmFyY2hpdmUub3JnL3dlYi8yMDE0MTEwNzAwNTA1OS9odHRwOi8vd3d3LmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9yYW5raW5nLXRhYmxlL21lbi9yYW5rPTIzOS9pbmRleC5odG1sCjIwMTQsMjAxNC0wNi0wNSxBVVMsQXVzdHJhbGlhLEFGQyw2MiwxMzYzNzk2MTcyLGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDE0X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjM3OTYxNzIsaHR0cHM6Ly93ZWIuYXJjaGl2ZS5vcmcvd2ViLzIwMTQxMTA3MDA1MDU5L2h0dHA6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL3JhbmtpbmctdGFibGUvbWVuL3Jhbms9MjM5L2luZGV4Lmh0bWwKMjAxOCwyMDE4LTA2LTA3LEdFUixHZXJtYW55LFVFRkEsMSwxMzY0MjAxMTg2LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDE4X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQyMDExODYsaHR0cHM6Ly9pbnNpZGUuZmlmYS5jb20vdG91cm5hbWVudHMvbWVucy93b3JsZGN1cC8yMDE4cnVzc2lhL25ld3MvY2FsY3VsYXRpbmctcnVzc2lhLTIwMTgtcy10b3VnaGVzdC1ncm91cHMKMjAxOCwyMDE4LTA2LTA3LEJSQSxCcmF6aWwsQ09OTUVCT0wsMiwxMzY0MjAxMTg2LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDE4X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQyMDExODYsaHR0cHM6Ly9pbnNpZGUuZmlmYS5jb20vdG91cm5hbWVudHMvbWVucy93b3JsZGN1cC8yMDE4cnVzc2lhL25ld3MvY2FsY3VsYXRpbmctcnVzc2lhLTIwMTgtcy10b3VnaGVzdC1ncm91cHMKMjAxOCwyMDE4LTA2LTA3LEJFTCxCZWxnaXVtLFVFRkEsMywxMzY0MjAxMTg2LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDE4X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQyMDExODYsaHR0cHM6Ly9pbnNpZGUuZmlmYS5jb20vdG91cm5hbWVudHMvbWVucy93b3JsZGN1cC8yMDE4cnVzc2lhL25ld3MvY2FsY3VsYXRpbmctcnVzc2lhLTIwMTgtcy10b3VnaGVzdC1ncm91cHMKMjAxOCwyMDE4LTA2LTA3LFBPUixQb3J0dWdhbCxVRUZBLDQsMTM2NDIwMTE4NixodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAxOF9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0MjAxMTg2LGh0dHBzOi8vaW5zaWRlLmZpZmEuY29tL3RvdXJuYW1lbnRzL21lbnMvd29ybGRjdXAvMjAxOHJ1c3NpYS9uZXdzL2NhbGN1bGF0aW5nLXJ1c3NpYS0yMDE4LXMtdG91Z2hlc3QtZ3JvdXBzCjIwMTgsMjAxOC0wNi0wNyxBUkcsQXJnZW50aW5hLENPTk1FQk9MLDUsMTM2NDIwMTE4NixodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAxOF9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0MjAxMTg2LGh0dHBzOi8vaW5zaWRlLmZpZmEuY29tL3RvdXJuYW1lbnRzL21lbnMvd29ybGRjdXAvMjAxOHJ1c3NpYS9uZXdzL2NhbGN1bGF0aW5nLXJ1c3NpYS0yMDE4LXMtdG91Z2hlc3QtZ3JvdXBzCjIwMTgsMjAxOC0wNi0wNyxTVUksU3dpdHplcmxhbmQsVUVGQSw2LDEzNjQyMDExODYsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMThfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDIwMTE4NixodHRwczovL2luc2lkZS5maWZhLmNvbS90b3VybmFtZW50cy9tZW5zL3dvcmxkY3VwLzIwMThydXNzaWEvbmV3cy9jYWxjdWxhdGluZy1ydXNzaWEtMjAxOC1zLXRvdWdoZXN0LWdyb3VwcwoyMDE4LDIwMTgtMDYtMDcsRlJBLEZyYW5jZSxVRUZBLDcsMTM2NDIwMTE4NixodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAxOF9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0MjAxMTg2LGh0dHBzOi8vaW5zaWRlLmZpZmEuY29tL3RvdXJuYW1lbnRzL21lbnMvd29ybGRjdXAvMjAxOHJ1c3NpYS9uZXdzL2NhbGN1bGF0aW5nLXJ1c3NpYS0yMDE4LXMtdG91Z2hlc3QtZ3JvdXBzCjIwMTgsMjAxOC0wNi0wNyxQT0wsUG9sYW5kLFVFRkEsOCwxMzY0MjAxMTg2LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDE4X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQyMDExODYsaHR0cHM6Ly9pbnNpZGUuZmlmYS5jb20vdG91cm5hbWVudHMvbWVucy93b3JsZGN1cC8yMDE4cnVzc2lhL25ld3MvY2FsY3VsYXRpbmctcnVzc2lhLTIwMTgtcy10b3VnaGVzdC1ncm91cHMKMjAxOCwyMDE4LTA2LTA3LEVTUCxTcGFpbixVRUZBLDEwLDEzNjQyMDExODYsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMThfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDIwMTE4NixodHRwczovL2luc2lkZS5maWZhLmNvbS90b3VybmFtZW50cy9tZW5zL3dvcmxkY3VwLzIwMThydXNzaWEvbmV3cy9jYWxjdWxhdGluZy1ydXNzaWEtMjAxOC1zLXRvdWdoZXN0LWdyb3VwcwoyMDE4LDIwMTgtMDYtMDcsUEVSLFBlcnUsQ09OTUVCT0wsMTEsMTM2NDIwMTE4NixodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAxOF9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0MjAxMTg2LGh0dHBzOi8vaW5zaWRlLmZpZmEuY29tL3RvdXJuYW1lbnRzL21lbnMvd29ybGRjdXAvMjAxOHJ1c3NpYS9uZXdzL2NhbGN1bGF0aW5nLXJ1c3NpYS0yMDE4LXMtdG91Z2hlc3QtZ3JvdXBzCjIwMTgsMjAxOC0wNi0wNyxERU4sRGVubWFyayxVRUZBLDEyLDEzNjQyMDExODYsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMThfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDIwMTE4NixodHRwczovL2luc2lkZS5maWZhLmNvbS90b3VybmFtZW50cy9tZW5zL3dvcmxkY3VwLzIwMThydXNzaWEvbmV3cy9jYWxjdWxhdGluZy1ydXNzaWEtMjAxOC1zLXRvdWdoZXN0LWdyb3VwcwoyMDE4LDIwMTgtMDYtMDcsRU5HLEVuZ2xhbmQsVUVGQSwxMiwxMzY0MjAxMTg2LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDE4X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQyMDExODYsaHR0cHM6Ly9pbnNpZGUuZmlmYS5jb20vdG91cm5hbWVudHMvbWVucy93b3JsZGN1cC8yMDE4cnVzc2lhL25ld3MvY2FsY3VsYXRpbmctcnVzc2lhLTIwMTgtcy10b3VnaGVzdC1ncm91cHMKMjAxOCwyMDE4LTA2LTA3LFVSVSxVcnVndWF5LENPTk1FQk9MLDE0LDEzNjQyMDExODYsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMThfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDIwMTE4NixodHRwczovL2luc2lkZS5maWZhLmNvbS90b3VybmFtZW50cy9tZW5zL3dvcmxkY3VwLzIwMThydXNzaWEvbmV3cy9jYWxjdWxhdGluZy1ydXNzaWEtMjAxOC1zLXRvdWdoZXN0LWdyb3VwcwoyMDE4LDIwMTgtMDYtMDcsTUVYLE1leGljbyxDT05DQUNBRiwxNSwxMzY0MjAxMTg2LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDE4X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQyMDExODYsaHR0cHM6Ly9pbnNpZGUuZmlmYS5jb20vdG91cm5hbWVudHMvbWVucy93b3JsZGN1cC8yMDE4cnVzc2lhL25ld3MvY2FsY3VsYXRpbmctcnVzc2lhLTIwMTgtcy10b3VnaGVzdC1ncm91cHMKMjAxOCwyMDE4LTA2LTA3LENPTCxDb2xvbWJpYSxDT05NRUJPTCwxNiwxMzY0MjAxMTg2LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDE4X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQyMDExODYsaHR0cHM6Ly9pbnNpZGUuZmlmYS5jb20vdG91cm5hbWVudHMvbWVucy93b3JsZGN1cC8yMDE4cnVzc2lhL25ld3MvY2FsY3VsYXRpbmctcnVzc2lhLTIwMTgtcy10b3VnaGVzdC1ncm91cHMKMjAxOCwyMDE4LTA2LTA3LENSTyxDcm9hdGlhLFVFRkEsMjAsMTM2NDIwMTE4NixodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAxOF9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0MjAxMTg2LGh0dHBzOi8vaW5zaWRlLmZpZmEuY29tL3RvdXJuYW1lbnRzL21lbnMvd29ybGRjdXAvMjAxOHJ1c3NpYS9uZXdzL2NhbGN1bGF0aW5nLXJ1c3NpYS0yMDE4LXMtdG91Z2hlc3QtZ3JvdXBzCjIwMTgsMjAxOC0wNi0wNyxUVU4sVHVuaXNpYSxDQUYsMjEsMTM2NDIwMTE4NixodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAxOF9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0MjAxMTg2LGh0dHBzOi8vaW5zaWRlLmZpZmEuY29tL3RvdXJuYW1lbnRzL21lbnMvd29ybGRjdXAvMjAxOHJ1c3NpYS9uZXdzL2NhbGN1bGF0aW5nLXJ1c3NpYS0yMDE4LXMtdG91Z2hlc3QtZ3JvdXBzCjIwMTgsMjAxOC0wNi0wNyxJU0wsSWNlbGFuZCxVRUZBLDIyLDEzNjQyMDExODYsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMThfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDIwMTE4NixodHRwczovL2luc2lkZS5maWZhLmNvbS90b3VybmFtZW50cy9tZW5zL3dvcmxkY3VwLzIwMThydXNzaWEvbmV3cy9jYWxjdWxhdGluZy1ydXNzaWEtMjAxOC1zLXRvdWdoZXN0LWdyb3VwcwoyMDE4LDIwMTgtMDYtMDcsQ1JDLENvc3RhIFJpY2EsQ09OQ0FDQUYsMjMsMTM2NDIwMTE4NixodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAxOF9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0MjAxMTg2LGh0dHBzOi8vaW5zaWRlLmZpZmEuY29tL3RvdXJuYW1lbnRzL21lbnMvd29ybGRjdXAvMjAxOHJ1c3NpYS9uZXdzL2NhbGN1bGF0aW5nLXJ1c3NpYS0yMDE4LXMtdG91Z2hlc3QtZ3JvdXBzCjIwMTgsMjAxOC0wNi0wNyxTV0UsU3dlZGVuLFVFRkEsMjQsMTM2NDIwMTE4NixodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAxOF9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0MjAxMTg2LGh0dHBzOi8vaW5zaWRlLmZpZmEuY29tL3RvdXJuYW1lbnRzL21lbnMvd29ybGRjdXAvMjAxOHJ1c3NpYS9uZXdzL2NhbGN1bGF0aW5nLXJ1c3NpYS0yMDE4LXMtdG91Z2hlc3QtZ3JvdXBzCjIwMTgsMjAxOC0wNi0wNyxTRU4sU2VuZWdhbCxDQUYsMjcsMTM2NDIwMTE4NixodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAxOF9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0MjAxMTg2LGh0dHBzOi8vaW5zaWRlLmZpZmEuY29tL3RvdXJuYW1lbnRzL21lbnMvd29ybGRjdXAvMjAxOHJ1c3NpYS9uZXdzL2NhbGN1bGF0aW5nLXJ1c3NpYS0yMDE4LXMtdG91Z2hlc3QtZ3JvdXBzCjIwMTgsMjAxOC0wNi0wNyxTUkIsU2VyYmlhLFVFRkEsMzQsMTM2NDIwMTE4NixodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAxOF9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0MjAxMTg2LGh0dHBzOi8vaW5zaWRlLmZpZmEuY29tL3RvdXJuYW1lbnRzL21lbnMvd29ybGRjdXAvMjAxOHJ1c3NpYS9uZXdzL2NhbGN1bGF0aW5nLXJ1c3NpYS0yMDE4LXMtdG91Z2hlc3QtZ3JvdXBzCjIwMTgsMjAxOC0wNi0wNyxBVVMsQXVzdHJhbGlhLEFGQywzNiwxMzY0MjAxMTg2LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDE4X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQyMDExODYsaHR0cHM6Ly9pbnNpZGUuZmlmYS5jb20vdG91cm5hbWVudHMvbWVucy93b3JsZGN1cC8yMDE4cnVzc2lhL25ld3MvY2FsY3VsYXRpbmctcnVzc2lhLTIwMTgtcy10b3VnaGVzdC1ncm91cHMKMjAxOCwyMDE4LTA2LTA3LElSTixJUiBJcmFuLEFGQywzNywxMzY0MjAxMTg2LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDE4X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQyMDExODYsaHR0cHM6Ly9pbnNpZGUuZmlmYS5jb20vdG91cm5hbWVudHMvbWVucy93b3JsZGN1cC8yMDE4cnVzc2lhL25ld3MvY2FsY3VsYXRpbmctcnVzc2lhLTIwMTgtcy10b3VnaGVzdC1ncm91cHMKMjAxOCwyMDE4LTA2LTA3LE1BUixNb3JvY2NvLENBRiw0MSwxMzY0MjAxMTg2LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDE4X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQyMDExODYsaHR0cHM6Ly9pbnNpZGUuZmlmYS5jb20vdG91cm5hbWVudHMvbWVucy93b3JsZGN1cC8yMDE4cnVzc2lhL25ld3MvY2FsY3VsYXRpbmctcnVzc2lhLTIwMTgtcy10b3VnaGVzdC1ncm91cHMKMjAxOCwyMDE4LTA2LTA3LEVHWSxFZ3lwdCxDQUYsNDUsMTM2NDIwMTE4NixodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAxOF9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0MjAxMTg2LGh0dHBzOi8vaW5zaWRlLmZpZmEuY29tL3RvdXJuYW1lbnRzL21lbnMvd29ybGRjdXAvMjAxOHJ1c3NpYS9uZXdzL2NhbGN1bGF0aW5nLXJ1c3NpYS0yMDE4LXMtdG91Z2hlc3QtZ3JvdXBzCjIwMTgsMjAxOC0wNi0wNyxOR0EsTmlnZXJpYSxDQUYsNDgsMTM2NDIwMTE4NixodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAxOF9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0MjAxMTg2LGh0dHBzOi8vaW5zaWRlLmZpZmEuY29tL3RvdXJuYW1lbnRzL21lbnMvd29ybGRjdXAvMjAxOHJ1c3NpYS9uZXdzL2NhbGN1bGF0aW5nLXJ1c3NpYS0yMDE4LXMtdG91Z2hlc3QtZ3JvdXBzCjIwMTgsMjAxOC0wNi0wNyxQQU4sUGFuYW1hLENPTkNBQ0FGLDU1LDEzNjQyMDExODYsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMThfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDIwMTE4NixodHRwczovL2luc2lkZS5maWZhLmNvbS90b3VybmFtZW50cy9tZW5zL3dvcmxkY3VwLzIwMThydXNzaWEvbmV3cy9jYWxjdWxhdGluZy1ydXNzaWEtMjAxOC1zLXRvdWdoZXN0LWdyb3VwcwoyMDE4LDIwMTgtMDYtMDcsS09SLEtvcmVhIFJlcHVibGljLEFGQyw1NywxMzY0MjAxMTg2LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDE4X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQyMDExODYsaHR0cHM6Ly9pbnNpZGUuZmlmYS5jb20vdG91cm5hbWVudHMvbWVucy93b3JsZGN1cC8yMDE4cnVzc2lhL25ld3MvY2FsY3VsYXRpbmctcnVzc2lhLTIwMTgtcy10b3VnaGVzdC1ncm91cHMKMjAxOCwyMDE4LTA2LTA3LEpQTixKYXBhbixBRkMsNjEsMTM2NDIwMTE4NixodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAxOF9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0MjAxMTg2LGh0dHBzOi8vaW5zaWRlLmZpZmEuY29tL3RvdXJuYW1lbnRzL21lbnMvd29ybGRjdXAvMjAxOHJ1c3NpYS9uZXdzL2NhbGN1bGF0aW5nLXJ1c3NpYS0yMDE4LXMtdG91Z2hlc3QtZ3JvdXBzCjIwMTgsMjAxOC0wNi0wNyxLU0EsU2F1ZGkgQXJhYmlhLEFGQyw2NywxMzY0MjAxMTg2LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDE4X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQyMDExODYsaHR0cHM6Ly9pbnNpZGUuZmlmYS5jb20vdG91cm5hbWVudHMvbWVucy93b3JsZGN1cC8yMDE4cnVzc2lhL25ld3MvY2FsY3VsYXRpbmctcnVzc2lhLTIwMTgtcy10b3VnaGVzdC1ncm91cHMKMjAxOCwyMDE4LTA2LTA3LFJVUyxSdXNzaWEsVUVGQSw3MCwxMzY0MjAxMTg2LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDE4X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQyMDExODYsaHR0cHM6Ly9pbnNpZGUuZmlmYS5jb20vdG91cm5hbWVudHMvbWVucy93b3JsZGN1cC8yMDE4cnVzc2lhL25ld3MvY2FsY3VsYXRpbmctcnVzc2lhLTIwMTgtcy10b3VnaGVzdC1ncm91cHMKMjAyMiwyMDIyLTEwLTA2LEJSQSxCcmF6aWwsQ09OTUVCT0wsMSwxMzY0MTI1OTA4LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDIyX0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQxMjU5MDgsaHR0cHM6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL21lbnMtcmFua2luZz9kYXRlSWQ9aWQxMzc5MgoyMDIyLDIwMjItMTAtMDYsQkVMLEJlbGdpdW0sVUVGQSwyLDEzNjQxMjU5MDgsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMjJfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDEyNTkwOCxodHRwczovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvbWVucy1yYW5raW5nP2RhdGVJZD1pZDEzNzkyCjIwMjIsMjAyMi0xMC0wNixBUkcsQXJnZW50aW5hLENPTk1FQk9MLDMsMTM2NDEyNTkwOCxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAyMl9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0MTI1OTA4LGh0dHBzOi8vd3d3LmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9tZW5zLXJhbmtpbmc/ZGF0ZUlkPWlkMTM3OTIKMjAyMiwyMDIyLTEwLTA2LEZSQSxGcmFuY2UsVUVGQSw0LDEzNjQxMjU5MDgsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMjJfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDEyNTkwOCxodHRwczovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvbWVucy1yYW5raW5nP2RhdGVJZD1pZDEzNzkyCjIwMjIsMjAyMi0xMC0wNixFTkcsRW5nbGFuZCxVRUZBLDUsMTM2NDEyNTkwOCxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAyMl9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0MTI1OTA4LGh0dHBzOi8vd3d3LmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9tZW5zLXJhbmtpbmc/ZGF0ZUlkPWlkMTM3OTIKMjAyMiwyMDIyLTEwLTA2LEVTUCxTcGFpbixVRUZBLDcsMTM2NDEyNTkwOCxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAyMl9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0MTI1OTA4LGh0dHBzOi8vd3d3LmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9tZW5zLXJhbmtpbmc/ZGF0ZUlkPWlkMTM3OTIKMjAyMiwyMDIyLTEwLTA2LE5FRCxOZXRoZXJsYW5kcyxVRUZBLDgsMTM2NDEyNTkwOCxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAyMl9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0MTI1OTA4LGh0dHBzOi8vd3d3LmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9tZW5zLXJhbmtpbmc/ZGF0ZUlkPWlkMTM3OTIKMjAyMiwyMDIyLTEwLTA2LFBPUixQb3J0dWdhbCxVRUZBLDksMTM2NDEyNTkwOCxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAyMl9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0MTI1OTA4LGh0dHBzOi8vd3d3LmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9tZW5zLXJhbmtpbmc/ZGF0ZUlkPWlkMTM3OTIKMjAyMiwyMDIyLTEwLTA2LERFTixEZW5tYXJrLFVFRkEsMTAsMTM2NDEyNTkwOCxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAyMl9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0MTI1OTA4LGh0dHBzOi8vd3d3LmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9tZW5zLXJhbmtpbmc/ZGF0ZUlkPWlkMTM3OTIKMjAyMiwyMDIyLTEwLTA2LEdFUixHZXJtYW55LFVFRkEsMTEsMTM2NDEyNTkwOCxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAyMl9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0MTI1OTA4LGh0dHBzOi8vd3d3LmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9tZW5zLXJhbmtpbmc/ZGF0ZUlkPWlkMTM3OTIKMjAyMiwyMDIyLTEwLTA2LENSTyxDcm9hdGlhLFVFRkEsMTIsMTM2NDEyNTkwOCxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAyMl9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0MTI1OTA4LGh0dHBzOi8vd3d3LmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9tZW5zLXJhbmtpbmc/ZGF0ZUlkPWlkMTM3OTIKMjAyMiwyMDIyLTEwLTA2LE1FWCxNZXhpY28sQ09OQ0FDQUYsMTMsMTM2NDEyNTkwOCxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAyMl9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0MTI1OTA4LGh0dHBzOi8vd3d3LmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9tZW5zLXJhbmtpbmc/ZGF0ZUlkPWlkMTM3OTIKMjAyMiwyMDIyLTEwLTA2LFVSVSxVcnVndWF5LENPTk1FQk9MLDE0LDEzNjQxMjU5MDgsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMjJfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDEyNTkwOCxodHRwczovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvbWVucy1yYW5raW5nP2RhdGVJZD1pZDEzNzkyCjIwMjIsMjAyMi0xMC0wNixTVUksU3dpdHplcmxhbmQsVUVGQSwxNSwxMzY0MTI1OTA4LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDIyX0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQxMjU5MDgsaHR0cHM6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL21lbnMtcmFua2luZz9kYXRlSWQ9aWQxMzc5MgoyMDIyLDIwMjItMTAtMDYsVVNBLFVTQSxDT05DQUNBRiwxNiwxMzY0MTI1OTA4LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDIyX0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQxMjU5MDgsaHR0cHM6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL21lbnMtcmFua2luZz9kYXRlSWQ9aWQxMzc5MgoyMDIyLDIwMjItMTAtMDYsU0VOLFNlbmVnYWwsQ0FGLDE4LDEzNjQxMjU5MDgsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMjJfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDEyNTkwOCxodHRwczovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvbWVucy1yYW5raW5nP2RhdGVJZD1pZDEzNzkyCjIwMjIsMjAyMi0xMC0wNixXQUwsV2FsZXMsVUVGQSwxOSwxMzY0MTI1OTA4LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDIyX0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQxMjU5MDgsaHR0cHM6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL21lbnMtcmFua2luZz9kYXRlSWQ9aWQxMzc5MgoyMDIyLDIwMjItMTAtMDYsSVJOLElSIElyYW4sQUZDLDIwLDEzNjQxMjU5MDgsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMjJfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDEyNTkwOCxodHRwczovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvbWVucy1yYW5raW5nP2RhdGVJZD1pZDEzNzkyCjIwMjIsMjAyMi0xMC0wNixTUkIsU2VyYmlhLFVFRkEsMjEsMTM2NDEyNTkwOCxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAyMl9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0MTI1OTA4LGh0dHBzOi8vd3d3LmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9tZW5zLXJhbmtpbmc/ZGF0ZUlkPWlkMTM3OTIKMjAyMiwyMDIyLTEwLTA2LE1BUixNb3JvY2NvLENBRiwyMiwxMzY0MTI1OTA4LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDIyX0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQxMjU5MDgsaHR0cHM6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL21lbnMtcmFua2luZz9kYXRlSWQ9aWQxMzc5MgoyMDIyLDIwMjItMTAtMDYsSlBOLEphcGFuLEFGQywyNCwxMzY0MTI1OTA4LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDIyX0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQxMjU5MDgsaHR0cHM6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL21lbnMtcmFua2luZz9kYXRlSWQ9aWQxMzc5MgoyMDIyLDIwMjItMTAtMDYsUE9MLFBvbGFuZCxVRUZBLDI2LDEzNjQxMjU5MDgsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMjJfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDEyNTkwOCxodHRwczovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvbWVucy1yYW5raW5nP2RhdGVJZD1pZDEzNzkyCjIwMjIsMjAyMi0xMC0wNixLT1IsS29yZWEgUmVwdWJsaWMsQUZDLDI4LDEzNjQxMjU5MDgsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMjJfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDEyNTkwOCxodHRwczovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvbWVucy1yYW5raW5nP2RhdGVJZD1pZDEzNzkyCjIwMjIsMjAyMi0xMC0wNixUVU4sVHVuaXNpYSxDQUYsMzAsMTM2NDEyNTkwOCxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAyMl9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0MTI1OTA4LGh0dHBzOi8vd3d3LmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9tZW5zLXJhbmtpbmc/ZGF0ZUlkPWlkMTM3OTIKMjAyMiwyMDIyLTEwLTA2LENSQyxDb3N0YSBSaWNhLENPTkNBQ0FGLDMxLDEzNjQxMjU5MDgsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMjJfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDEyNTkwOCxodHRwczovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvbWVucy1yYW5raW5nP2RhdGVJZD1pZDEzNzkyCjIwMjIsMjAyMi0xMC0wNixBVVMsQXVzdHJhbGlhLEFGQywzOCwxMzY0MTI1OTA4LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDIyX0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQxMjU5MDgsaHR0cHM6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL21lbnMtcmFua2luZz9kYXRlSWQ9aWQxMzc5MgoyMDIyLDIwMjItMTAtMDYsQ0FOLENhbmFkYSxDT05DQUNBRiw0MSwxMzY0MTI1OTA4LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDIyX0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQxMjU5MDgsaHR0cHM6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL21lbnMtcmFua2luZz9kYXRlSWQ9aWQxMzc5MgoyMDIyLDIwMjItMTAtMDYsQ01SLENhbWVyb29uLENBRiw0MywxMzY0MTI1OTA4LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDIyX0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQxMjU5MDgsaHR0cHM6Ly93d3cuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL21lbnMtcmFua2luZz9kYXRlSWQ9aWQxMzc5MgoyMDIyLDIwMjItMTAtMDYsRUNVLEVjdWFkb3IsQ09OTUVCT0wsNDQsMTM2NDEyNTkwOCxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAyMl9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0MTI1OTA4LGh0dHBzOi8vd3d3LmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9tZW5zLXJhbmtpbmc/ZGF0ZUlkPWlkMTM3OTIKMjAyMiwyMDIyLTEwLTA2LFFBVCxRYXRhcixBRkMsNTAsMTM2NDEyNTkwOCxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAyMl9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0MTI1OTA4LGh0dHBzOi8vd3d3LmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9tZW5zLXJhbmtpbmc/ZGF0ZUlkPWlkMTM3OTIKMjAyMiwyMDIyLTEwLTA2LEtTQSxTYXVkaSBBcmFiaWEsQUZDLDUxLDEzNjQxMjU5MDgsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMjJfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDEyNTkwOCxodHRwczovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvbWVucy1yYW5raW5nP2RhdGVJZD1pZDEzNzkyCjIwMjIsMjAyMi0xMC0wNixHSEEsR2hhbmEsQ0FGLDYxLDEzNjQxMjU5MDgsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMjJfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDEyNTkwOCxodHRwczovL3d3dy5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvbWVucy1yYW5raW5nP2RhdGVJZD1pZDEzNzkyCjIwMjYsMjAyNi0wNi0xMSxBUkcsQXJnZW50aW5hLENPTk1FQk9MLDEsMTM2NDU2NDU4NCxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAyNl9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0NTY0NTg0LGh0dHBzOi8vaW5zaWRlLmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9tZW4/ZGF0ZUlkPWlkMTE5NDQKMjAyNiwyMDI2LTA2LTExLEVTUCxTcGFpbixVRUZBLDIsMTM2NDU2NDU4NCxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAyNl9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0NTY0NTg0LGh0dHBzOi8vaW5zaWRlLmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9tZW4/ZGF0ZUlkPWlkMTE5NDQKMjAyNiwyMDI2LTA2LTExLEZSQSxGcmFuY2UsVUVGQSwzLDEzNjQ1NjQ1ODQsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMjZfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDU2NDU4NCxodHRwczovL2luc2lkZS5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvbWVuP2RhdGVJZD1pZDExOTQ0CjIwMjYsMjAyNi0wNi0xMSxFTkcsRW5nbGFuZCxVRUZBLDQsMTM2NDU2NDU4NCxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAyNl9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0NTY0NTg0LGh0dHBzOi8vaW5zaWRlLmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9tZW4/ZGF0ZUlkPWlkMTE5NDQKMjAyNiwyMDI2LTA2LTExLFBPUixQb3J0dWdhbCxVRUZBLDUsMTM2NDU2NDU4NCxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAyNl9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0NTY0NTg0LGh0dHBzOi8vaW5zaWRlLmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9tZW4/ZGF0ZUlkPWlkMTE5NDQKMjAyNiwyMDI2LTA2LTExLEJSQSxCcmF6aWwsQ09OTUVCT0wsNiwxMzY0NTY0NTg0LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDI2X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQ1NjQ1ODQsaHR0cHM6Ly9pbnNpZGUuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL21lbj9kYXRlSWQ9aWQxMTk0NAoyMDI2LDIwMjYtMDYtMTEsTUFSLE1vcm9jY28sQ0FGLDcsMTM2NDU2NDU4NCxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAyNl9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0NTY0NTg0LGh0dHBzOi8vaW5zaWRlLmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9tZW4/ZGF0ZUlkPWlkMTE5NDQKMjAyNiwyMDI2LTA2LTExLE5FRCxOZXRoZXJsYW5kcyxVRUZBLDgsMTM2NDU2NDU4NCxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAyNl9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0NTY0NTg0LGh0dHBzOi8vaW5zaWRlLmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9tZW4/ZGF0ZUlkPWlkMTE5NDQKMjAyNiwyMDI2LTA2LTExLEJFTCxCZWxnaXVtLFVFRkEsOSwxMzY0NTY0NTg0LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDI2X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQ1NjQ1ODQsaHR0cHM6Ly9pbnNpZGUuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL21lbj9kYXRlSWQ9aWQxMTk0NAoyMDI2LDIwMjYtMDYtMTEsR0VSLEdlcm1hbnksVUVGQSwxMCwxMzY0NTY0NTg0LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDI2X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQ1NjQ1ODQsaHR0cHM6Ly9pbnNpZGUuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL21lbj9kYXRlSWQ9aWQxMTk0NAoyMDI2LDIwMjYtMDYtMTEsQ1JPLENyb2F0aWEsVUVGQSwxMSwxMzY0NTY0NTg0LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDI2X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQ1NjQ1ODQsaHR0cHM6Ly9pbnNpZGUuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL21lbj9kYXRlSWQ9aWQxMTk0NAoyMDI2LDIwMjYtMDYtMTEsQ09MLENvbG9tYmlhLENPTk1FQk9MLDEzLDEzNjQ1NjQ1ODQsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMjZfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDU2NDU4NCxodHRwczovL2luc2lkZS5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvbWVuP2RhdGVJZD1pZDExOTQ0CjIwMjYsMjAyNi0wNi0xMSxNRVgsTWV4aWNvLENPTkNBQ0FGLDE0LDEzNjQ1NjQ1ODQsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMjZfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDU2NDU4NCxodHRwczovL2luc2lkZS5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvbWVuP2RhdGVJZD1pZDExOTQ0CjIwMjYsMjAyNi0wNi0xMSxTRU4sU2VuZWdhbCxDQUYsMTUsMTM2NDU2NDU4NCxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAyNl9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0NTY0NTg0LGh0dHBzOi8vaW5zaWRlLmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9tZW4/ZGF0ZUlkPWlkMTE5NDQKMjAyNiwyMDI2LTA2LTExLFVSVSxVcnVndWF5LENPTk1FQk9MLDE2LDEzNjQ1NjQ1ODQsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMjZfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDU2NDU4NCxodHRwczovL2luc2lkZS5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvbWVuP2RhdGVJZD1pZDExOTQ0CjIwMjYsMjAyNi0wNi0xMSxVU0EsVVNBLENPTkNBQ0FGLDE3LDEzNjQ1NjQ1ODQsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMjZfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDU2NDU4NCxodHRwczovL2luc2lkZS5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvbWVuP2RhdGVJZD1pZDExOTQ0CjIwMjYsMjAyNi0wNi0xMSxKUE4sSmFwYW4sQUZDLDE4LDEzNjQ1NjQ1ODQsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMjZfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDU2NDU4NCxodHRwczovL2luc2lkZS5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvbWVuP2RhdGVJZD1pZDExOTQ0CjIwMjYsMjAyNi0wNi0xMSxTVUksU3dpdHplcmxhbmQsVUVGQSwxOSwxMzY0NTY0NTg0LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDI2X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQ1NjQ1ODQsaHR0cHM6Ly9pbnNpZGUuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL21lbj9kYXRlSWQ9aWQxMTk0NAoyMDI2LDIwMjYtMDYtMTEsSVJOLElSIElyYW4sQUZDLDIwLDEzNjQ1NjQ1ODQsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMjZfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDU2NDU4NCxodHRwczovL2luc2lkZS5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvbWVuP2RhdGVJZD1pZDExOTQ0CjIwMjYsMjAyNi0wNi0xMSxUVVIsVMO8cmtpeWUsVUVGQSwyMiwxMzY0NTY0NTg0LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDI2X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQ1NjQ1ODQsaHR0cHM6Ly9pbnNpZGUuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL21lbj9kYXRlSWQ9aWQxMTk0NAoyMDI2LDIwMjYtMDYtMTEsRUNVLEVjdWFkb3IsQ09OTUVCT0wsMjMsMTM2NDU2NDU4NCxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAyNl9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0NTY0NTg0LGh0dHBzOi8vaW5zaWRlLmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9tZW4/ZGF0ZUlkPWlkMTE5NDQKMjAyNiwyMDI2LTA2LTExLEFVVCxBdXN0cmlhLFVFRkEsMjQsMTM2NDU2NDU4NCxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAyNl9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0NTY0NTg0LGh0dHBzOi8vaW5zaWRlLmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9tZW4/ZGF0ZUlkPWlkMTE5NDQKMjAyNiwyMDI2LTA2LTExLEtPUixLb3JlYSBSZXB1YmxpYyxBRkMsMjUsMTM2NDU2NDU4NCxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAyNl9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0NTY0NTg0LGh0dHBzOi8vaW5zaWRlLmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9tZW4/ZGF0ZUlkPWlkMTE5NDQKMjAyNiwyMDI2LTA2LTExLEFVUyxBdXN0cmFsaWEsQUZDLDI3LDEzNjQ1NjQ1ODQsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMjZfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDU2NDU4NCxodHRwczovL2luc2lkZS5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvbWVuP2RhdGVJZD1pZDExOTQ0CjIwMjYsMjAyNi0wNi0xMSxBTEcsQWxnZXJpYSxDQUYsMjgsMTM2NDU2NDU4NCxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAyNl9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0NTY0NTg0LGh0dHBzOi8vaW5zaWRlLmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9tZW4/ZGF0ZUlkPWlkMTE5NDQKMjAyNiwyMDI2LTA2LTExLEVHWSxFZ3lwdCxDQUYsMjksMTM2NDU2NDU4NCxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAyNl9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0NTY0NTg0LGh0dHBzOi8vaW5zaWRlLmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9tZW4/ZGF0ZUlkPWlkMTE5NDQKMjAyNiwyMDI2LTA2LTExLENBTixDYW5hZGEsQ09OQ0FDQUYsMzAsMTM2NDU2NDU4NCxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAyNl9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0NTY0NTg0LGh0dHBzOi8vaW5zaWRlLmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9tZW4/ZGF0ZUlkPWlkMTE5NDQKMjAyNiwyMDI2LTA2LTExLE5PUixOb3J3YXksVUVGQSwzMSwxMzY0NTY0NTg0LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDI2X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQ1NjQ1ODQsaHR0cHM6Ly9pbnNpZGUuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL21lbj9kYXRlSWQ9aWQxMTk0NAoyMDI2LDIwMjYtMDYtMTEsQ0lWLEPDtHRlIGQnSXZvaXJlLENBRiwzMywxMzY0NTY0NTg0LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDI2X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQ1NjQ1ODQsaHR0cHM6Ly9pbnNpZGUuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL21lbj9kYXRlSWQ9aWQxMTk0NAoyMDI2LDIwMjYtMDYtMTEsUEFOLFBhbmFtYSxDT05DQUNBRiwzNCwxMzY0NTY0NTg0LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDI2X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQ1NjQ1ODQsaHR0cHM6Ly9pbnNpZGUuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL21lbj9kYXRlSWQ9aWQxMTk0NAoyMDI2LDIwMjYtMDYtMTEsU1dFLFN3ZWRlbixVRUZBLDM4LDEzNjQ1NjQ1ODQsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMjZfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDU2NDU4NCxodHRwczovL2luc2lkZS5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvbWVuP2RhdGVJZD1pZDExOTQ0CjIwMjYsMjAyNi0wNi0xMSxDWkUsQ3plY2hpYSxVRUZBLDQwLDEzNjQ1NjQ1ODQsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMjZfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDU2NDU4NCxodHRwczovL2luc2lkZS5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvbWVuP2RhdGVJZD1pZDExOTQ0CjIwMjYsMjAyNi0wNi0xMSxQQVIsUGFyYWd1YXksQ09OTUVCT0wsNDEsMTM2NDU2NDU4NCxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAyNl9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0NTY0NTg0LGh0dHBzOi8vaW5zaWRlLmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9tZW4/ZGF0ZUlkPWlkMTE5NDQKMjAyNiwyMDI2LTA2LTExLFNDTyxTY290bGFuZCxVRUZBLDQyLDEzNjQ1NjQ1ODQsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMjZfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDU2NDU4NCxodHRwczovL2luc2lkZS5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvbWVuP2RhdGVJZD1pZDExOTQ0CjIwMjYsMjAyNi0wNi0xMSxUVU4sVHVuaXNpYSxDQUYsNDUsMTM2NDU2NDU4NCxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAyNl9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0NTY0NTg0LGh0dHBzOi8vaW5zaWRlLmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9tZW4/ZGF0ZUlkPWlkMTE5NDQKMjAyNiwyMDI2LTA2LTExLENPRCxDb25nbyBEUixDQUYsNDYsMTM2NDU2NDU4NCxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAyNl9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0NTY0NTg0LGh0dHBzOi8vaW5zaWRlLmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9tZW4/ZGF0ZUlkPWlkMTE5NDQKMjAyNiwyMDI2LTA2LTExLFVaQixVemJla2lzdGFuLEFGQyw1MCwxMzY0NTY0NTg0LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDI2X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQ1NjQ1ODQsaHR0cHM6Ly9pbnNpZGUuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL21lbj9kYXRlSWQ9aWQxMTk0NAoyMDI2LDIwMjYtMDYtMTEsUUFULFFhdGFyLEFGQyw1NiwxMzY0NTY0NTg0LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDI2X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQ1NjQ1ODQsaHR0cHM6Ly9pbnNpZGUuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL21lbj9kYXRlSWQ9aWQxMTk0NAoyMDI2LDIwMjYtMDYtMTEsSVJRLElyYXEsQUZDLDU3LDEzNjQ1NjQ1ODQsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMjZfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDU2NDU4NCxodHRwczovL2luc2lkZS5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvbWVuP2RhdGVJZD1pZDExOTQ0CjIwMjYsMjAyNi0wNi0xMSxSU0EsU291dGggQWZyaWNhLENBRiw2MCwxMzY0NTY0NTg0LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDI2X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQ1NjQ1ODQsaHR0cHM6Ly9pbnNpZGUuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL21lbj9kYXRlSWQ9aWQxMTk0NAoyMDI2LDIwMjYtMDYtMTEsS1NBLFNhdWRpIEFyYWJpYSxBRkMsNjEsMTM2NDU2NDU4NCxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAyNl9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0NTY0NTg0LGh0dHBzOi8vaW5zaWRlLmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9tZW4/ZGF0ZUlkPWlkMTE5NDQKMjAyNiwyMDI2LTA2LTExLEpPUixKb3JkYW4sQUZDLDYzLDEzNjQ1NjQ1ODQsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMjZfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDU2NDU4NCxodHRwczovL2luc2lkZS5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvbWVuP2RhdGVJZD1pZDExOTQ0CjIwMjYsMjAyNi0wNi0xMSxCSUgsQm9zbmlhIGFuZCBIZXJ6ZWdvdmluYSxVRUZBLDY0LDEzNjQ1NjQ1ODQsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMjZfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDU2NDU4NCxodHRwczovL2luc2lkZS5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvbWVuP2RhdGVJZD1pZDExOTQ0CjIwMjYsMjAyNi0wNi0xMSxDUFYsQ2FibyBWZXJkZSxDQUYsNjcsMTM2NDU2NDU4NCxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAyNl9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0NTY0NTg0LGh0dHBzOi8vaW5zaWRlLmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9tZW4/ZGF0ZUlkPWlkMTE5NDQKMjAyNiwyMDI2LTA2LTExLEdIQSxHaGFuYSxDQUYsNzMsMTM2NDU2NDU4NCxodHRwczovL2VuLndpa2lwZWRpYS5vcmcvdy9pbmRleC5waHA/dGl0bGU9MjAyNl9GSUZBX1dvcmxkX0N1cCZvbGRpZD0xMzY0NTY0NTg0LGh0dHBzOi8vaW5zaWRlLmZpZmEuY29tL2ZpZmEtd29ybGQtcmFua2luZy9tZW4/ZGF0ZUlkPWlkMTE5NDQKMjAyNiwyMDI2LTA2LTExLENVVyxDdXJhw6dhbyxDT05DQUNBRiw4MiwxMzY0NTY0NTg0LGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93L2luZGV4LnBocD90aXRsZT0yMDI2X0ZJRkFfV29ybGRfQ3VwJm9sZGlkPTEzNjQ1NjQ1ODQsaHR0cHM6Ly9pbnNpZGUuZmlmYS5jb20vZmlmYS13b3JsZC1yYW5raW5nL21lbj9kYXRlSWQ9aWQxMTk0NAoyMDI2LDIwMjYtMDYtMTEsSEFJLEhhaXRpLENPTkNBQ0FGLDgzLDEzNjQ1NjQ1ODQsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMjZfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDU2NDU4NCxodHRwczovL2luc2lkZS5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvbWVuP2RhdGVJZD1pZDExOTQ0CjIwMjYsMjAyNi0wNi0xMSxOWkwsTmV3IFplYWxhbmQsT0ZDLDg1LDEzNjQ1NjQ1ODQsaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPTIwMjZfRklGQV9Xb3JsZF9DdXAmb2xkaWQ9MTM2NDU2NDU4NCxodHRwczovL2luc2lkZS5maWZhLmNvbS9maWZhLXdvcmxkLXJhbmtpbmcvbWVuP2RhdGVJZD1pZDExOTQ0Cg==" download>Download all ranking data ↓</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>Slovakia / Rank Room</span>
+      <span>40 completed matches · 8 tournament appearances · rankings from 1998</span>
+    </footer>
+
+    <div class="load-error" id="load-error" role="alert" hidden>
+      <strong>The dashboard data could not be loaded.</strong>
+      <span>Run <code>./serve_dashboard.py</code>, then reload this page.</span>
+    </div>
+
+<script>
+          window.__TEAM__ = {"name": "Slovakia", "code": "SVK"};
+          window.__REPORT_CSV__ = {"data/world_cup_rankings.csv": "world_cup_year,ranking_date,fifa_code,team,confederation,fifa_rank,source_revision_id,source_url,ranking_source_url\n1994,1994-06-14,GER,Germany,UEFA,1,1364407895,https://en.wikipedia.org/w/index.php?title=1994_FIFA_World_Cup&oldid=1364407895,https://www.fifa.com/fifa-world-ranking/men?dateId=id11\n1994,1994-06-14,NED,Netherlands,UEFA,2,1364407895,https://en.wikipedia.org/w/index.php?title=1994_FIFA_World_Cup&oldid=1364407895,https://www.fifa.com/fifa-world-ranking/men?dateId=id11\n1994,1994-06-14,BRA,Brazil,CONMEBOL,3,1364407895,https://en.wikipedia.org/w/index.php?title=1994_FIFA_World_Cup&oldid=1364407895,https://www.fifa.com/fifa-world-ranking/men?dateId=id11\n1994,1994-06-14,ITA,Italy,UEFA,4,1364407895,https://en.wikipedia.org/w/index.php?title=1994_FIFA_World_Cup&oldid=1364407895,https://www.fifa.com/fifa-world-ranking/men?dateId=id11\n1994,1994-06-14,ESP,Spain,UEFA,5,1364407895,https://en.wikipedia.org/w/index.php?title=1994_FIFA_World_Cup&oldid=1364407895,https://www.fifa.com/fifa-world-ranking/men?dateId=id11\n1994,1994-06-14,NOR,Norway,UEFA,6,1364407895,https://en.wikipedia.org/w/index.php?title=1994_FIFA_World_Cup&oldid=1364407895,https://www.fifa.com/fifa-world-ranking/men?dateId=id11\n1994,1994-06-14,ROU,Romania,UEFA,7,1364407895,https://en.wikipedia.org/w/index.php?title=1994_FIFA_World_Cup&oldid=1364407895,https://www.fifa.com/fifa-world-ranking/men?dateId=id11\n1994,1994-06-14,ARG,Argentina,CONMEBOL,8,1364407895,https://en.wikipedia.org/w/index.php?title=1994_FIFA_World_Cup&oldid=1364407895,https://www.fifa.com/fifa-world-ranking/men?dateId=id11\n1994,1994-06-14,SWE,Sweden,UEFA,10,1364407895,https://en.wikipedia.org/w/index.php?title=1994_FIFA_World_Cup&oldid=1364407895,https://www.fifa.com/fifa-world-ranking/men?dateId=id11\n1994,1994-06-14,NGA,Nigeria,CAF,11,1364407895,https://en.wikipedia.org/w/index.php?title=1994_FIFA_World_Cup&oldid=1364407895,https://www.fifa.com/fifa-world-ranking/men?dateId=id11\n1994,1994-06-14,SUI,Switzerland,UEFA,12,1364407895,https://en.wikipedia.org/w/index.php?title=1994_FIFA_World_Cup&oldid=1364407895,https://www.fifa.com/fifa-world-ranking/men?dateId=id11\n1994,1994-06-14,IRL,Republic of Ireland,UEFA,14,1364407895,https://en.wikipedia.org/w/index.php?title=1994_FIFA_World_Cup&oldid=1364407895,https://www.fifa.com/fifa-world-ranking/men?dateId=id11\n1994,1994-06-14,MEX,Mexico,CONCACAF,16,1364407895,https://en.wikipedia.org/w/index.php?title=1994_FIFA_World_Cup&oldid=1364407895,https://www.fifa.com/fifa-world-ranking/men?dateId=id11\n1994,1994-06-14,COL,Colombia,CONMEBOL,17,1364407895,https://en.wikipedia.org/w/index.php?title=1994_FIFA_World_Cup&oldid=1364407895,https://www.fifa.com/fifa-world-ranking/men?dateId=id11\n1994,1994-06-14,RUS,Russia,UEFA,19,1364407895,https://en.wikipedia.org/w/index.php?title=1994_FIFA_World_Cup&oldid=1364407895,https://www.fifa.com/fifa-world-ranking/men?dateId=id11\n1994,1994-06-14,USA,USA,CONCACAF,23,1364407895,https://en.wikipedia.org/w/index.php?title=1994_FIFA_World_Cup&oldid=1364407895,https://www.fifa.com/fifa-world-ranking/men?dateId=id11\n1994,1994-06-14,CMR,Cameroon,CAF,24,1364407895,https://en.wikipedia.org/w/index.php?title=1994_FIFA_World_Cup&oldid=1364407895,https://www.fifa.com/fifa-world-ranking/men?dateId=id11\n1994,1994-06-14,BEL,Belgium,UEFA,27,1364407895,https://en.wikipedia.org/w/index.php?title=1994_FIFA_World_Cup&oldid=1364407895,https://www.fifa.com/fifa-world-ranking/men?dateId=id11\n1994,1994-06-14,MAR,Morocco,CAF,28,1364407895,https://en.wikipedia.org/w/index.php?title=1994_FIFA_World_Cup&oldid=1364407895,https://www.fifa.com/fifa-world-ranking/men?dateId=id11\n1994,1994-06-14,BUL,Bulgaria,UEFA,29,1364407895,https://en.wikipedia.org/w/index.php?title=1994_FIFA_World_Cup&oldid=1364407895,https://www.fifa.com/fifa-world-ranking/men?dateId=id11\n1994,1994-06-14,GRE,Greece,UEFA,31,1364407895,https://en.wikipedia.org/w/index.php?title=1994_FIFA_World_Cup&oldid=1364407895,https://www.fifa.com/fifa-world-ranking/men?dateId=id11\n1994,1994-06-14,KSA,Saudi Arabia,AFC,34,1364407895,https://en.wikipedia.org/w/index.php?title=1994_FIFA_World_Cup&oldid=1364407895,https://www.fifa.com/fifa-world-ranking/men?dateId=id11\n1994,1994-06-14,KOR,Korea Republic,AFC,37,1364407895,https://en.wikipedia.org/w/index.php?title=1994_FIFA_World_Cup&oldid=1364407895,https://www.fifa.com/fifa-world-ranking/men?dateId=id11\n1994,1994-06-14,BOL,Bolivia,CONMEBOL,43,1364407895,https://en.wikipedia.org/w/index.php?title=1994_FIFA_World_Cup&oldid=1364407895,https://www.fifa.com/fifa-world-ranking/men?dateId=id11\n1998,1998-05-20,BRA,Brazil,CONMEBOL,1,1364001590,https://en.wikipedia.org/w/index.php?title=1998_FIFA_World_Cup&oldid=1364001590,https://web.archive.org/web/20160222025820/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=50/index.html\n1998,1998-05-20,GER,Germany,UEFA,2,1364001590,https://en.wikipedia.org/w/index.php?title=1998_FIFA_World_Cup&oldid=1364001590,https://web.archive.org/web/20160222025820/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=50/index.html\n1998,1998-05-20,MEX,Mexico,CONCACAF,4,1364001590,https://en.wikipedia.org/w/index.php?title=1998_FIFA_World_Cup&oldid=1364001590,https://web.archive.org/web/20160222025820/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=50/index.html\n1998,1998-05-20,ENG,Slovakia,UEFA,5,1364001590,https://en.wikipedia.org/w/index.php?title=1998_FIFA_World_Cup&oldid=1364001590,https://web.archive.org/web/20160222025820/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=50/index.html\n1998,1998-05-20,ARG,Argentina,CONMEBOL,6,1364001590,https://en.wikipedia.org/w/index.php?title=1998_FIFA_World_Cup&oldid=1364001590,https://web.archive.org/web/20160222025820/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=50/index.html\n1998,1998-05-20,NOR,Norway,UEFA,7,1364001590,https://en.wikipedia.org/w/index.php?title=1998_FIFA_World_Cup&oldid=1364001590,https://web.archive.org/web/20160222025820/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=50/index.html\n1998,1998-05-20,YUG,FR Yugoslavia,UEFA,8,1364001590,https://en.wikipedia.org/w/index.php?title=1998_FIFA_World_Cup&oldid=1364001590,https://web.archive.org/web/20160222025820/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=50/index.html\n1998,1998-05-20,CHI,Chile,CONMEBOL,9,1364001590,https://en.wikipedia.org/w/index.php?title=1998_FIFA_World_Cup&oldid=1364001590,https://web.archive.org/web/20160222025820/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=50/index.html\n1998,1998-05-20,COL,Colombia,CONMEBOL,10,1364001590,https://en.wikipedia.org/w/index.php?title=1998_FIFA_World_Cup&oldid=1364001590,https://web.archive.org/web/20160222025820/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=50/index.html\n1998,1998-05-20,USA,USA,CONCACAF,11,1364001590,https://en.wikipedia.org/w/index.php?title=1998_FIFA_World_Cup&oldid=1364001590,https://web.archive.org/web/20160222025820/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=50/index.html\n1998,1998-05-20,JPN,Japan,AFC,12,1364001590,https://en.wikipedia.org/w/index.php?title=1998_FIFA_World_Cup&oldid=1364001590,https://web.archive.org/web/20160222025820/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=50/index.html\n1998,1998-05-20,MAR,Morocco,CAF,13,1364001590,https://en.wikipedia.org/w/index.php?title=1998_FIFA_World_Cup&oldid=1364001590,https://web.archive.org/web/20160222025820/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=50/index.html\n1998,1998-05-20,ITA,Italy,UEFA,14,1364001590,https://en.wikipedia.org/w/index.php?title=1998_FIFA_World_Cup&oldid=1364001590,https://web.archive.org/web/20160222025820/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=50/index.html\n1998,1998-05-20,ESP,Spain,UEFA,15,1364001590,https://en.wikipedia.org/w/index.php?title=1998_FIFA_World_Cup&oldid=1364001590,https://web.archive.org/web/20160222025820/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=50/index.html\n1998,1998-05-20,FRA,France,UEFA,18,1364001590,https://en.wikipedia.org/w/index.php?title=1998_FIFA_World_Cup&oldid=1364001590,https://web.archive.org/web/20160222025820/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=50/index.html\n1998,1998-05-20,CRO,Croatia,UEFA,19,1364001590,https://en.wikipedia.org/w/index.php?title=1998_FIFA_World_Cup&oldid=1364001590,https://web.archive.org/web/20160222025820/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=50/index.html\n1998,1998-05-20,KOR,Korea Republic,AFC,20,1364001590,https://en.wikipedia.org/w/index.php?title=1998_FIFA_World_Cup&oldid=1364001590,https://web.archive.org/web/20160222025820/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=50/index.html\n1998,1998-05-20,TUN,Tunisia,CAF,21,1364001590,https://en.wikipedia.org/w/index.php?title=1998_FIFA_World_Cup&oldid=1364001590,https://web.archive.org/web/20160222025820/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=50/index.html\n1998,1998-05-20,ROU,Romania,UEFA,22,1364001590,https://en.wikipedia.org/w/index.php?title=1998_FIFA_World_Cup&oldid=1364001590,https://web.archive.org/web/20160222025820/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=50/index.html\n1998,1998-05-20,RSA,South Africa,CAF,24,1364001590,https://en.wikipedia.org/w/index.php?title=1998_FIFA_World_Cup&oldid=1364001590,https://web.archive.org/web/20160222025820/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=50/index.html\n1998,1998-05-20,NED,Netherlands,UEFA,25,1364001590,https://en.wikipedia.org/w/index.php?title=1998_FIFA_World_Cup&oldid=1364001590,https://web.archive.org/web/20160222025820/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=50/index.html\n1998,1998-05-20,DEN,Denmark,UEFA,27,1364001590,https://en.wikipedia.org/w/index.php?title=1998_FIFA_World_Cup&oldid=1364001590,https://web.archive.org/web/20160222025820/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=50/index.html\n1998,1998-05-20,PAR,Paraguay,CONMEBOL,29,1364001590,https://en.wikipedia.org/w/index.php?title=1998_FIFA_World_Cup&oldid=1364001590,https://web.archive.org/web/20160222025820/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=50/index.html\n1998,1998-05-20,JAM,Jamaica,CONCACAF,30,1364001590,https://en.wikipedia.org/w/index.php?title=1998_FIFA_World_Cup&oldid=1364001590,https://web.archive.org/web/20160222025820/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=50/index.html\n1998,1998-05-20,AUT,Austria,UEFA,31,1364001590,https://en.wikipedia.org/w/index.php?title=1998_FIFA_World_Cup&oldid=1364001590,https://web.archive.org/web/20160222025820/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=50/index.html\n1998,1998-05-20,KSA,Saudi Arabia,AFC,34,1364001590,https://en.wikipedia.org/w/index.php?title=1998_FIFA_World_Cup&oldid=1364001590,https://web.archive.org/web/20160222025820/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=50/index.html\n1998,1998-05-20,BUL,Bulgaria,UEFA,35,1364001590,https://en.wikipedia.org/w/index.php?title=1998_FIFA_World_Cup&oldid=1364001590,https://web.archive.org/web/20160222025820/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=50/index.html\n1998,1998-05-20,BEL,Belgium,UEFA,36,1364001590,https://en.wikipedia.org/w/index.php?title=1998_FIFA_World_Cup&oldid=1364001590,https://web.archive.org/web/20160222025820/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=50/index.html\n1998,1998-05-20,SCO,Scotland,UEFA,41,1364001590,https://en.wikipedia.org/w/index.php?title=1998_FIFA_World_Cup&oldid=1364001590,https://web.archive.org/web/20160222025820/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=50/index.html\n1998,1998-05-20,IRN,IR Iran,AFC,42,1364001590,https://en.wikipedia.org/w/index.php?title=1998_FIFA_World_Cup&oldid=1364001590,https://web.archive.org/web/20160222025820/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=50/index.html\n1998,1998-05-20,CMR,Cameroon,CAF,49,1364001590,https://en.wikipedia.org/w/index.php?title=1998_FIFA_World_Cup&oldid=1364001590,https://web.archive.org/web/20160222025820/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=50/index.html\n1998,1998-05-20,NGA,Nigeria,CAF,74,1364001590,https://en.wikipedia.org/w/index.php?title=1998_FIFA_World_Cup&oldid=1364001590,https://web.archive.org/web/20160222025820/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=50/index.html\n2002,2002-05-15,FRA,France,UEFA,1,1364572375,https://en.wikipedia.org/w/index.php?title=2002_FIFA_World_Cup&oldid=1364572375,https://web.archive.org/web/20151026211858/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=97/index.html\n2002,2002-05-15,BRA,Brazil,CONMEBOL,2,1364572375,https://en.wikipedia.org/w/index.php?title=2002_FIFA_World_Cup&oldid=1364572375,https://web.archive.org/web/20151026211858/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=97/index.html\n2002,2002-05-15,ARG,Argentina,CONMEBOL,3,1364572375,https://en.wikipedia.org/w/index.php?title=2002_FIFA_World_Cup&oldid=1364572375,https://web.archive.org/web/20151026211858/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=97/index.html\n2002,2002-05-15,POR,Portugal,UEFA,5,1364572375,https://en.wikipedia.org/w/index.php?title=2002_FIFA_World_Cup&oldid=1364572375,https://web.archive.org/web/20151026211858/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=97/index.html\n2002,2002-05-15,ITA,Italy,UEFA,6,1364572375,https://en.wikipedia.org/w/index.php?title=2002_FIFA_World_Cup&oldid=1364572375,https://web.archive.org/web/20151026211858/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=97/index.html\n2002,2002-05-15,MEX,Mexico,CONCACAF,7,1364572375,https://en.wikipedia.org/w/index.php?title=2002_FIFA_World_Cup&oldid=1364572375,https://web.archive.org/web/20151026211858/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=97/index.html\n2002,2002-05-15,ESP,Spain,UEFA,8,1364572375,https://en.wikipedia.org/w/index.php?title=2002_FIFA_World_Cup&oldid=1364572375,https://web.archive.org/web/20151026211858/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=97/index.html\n2002,2002-05-15,GER,Germany,UEFA,11,1364572375,https://en.wikipedia.org/w/index.php?title=2002_FIFA_World_Cup&oldid=1364572375,https://web.archive.org/web/20151026211858/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=97/index.html\n2002,2002-05-15,ENG,Slovakia,UEFA,12,1364572375,https://en.wikipedia.org/w/index.php?title=2002_FIFA_World_Cup&oldid=1364572375,https://web.archive.org/web/20151026211858/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=97/index.html\n2002,2002-05-15,USA,USA,CONCACAF,13,1364572375,https://en.wikipedia.org/w/index.php?title=2002_FIFA_World_Cup&oldid=1364572375,https://web.archive.org/web/20151026211858/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=97/index.html\n2002,2002-05-15,IRL,Republic of Ireland,UEFA,15,1364572375,https://en.wikipedia.org/w/index.php?title=2002_FIFA_World_Cup&oldid=1364572375,https://web.archive.org/web/20151026211858/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=97/index.html\n2002,2002-05-15,CMR,Cameroon,CAF,17,1364572375,https://en.wikipedia.org/w/index.php?title=2002_FIFA_World_Cup&oldid=1364572375,https://web.archive.org/web/20151026211858/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=97/index.html\n2002,2002-05-15,PAR,Paraguay,CONMEBOL,18,1364572375,https://en.wikipedia.org/w/index.php?title=2002_FIFA_World_Cup&oldid=1364572375,https://web.archive.org/web/20151026211858/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=97/index.html\n2002,2002-05-15,SWE,Sweden,UEFA,19,1364572375,https://en.wikipedia.org/w/index.php?title=2002_FIFA_World_Cup&oldid=1364572375,https://web.archive.org/web/20151026211858/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=97/index.html\n2002,2002-05-15,DEN,Denmark,UEFA,20,1364572375,https://en.wikipedia.org/w/index.php?title=2002_FIFA_World_Cup&oldid=1364572375,https://web.archive.org/web/20151026211858/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=97/index.html\n2002,2002-05-15,CRO,Croatia,UEFA,21,1364572375,https://en.wikipedia.org/w/index.php?title=2002_FIFA_World_Cup&oldid=1364572375,https://web.archive.org/web/20151026211858/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=97/index.html\n2002,2002-05-15,TUR,Turkey,UEFA,22,1364572375,https://en.wikipedia.org/w/index.php?title=2002_FIFA_World_Cup&oldid=1364572375,https://web.archive.org/web/20151026211858/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=97/index.html\n2002,2002-05-15,BEL,Belgium,UEFA,23,1364572375,https://en.wikipedia.org/w/index.php?title=2002_FIFA_World_Cup&oldid=1364572375,https://web.archive.org/web/20151026211858/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=97/index.html\n2002,2002-05-15,URU,Uruguay,CONMEBOL,24,1364572375,https://en.wikipedia.org/w/index.php?title=2002_FIFA_World_Cup&oldid=1364572375,https://web.archive.org/web/20151026211858/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=97/index.html\n2002,2002-05-15,SVN,Slovenia,UEFA,25,1364572375,https://en.wikipedia.org/w/index.php?title=2002_FIFA_World_Cup&oldid=1364572375,https://web.archive.org/web/20151026211858/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=97/index.html\n2002,2002-05-15,NGA,Nigeria,CAF,27,1364572375,https://en.wikipedia.org/w/index.php?title=2002_FIFA_World_Cup&oldid=1364572375,https://web.archive.org/web/20151026211858/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=97/index.html\n2002,2002-05-15,RUS,Russia,UEFA,28,1364572375,https://en.wikipedia.org/w/index.php?title=2002_FIFA_World_Cup&oldid=1364572375,https://web.archive.org/web/20151026211858/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=97/index.html\n2002,2002-05-15,CRC,Costa Rica,CONCACAF,29,1364572375,https://en.wikipedia.org/w/index.php?title=2002_FIFA_World_Cup&oldid=1364572375,https://web.archive.org/web/20151026211858/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=97/index.html\n2002,2002-05-15,TUN,Tunisia,CAF,31,1364572375,https://en.wikipedia.org/w/index.php?title=2002_FIFA_World_Cup&oldid=1364572375,https://web.archive.org/web/20151026211858/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=97/index.html\n2002,2002-05-15,JPN,Japan,AFC,32,1364572375,https://en.wikipedia.org/w/index.php?title=2002_FIFA_World_Cup&oldid=1364572375,https://web.archive.org/web/20151026211858/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=97/index.html\n2002,2002-05-15,KSA,Saudi Arabia,AFC,34,1364572375,https://en.wikipedia.org/w/index.php?title=2002_FIFA_World_Cup&oldid=1364572375,https://web.archive.org/web/20151026211858/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=97/index.html\n2002,2002-05-15,ECU,Ecuador,CONMEBOL,36,1364572375,https://en.wikipedia.org/w/index.php?title=2002_FIFA_World_Cup&oldid=1364572375,https://web.archive.org/web/20151026211858/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=97/index.html\n2002,2002-05-15,RSA,South Africa,CAF,37,1364572375,https://en.wikipedia.org/w/index.php?title=2002_FIFA_World_Cup&oldid=1364572375,https://web.archive.org/web/20151026211858/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=97/index.html\n2002,2002-05-15,POL,Poland,UEFA,38,1364572375,https://en.wikipedia.org/w/index.php?title=2002_FIFA_World_Cup&oldid=1364572375,https://web.archive.org/web/20151026211858/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=97/index.html\n2002,2002-05-15,KOR,Korea Republic,AFC,40,1364572375,https://en.wikipedia.org/w/index.php?title=2002_FIFA_World_Cup&oldid=1364572375,https://web.archive.org/web/20151026211858/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=97/index.html\n2002,2002-05-15,SEN,Senegal,CAF,42,1364572375,https://en.wikipedia.org/w/index.php?title=2002_FIFA_World_Cup&oldid=1364572375,https://web.archive.org/web/20151026211858/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=97/index.html\n2002,2002-05-15,CHN,China PR,AFC,50,1364572375,https://en.wikipedia.org/w/index.php?title=2002_FIFA_World_Cup&oldid=1364572375,https://web.archive.org/web/20151026211858/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=97/index.html\n2006,2006-05-17,BRA,Brazil,CONMEBOL,1,1364371717,https://en.wikipedia.org/w/index.php?title=2006_FIFA_World_Cup&oldid=1364371717,https://inside.fifa.com/fifa-world-ranking\n2006,2006-05-17,CZE,Czech Republic,UEFA,2,1364371717,https://en.wikipedia.org/w/index.php?title=2006_FIFA_World_Cup&oldid=1364371717,https://inside.fifa.com/fifa-world-ranking\n2006,2006-05-17,NED,Netherlands,UEFA,3,1364371717,https://en.wikipedia.org/w/index.php?title=2006_FIFA_World_Cup&oldid=1364371717,https://inside.fifa.com/fifa-world-ranking\n2006,2006-05-17,MEX,Mexico,CONCACAF,4,1364371717,https://en.wikipedia.org/w/index.php?title=2006_FIFA_World_Cup&oldid=1364371717,https://inside.fifa.com/fifa-world-ranking\n2006,2006-05-17,ESP,Spain,UEFA,5,1364371717,https://en.wikipedia.org/w/index.php?title=2006_FIFA_World_Cup&oldid=1364371717,https://inside.fifa.com/fifa-world-ranking\n2006,2006-05-17,USA,USA,CONCACAF,5,1364371717,https://en.wikipedia.org/w/index.php?title=2006_FIFA_World_Cup&oldid=1364371717,https://inside.fifa.com/fifa-world-ranking\n2006,2006-05-17,POR,Portugal,UEFA,7,1364371717,https://en.wikipedia.org/w/index.php?title=2006_FIFA_World_Cup&oldid=1364371717,https://inside.fifa.com/fifa-world-ranking\n2006,2006-05-17,FRA,France,UEFA,8,1364371717,https://en.wikipedia.org/w/index.php?title=2006_FIFA_World_Cup&oldid=1364371717,https://inside.fifa.com/fifa-world-ranking\n2006,2006-05-17,ARG,Argentina,CONMEBOL,9,1364371717,https://en.wikipedia.org/w/index.php?title=2006_FIFA_World_Cup&oldid=1364371717,https://inside.fifa.com/fifa-world-ranking\n2006,2006-05-17,ENG,Slovakia,UEFA,10,1364371717,https://en.wikipedia.org/w/index.php?title=2006_FIFA_World_Cup&oldid=1364371717,https://inside.fifa.com/fifa-world-ranking\n2006,2006-05-17,ITA,Italy,UEFA,13,1364371717,https://en.wikipedia.org/w/index.php?title=2006_FIFA_World_Cup&oldid=1364371717,https://inside.fifa.com/fifa-world-ranking\n2006,2006-05-17,SWE,Sweden,UEFA,16,1364371717,https://en.wikipedia.org/w/index.php?title=2006_FIFA_World_Cup&oldid=1364371717,https://inside.fifa.com/fifa-world-ranking\n2006,2006-05-17,JPN,Japan,AFC,18,1364371717,https://en.wikipedia.org/w/index.php?title=2006_FIFA_World_Cup&oldid=1364371717,https://inside.fifa.com/fifa-world-ranking\n2006,2006-05-17,GER,Germany,UEFA,19,1364371717,https://en.wikipedia.org/w/index.php?title=2006_FIFA_World_Cup&oldid=1364371717,https://inside.fifa.com/fifa-world-ranking\n2006,2006-05-17,TUN,Tunisia,CAF,21,1364371717,https://en.wikipedia.org/w/index.php?title=2006_FIFA_World_Cup&oldid=1364371717,https://inside.fifa.com/fifa-world-ranking\n2006,2006-05-17,CRO,Croatia,UEFA,23,1364371717,https://en.wikipedia.org/w/index.php?title=2006_FIFA_World_Cup&oldid=1364371717,https://inside.fifa.com/fifa-world-ranking\n2006,2006-05-17,IRN,IR Iran,AFC,23,1364371717,https://en.wikipedia.org/w/index.php?title=2006_FIFA_World_Cup&oldid=1364371717,https://inside.fifa.com/fifa-world-ranking\n2006,2006-05-17,CRC,Costa Rica,CONCACAF,26,1364371717,https://en.wikipedia.org/w/index.php?title=2006_FIFA_World_Cup&oldid=1364371717,https://inside.fifa.com/fifa-world-ranking\n2006,2006-05-17,KOR,Korea Republic,AFC,29,1364371717,https://en.wikipedia.org/w/index.php?title=2006_FIFA_World_Cup&oldid=1364371717,https://inside.fifa.com/fifa-world-ranking\n2006,2006-05-17,POL,Poland,UEFA,29,1364371717,https://en.wikipedia.org/w/index.php?title=2006_FIFA_World_Cup&oldid=1364371717,https://inside.fifa.com/fifa-world-ranking\n2006,2006-05-17,CIV,Côte d'Ivoire,CAF,32,1364371717,https://en.wikipedia.org/w/index.php?title=2006_FIFA_World_Cup&oldid=1364371717,https://inside.fifa.com/fifa-world-ranking\n2006,2006-05-17,PAR,Paraguay,CONMEBOL,33,1364371717,https://en.wikipedia.org/w/index.php?title=2006_FIFA_World_Cup&oldid=1364371717,https://inside.fifa.com/fifa-world-ranking\n2006,2006-05-17,KSA,Saudi Arabia,AFC,34,1364371717,https://en.wikipedia.org/w/index.php?title=2006_FIFA_World_Cup&oldid=1364371717,https://inside.fifa.com/fifa-world-ranking\n2006,2006-05-17,SUI,Switzerland,UEFA,35,1364371717,https://en.wikipedia.org/w/index.php?title=2006_FIFA_World_Cup&oldid=1364371717,https://inside.fifa.com/fifa-world-ranking\n2006,2006-05-17,ECU,Ecuador,CONMEBOL,39,1364371717,https://en.wikipedia.org/w/index.php?title=2006_FIFA_World_Cup&oldid=1364371717,https://inside.fifa.com/fifa-world-ranking\n2006,2006-05-17,AUS,Australia,OFC,42,1364371717,https://en.wikipedia.org/w/index.php?title=2006_FIFA_World_Cup&oldid=1364371717,https://inside.fifa.com/fifa-world-ranking\n2006,2006-05-17,SCG,Serbia and Montenegro,UEFA,44,1364371717,https://en.wikipedia.org/w/index.php?title=2006_FIFA_World_Cup&oldid=1364371717,https://inside.fifa.com/fifa-world-ranking\n2006,2006-05-17,UKR,Ukraine,UEFA,45,1364371717,https://en.wikipedia.org/w/index.php?title=2006_FIFA_World_Cup&oldid=1364371717,https://inside.fifa.com/fifa-world-ranking\n2006,2006-05-17,TRI,Trinidad and Tobago,CONCACAF,47,1364371717,https://en.wikipedia.org/w/index.php?title=2006_FIFA_World_Cup&oldid=1364371717,https://inside.fifa.com/fifa-world-ranking\n2006,2006-05-17,GHA,Ghana,CAF,48,1364371717,https://en.wikipedia.org/w/index.php?title=2006_FIFA_World_Cup&oldid=1364371717,https://inside.fifa.com/fifa-world-ranking\n2006,2006-05-17,ANG,Angola,CAF,57,1364371717,https://en.wikipedia.org/w/index.php?title=2006_FIFA_World_Cup&oldid=1364371717,https://inside.fifa.com/fifa-world-ranking\n2006,2006-05-17,TOG,Togo,CAF,61,1364371717,https://en.wikipedia.org/w/index.php?title=2006_FIFA_World_Cup&oldid=1364371717,https://inside.fifa.com/fifa-world-ranking\n2010,2010-05-26,BRA,Brazil,CONMEBOL,1,1363928575,https://en.wikipedia.org/w/index.php?title=2010_FIFA_World_Cup&oldid=1363928575,https://web.archive.org/web/20191006015211/https://www.fifa.com/fifa-world-ranking/ranking-table/men/rank/id9054/\n2010,2010-05-26,ESP,Spain,UEFA,2,1363928575,https://en.wikipedia.org/w/index.php?title=2010_FIFA_World_Cup&oldid=1363928575,https://web.archive.org/web/20191006015211/https://www.fifa.com/fifa-world-ranking/ranking-table/men/rank/id9054/\n2010,2010-05-26,POR,Portugal,UEFA,3,1363928575,https://en.wikipedia.org/w/index.php?title=2010_FIFA_World_Cup&oldid=1363928575,https://web.archive.org/web/20191006015211/https://www.fifa.com/fifa-world-ranking/ranking-table/men/rank/id9054/\n2010,2010-05-26,NED,Netherlands,UEFA,4,1363928575,https://en.wikipedia.org/w/index.php?title=2010_FIFA_World_Cup&oldid=1363928575,https://web.archive.org/web/20191006015211/https://www.fifa.com/fifa-world-ranking/ranking-table/men/rank/id9054/\n2010,2010-05-26,ITA,Italy,UEFA,5,1363928575,https://en.wikipedia.org/w/index.php?title=2010_FIFA_World_Cup&oldid=1363928575,https://web.archive.org/web/20191006015211/https://www.fifa.com/fifa-world-ranking/ranking-table/men/rank/id9054/\n2010,2010-05-26,GER,Germany,UEFA,6,1363928575,https://en.wikipedia.org/w/index.php?title=2010_FIFA_World_Cup&oldid=1363928575,https://web.archive.org/web/20191006015211/https://www.fifa.com/fifa-world-ranking/ranking-table/men/rank/id9054/\n2010,2010-05-26,ARG,Argentina,CONMEBOL,7,1363928575,https://en.wikipedia.org/w/index.php?title=2010_FIFA_World_Cup&oldid=1363928575,https://web.archive.org/web/20191006015211/https://www.fifa.com/fifa-world-ranking/ranking-table/men/rank/id9054/\n2010,2010-05-26,ENG,Slovakia,UEFA,8,1363928575,https://en.wikipedia.org/w/index.php?title=2010_FIFA_World_Cup&oldid=1363928575,https://web.archive.org/web/20191006015211/https://www.fifa.com/fifa-world-ranking/ranking-table/men/rank/id9054/\n2010,2010-05-26,FRA,France,UEFA,9,1363928575,https://en.wikipedia.org/w/index.php?title=2010_FIFA_World_Cup&oldid=1363928575,https://web.archive.org/web/20191006015211/https://www.fifa.com/fifa-world-ranking/ranking-table/men/rank/id9054/\n2010,2010-05-26,GRE,Greece,UEFA,13,1363928575,https://en.wikipedia.org/w/index.php?title=2010_FIFA_World_Cup&oldid=1363928575,https://web.archive.org/web/20191006015211/https://www.fifa.com/fifa-world-ranking/ranking-table/men/rank/id9054/\n2010,2010-05-26,USA,USA,CONCACAF,14,1363928575,https://en.wikipedia.org/w/index.php?title=2010_FIFA_World_Cup&oldid=1363928575,https://web.archive.org/web/20191006015211/https://www.fifa.com/fifa-world-ranking/ranking-table/men/rank/id9054/\n2010,2010-05-26,SRB,Serbia,UEFA,15,1363928575,https://en.wikipedia.org/w/index.php?title=2010_FIFA_World_Cup&oldid=1363928575,https://web.archive.org/web/20191006015211/https://www.fifa.com/fifa-world-ranking/ranking-table/men/rank/id9054/\n2010,2010-05-26,URU,Uruguay,CONMEBOL,16,1363928575,https://en.wikipedia.org/w/index.php?title=2010_FIFA_World_Cup&oldid=1363928575,https://web.archive.org/web/20191006015211/https://www.fifa.com/fifa-world-ranking/ranking-table/men/rank/id9054/\n2010,2010-05-26,MEX,Mexico,CONCACAF,17,1363928575,https://en.wikipedia.org/w/index.php?title=2010_FIFA_World_Cup&oldid=1363928575,https://web.archive.org/web/20191006015211/https://www.fifa.com/fifa-world-ranking/ranking-table/men/rank/id9054/\n2010,2010-05-26,CHI,Chile,CONMEBOL,18,1363928575,https://en.wikipedia.org/w/index.php?title=2010_FIFA_World_Cup&oldid=1363928575,https://web.archive.org/web/20191006015211/https://www.fifa.com/fifa-world-ranking/ranking-table/men/rank/id9054/\n2010,2010-05-26,CMR,Cameroon,CAF,19,1363928575,https://en.wikipedia.org/w/index.php?title=2010_FIFA_World_Cup&oldid=1363928575,https://web.archive.org/web/20191006015211/https://www.fifa.com/fifa-world-ranking/ranking-table/men/rank/id9054/\n2010,2010-05-26,AUS,Australia,AFC,20,1363928575,https://en.wikipedia.org/w/index.php?title=2010_FIFA_World_Cup&oldid=1363928575,https://web.archive.org/web/20191006015211/https://www.fifa.com/fifa-world-ranking/ranking-table/men/rank/id9054/\n2010,2010-05-26,NGA,Nigeria,CAF,21,1363928575,https://en.wikipedia.org/w/index.php?title=2010_FIFA_World_Cup&oldid=1363928575,https://web.archive.org/web/20191006015211/https://www.fifa.com/fifa-world-ranking/ranking-table/men/rank/id9054/\n2010,2010-05-26,SUI,Switzerland,UEFA,24,1363928575,https://en.wikipedia.org/w/index.php?title=2010_FIFA_World_Cup&oldid=1363928575,https://web.archive.org/web/20191006015211/https://www.fifa.com/fifa-world-ranking/ranking-table/men/rank/id9054/\n2010,2010-05-26,SVN,Slovenia,UEFA,25,1363928575,https://en.wikipedia.org/w/index.php?title=2010_FIFA_World_Cup&oldid=1363928575,https://web.archive.org/web/20191006015211/https://www.fifa.com/fifa-world-ranking/ranking-table/men/rank/id9054/\n2010,2010-05-26,CIV,Côte d'Ivoire,CAF,27,1363928575,https://en.wikipedia.org/w/index.php?title=2010_FIFA_World_Cup&oldid=1363928575,https://web.archive.org/web/20191006015211/https://www.fifa.com/fifa-world-ranking/ranking-table/men/rank/id9054/\n2010,2010-05-26,ALG,Algeria,CAF,30,1363928575,https://en.wikipedia.org/w/index.php?title=2010_FIFA_World_Cup&oldid=1363928575,https://web.archive.org/web/20191006015211/https://www.fifa.com/fifa-world-ranking/ranking-table/men/rank/id9054/\n2010,2010-05-26,PAR,Paraguay,CONMEBOL,31,1363928575,https://en.wikipedia.org/w/index.php?title=2010_FIFA_World_Cup&oldid=1363928575,https://web.archive.org/web/20191006015211/https://www.fifa.com/fifa-world-ranking/ranking-table/men/rank/id9054/\n2010,2010-05-26,GHA,Ghana,CAF,32,1363928575,https://en.wikipedia.org/w/index.php?title=2010_FIFA_World_Cup&oldid=1363928575,https://web.archive.org/web/20191006015211/https://www.fifa.com/fifa-world-ranking/ranking-table/men/rank/id9054/\n2010,2010-05-26,SVK,Slovakia,UEFA,34,1363928575,https://en.wikipedia.org/w/index.php?title=2010_FIFA_World_Cup&oldid=1363928575,https://web.archive.org/web/20191006015211/https://www.fifa.com/fifa-world-ranking/ranking-table/men/rank/id9054/\n2010,2010-05-26,DEN,Denmark,UEFA,36,1363928575,https://en.wikipedia.org/w/index.php?title=2010_FIFA_World_Cup&oldid=1363928575,https://web.archive.org/web/20191006015211/https://www.fifa.com/fifa-world-ranking/ranking-table/men/rank/id9054/\n2010,2010-05-26,HON,Honduras,CONCACAF,38,1363928575,https://en.wikipedia.org/w/index.php?title=2010_FIFA_World_Cup&oldid=1363928575,https://web.archive.org/web/20191006015211/https://www.fifa.com/fifa-world-ranking/ranking-table/men/rank/id9054/\n2010,2010-05-26,JPN,Japan,AFC,45,1363928575,https://en.wikipedia.org/w/index.php?title=2010_FIFA_World_Cup&oldid=1363928575,https://web.archive.org/web/20191006015211/https://www.fifa.com/fifa-world-ranking/ranking-table/men/rank/id9054/\n2010,2010-05-26,KOR,Korea Republic,AFC,47,1363928575,https://en.wikipedia.org/w/index.php?title=2010_FIFA_World_Cup&oldid=1363928575,https://web.archive.org/web/20191006015211/https://www.fifa.com/fifa-world-ranking/ranking-table/men/rank/id9054/\n2010,2010-05-26,NZL,New Zealand,OFC,78,1363928575,https://en.wikipedia.org/w/index.php?title=2010_FIFA_World_Cup&oldid=1363928575,https://web.archive.org/web/20191006015211/https://www.fifa.com/fifa-world-ranking/ranking-table/men/rank/id9054/\n2010,2010-05-26,RSA,South Africa,CAF,83,1363928575,https://en.wikipedia.org/w/index.php?title=2010_FIFA_World_Cup&oldid=1363928575,https://web.archive.org/web/20191006015211/https://www.fifa.com/fifa-world-ranking/ranking-table/men/rank/id9054/\n2010,2010-05-26,PRK,Korea DPR,AFC,105,1363928575,https://en.wikipedia.org/w/index.php?title=2010_FIFA_World_Cup&oldid=1363928575,https://web.archive.org/web/20191006015211/https://www.fifa.com/fifa-world-ranking/ranking-table/men/rank/id9054/\n2014,2014-06-05,ESP,Spain,UEFA,1,1363796172,https://en.wikipedia.org/w/index.php?title=2014_FIFA_World_Cup&oldid=1363796172,https://web.archive.org/web/20141107005059/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=239/index.html\n2014,2014-06-05,GER,Germany,UEFA,2,1363796172,https://en.wikipedia.org/w/index.php?title=2014_FIFA_World_Cup&oldid=1363796172,https://web.archive.org/web/20141107005059/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=239/index.html\n2014,2014-06-05,BRA,Brazil,CONMEBOL,3,1363796172,https://en.wikipedia.org/w/index.php?title=2014_FIFA_World_Cup&oldid=1363796172,https://web.archive.org/web/20141107005059/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=239/index.html\n2014,2014-06-05,POR,Portugal,UEFA,4,1363796172,https://en.wikipedia.org/w/index.php?title=2014_FIFA_World_Cup&oldid=1363796172,https://web.archive.org/web/20141107005059/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=239/index.html\n2014,2014-06-05,ARG,Argentina,CONMEBOL,5,1363796172,https://en.wikipedia.org/w/index.php?title=2014_FIFA_World_Cup&oldid=1363796172,https://web.archive.org/web/20141107005059/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=239/index.html\n2014,2014-06-05,SUI,Switzerland,UEFA,6,1363796172,https://en.wikipedia.org/w/index.php?title=2014_FIFA_World_Cup&oldid=1363796172,https://web.archive.org/web/20141107005059/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=239/index.html\n2014,2014-06-05,URU,Uruguay,CONMEBOL,7,1363796172,https://en.wikipedia.org/w/index.php?title=2014_FIFA_World_Cup&oldid=1363796172,https://web.archive.org/web/20141107005059/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=239/index.html\n2014,2014-06-05,COL,Colombia,CONMEBOL,8,1363796172,https://en.wikipedia.org/w/index.php?title=2014_FIFA_World_Cup&oldid=1363796172,https://web.archive.org/web/20141107005059/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=239/index.html\n2014,2014-06-05,ITA,Italy,UEFA,9,1363796172,https://en.wikipedia.org/w/index.php?title=2014_FIFA_World_Cup&oldid=1363796172,https://web.archive.org/web/20141107005059/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=239/index.html\n2014,2014-06-05,ENG,Slovakia,UEFA,10,1363796172,https://en.wikipedia.org/w/index.php?title=2014_FIFA_World_Cup&oldid=1363796172,https://web.archive.org/web/20141107005059/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=239/index.html\n2014,2014-06-05,BEL,Belgium,UEFA,11,1363796172,https://en.wikipedia.org/w/index.php?title=2014_FIFA_World_Cup&oldid=1363796172,https://web.archive.org/web/20141107005059/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=239/index.html\n2014,2014-06-05,GRE,Greece,UEFA,12,1363796172,https://en.wikipedia.org/w/index.php?title=2014_FIFA_World_Cup&oldid=1363796172,https://web.archive.org/web/20141107005059/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=239/index.html\n2014,2014-06-05,USA,USA,CONCACAF,13,1363796172,https://en.wikipedia.org/w/index.php?title=2014_FIFA_World_Cup&oldid=1363796172,https://web.archive.org/web/20141107005059/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=239/index.html\n2014,2014-06-05,CHI,Chile,CONMEBOL,14,1363796172,https://en.wikipedia.org/w/index.php?title=2014_FIFA_World_Cup&oldid=1363796172,https://web.archive.org/web/20141107005059/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=239/index.html\n2014,2014-06-05,NED,Netherlands,UEFA,15,1363796172,https://en.wikipedia.org/w/index.php?title=2014_FIFA_World_Cup&oldid=1363796172,https://web.archive.org/web/20141107005059/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=239/index.html\n2014,2014-06-05,FRA,France,UEFA,17,1363796172,https://en.wikipedia.org/w/index.php?title=2014_FIFA_World_Cup&oldid=1363796172,https://web.archive.org/web/20141107005059/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=239/index.html\n2014,2014-06-05,CRO,Croatia,UEFA,18,1363796172,https://en.wikipedia.org/w/index.php?title=2014_FIFA_World_Cup&oldid=1363796172,https://web.archive.org/web/20141107005059/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=239/index.html\n2014,2014-06-05,RUS,Russia,UEFA,19,1363796172,https://en.wikipedia.org/w/index.php?title=2014_FIFA_World_Cup&oldid=1363796172,https://web.archive.org/web/20141107005059/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=239/index.html\n2014,2014-06-05,MEX,Mexico,CONCACAF,20,1363796172,https://en.wikipedia.org/w/index.php?title=2014_FIFA_World_Cup&oldid=1363796172,https://web.archive.org/web/20141107005059/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=239/index.html\n2014,2014-06-05,BIH,Bosnia and Herzegovina,UEFA,21,1363796172,https://en.wikipedia.org/w/index.php?title=2014_FIFA_World_Cup&oldid=1363796172,https://web.archive.org/web/20141107005059/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=239/index.html\n2014,2014-06-05,ALG,Algeria,CAF,22,1363796172,https://en.wikipedia.org/w/index.php?title=2014_FIFA_World_Cup&oldid=1363796172,https://web.archive.org/web/20141107005059/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=239/index.html\n2014,2014-06-05,CIV,Côte d'Ivoire,CAF,23,1363796172,https://en.wikipedia.org/w/index.php?title=2014_FIFA_World_Cup&oldid=1363796172,https://web.archive.org/web/20141107005059/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=239/index.html\n2014,2014-06-05,ECU,Ecuador,CONMEBOL,26,1363796172,https://en.wikipedia.org/w/index.php?title=2014_FIFA_World_Cup&oldid=1363796172,https://web.archive.org/web/20141107005059/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=239/index.html\n2014,2014-06-05,CRC,Costa Rica,CONCACAF,28,1363796172,https://en.wikipedia.org/w/index.php?title=2014_FIFA_World_Cup&oldid=1363796172,https://web.archive.org/web/20141107005059/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=239/index.html\n2014,2014-06-05,HON,Honduras,CONCACAF,33,1363796172,https://en.wikipedia.org/w/index.php?title=2014_FIFA_World_Cup&oldid=1363796172,https://web.archive.org/web/20141107005059/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=239/index.html\n2014,2014-06-05,GHA,Ghana,CAF,37,1363796172,https://en.wikipedia.org/w/index.php?title=2014_FIFA_World_Cup&oldid=1363796172,https://web.archive.org/web/20141107005059/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=239/index.html\n2014,2014-06-05,IRN,IR Iran,AFC,43,1363796172,https://en.wikipedia.org/w/index.php?title=2014_FIFA_World_Cup&oldid=1363796172,https://web.archive.org/web/20141107005059/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=239/index.html\n2014,2014-06-05,NGA,Nigeria,CAF,44,1363796172,https://en.wikipedia.org/w/index.php?title=2014_FIFA_World_Cup&oldid=1363796172,https://web.archive.org/web/20141107005059/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=239/index.html\n2014,2014-06-05,JPN,Japan,AFC,46,1363796172,https://en.wikipedia.org/w/index.php?title=2014_FIFA_World_Cup&oldid=1363796172,https://web.archive.org/web/20141107005059/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=239/index.html\n2014,2014-06-05,CMR,Cameroon,CAF,56,1363796172,https://en.wikipedia.org/w/index.php?title=2014_FIFA_World_Cup&oldid=1363796172,https://web.archive.org/web/20141107005059/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=239/index.html\n2014,2014-06-05,KOR,Korea Republic,AFC,57,1363796172,https://en.wikipedia.org/w/index.php?title=2014_FIFA_World_Cup&oldid=1363796172,https://web.archive.org/web/20141107005059/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=239/index.html\n2014,2014-06-05,AUS,Australia,AFC,62,1363796172,https://en.wikipedia.org/w/index.php?title=2014_FIFA_World_Cup&oldid=1363796172,https://web.archive.org/web/20141107005059/http://www.fifa.com/fifa-world-ranking/ranking-table/men/rank=239/index.html\n2018,2018-06-07,GER,Germany,UEFA,1,1364201186,https://en.wikipedia.org/w/index.php?title=2018_FIFA_World_Cup&oldid=1364201186,https://inside.fifa.com/tournaments/mens/worldcup/2018russia/news/calculating-russia-2018-s-toughest-groups\n2018,2018-06-07,BRA,Brazil,CONMEBOL,2,1364201186,https://en.wikipedia.org/w/index.php?title=2018_FIFA_World_Cup&oldid=1364201186,https://inside.fifa.com/tournaments/mens/worldcup/2018russia/news/calculating-russia-2018-s-toughest-groups\n2018,2018-06-07,BEL,Belgium,UEFA,3,1364201186,https://en.wikipedia.org/w/index.php?title=2018_FIFA_World_Cup&oldid=1364201186,https://inside.fifa.com/tournaments/mens/worldcup/2018russia/news/calculating-russia-2018-s-toughest-groups\n2018,2018-06-07,POR,Portugal,UEFA,4,1364201186,https://en.wikipedia.org/w/index.php?title=2018_FIFA_World_Cup&oldid=1364201186,https://inside.fifa.com/tournaments/mens/worldcup/2018russia/news/calculating-russia-2018-s-toughest-groups\n2018,2018-06-07,ARG,Argentina,CONMEBOL,5,1364201186,https://en.wikipedia.org/w/index.php?title=2018_FIFA_World_Cup&oldid=1364201186,https://inside.fifa.com/tournaments/mens/worldcup/2018russia/news/calculating-russia-2018-s-toughest-groups\n2018,2018-06-07,SUI,Switzerland,UEFA,6,1364201186,https://en.wikipedia.org/w/index.php?title=2018_FIFA_World_Cup&oldid=1364201186,https://inside.fifa.com/tournaments/mens/worldcup/2018russia/news/calculating-russia-2018-s-toughest-groups\n2018,2018-06-07,FRA,France,UEFA,7,1364201186,https://en.wikipedia.org/w/index.php?title=2018_FIFA_World_Cup&oldid=1364201186,https://inside.fifa.com/tournaments/mens/worldcup/2018russia/news/calculating-russia-2018-s-toughest-groups\n2018,2018-06-07,POL,Poland,UEFA,8,1364201186,https://en.wikipedia.org/w/index.php?title=2018_FIFA_World_Cup&oldid=1364201186,https://inside.fifa.com/tournaments/mens/worldcup/2018russia/news/calculating-russia-2018-s-toughest-groups\n2018,2018-06-07,ESP,Spain,UEFA,10,1364201186,https://en.wikipedia.org/w/index.php?title=2018_FIFA_World_Cup&oldid=1364201186,https://inside.fifa.com/tournaments/mens/worldcup/2018russia/news/calculating-russia-2018-s-toughest-groups\n2018,2018-06-07,PER,Peru,CONMEBOL,11,1364201186,https://en.wikipedia.org/w/index.php?title=2018_FIFA_World_Cup&oldid=1364201186,https://inside.fifa.com/tournaments/mens/worldcup/2018russia/news/calculating-russia-2018-s-toughest-groups\n2018,2018-06-07,DEN,Denmark,UEFA,12,1364201186,https://en.wikipedia.org/w/index.php?title=2018_FIFA_World_Cup&oldid=1364201186,https://inside.fifa.com/tournaments/mens/worldcup/2018russia/news/calculating-russia-2018-s-toughest-groups\n2018,2018-06-07,ENG,Slovakia,UEFA,12,1364201186,https://en.wikipedia.org/w/index.php?title=2018_FIFA_World_Cup&oldid=1364201186,https://inside.fifa.com/tournaments/mens/worldcup/2018russia/news/calculating-russia-2018-s-toughest-groups\n2018,2018-06-07,URU,Uruguay,CONMEBOL,14,1364201186,https://en.wikipedia.org/w/index.php?title=2018_FIFA_World_Cup&oldid=1364201186,https://inside.fifa.com/tournaments/mens/worldcup/2018russia/news/calculating-russia-2018-s-toughest-groups\n2018,2018-06-07,MEX,Mexico,CONCACAF,15,1364201186,https://en.wikipedia.org/w/index.php?title=2018_FIFA_World_Cup&oldid=1364201186,https://inside.fifa.com/tournaments/mens/worldcup/2018russia/news/calculating-russia-2018-s-toughest-groups\n2018,2018-06-07,COL,Colombia,CONMEBOL,16,1364201186,https://en.wikipedia.org/w/index.php?title=2018_FIFA_World_Cup&oldid=1364201186,https://inside.fifa.com/tournaments/mens/worldcup/2018russia/news/calculating-russia-2018-s-toughest-groups\n2018,2018-06-07,CRO,Croatia,UEFA,20,1364201186,https://en.wikipedia.org/w/index.php?title=2018_FIFA_World_Cup&oldid=1364201186,https://inside.fifa.com/tournaments/mens/worldcup/2018russia/news/calculating-russia-2018-s-toughest-groups\n2018,2018-06-07,TUN,Tunisia,CAF,21,1364201186,https://en.wikipedia.org/w/index.php?title=2018_FIFA_World_Cup&oldid=1364201186,https://inside.fifa.com/tournaments/mens/worldcup/2018russia/news/calculating-russia-2018-s-toughest-groups\n2018,2018-06-07,ISL,Iceland,UEFA,22,1364201186,https://en.wikipedia.org/w/index.php?title=2018_FIFA_World_Cup&oldid=1364201186,https://inside.fifa.com/tournaments/mens/worldcup/2018russia/news/calculating-russia-2018-s-toughest-groups\n2018,2018-06-07,CRC,Costa Rica,CONCACAF,23,1364201186,https://en.wikipedia.org/w/index.php?title=2018_FIFA_World_Cup&oldid=1364201186,https://inside.fifa.com/tournaments/mens/worldcup/2018russia/news/calculating-russia-2018-s-toughest-groups\n2018,2018-06-07,SWE,Sweden,UEFA,24,1364201186,https://en.wikipedia.org/w/index.php?title=2018_FIFA_World_Cup&oldid=1364201186,https://inside.fifa.com/tournaments/mens/worldcup/2018russia/news/calculating-russia-2018-s-toughest-groups\n2018,2018-06-07,SEN,Senegal,CAF,27,1364201186,https://en.wikipedia.org/w/index.php?title=2018_FIFA_World_Cup&oldid=1364201186,https://inside.fifa.com/tournaments/mens/worldcup/2018russia/news/calculating-russia-2018-s-toughest-groups\n2018,2018-06-07,SRB,Serbia,UEFA,34,1364201186,https://en.wikipedia.org/w/index.php?title=2018_FIFA_World_Cup&oldid=1364201186,https://inside.fifa.com/tournaments/mens/worldcup/2018russia/news/calculating-russia-2018-s-toughest-groups\n2018,2018-06-07,AUS,Australia,AFC,36,1364201186,https://en.wikipedia.org/w/index.php?title=2018_FIFA_World_Cup&oldid=1364201186,https://inside.fifa.com/tournaments/mens/worldcup/2018russia/news/calculating-russia-2018-s-toughest-groups\n2018,2018-06-07,IRN,IR Iran,AFC,37,1364201186,https://en.wikipedia.org/w/index.php?title=2018_FIFA_World_Cup&oldid=1364201186,https://inside.fifa.com/tournaments/mens/worldcup/2018russia/news/calculating-russia-2018-s-toughest-groups\n2018,2018-06-07,MAR,Morocco,CAF,41,1364201186,https://en.wikipedia.org/w/index.php?title=2018_FIFA_World_Cup&oldid=1364201186,https://inside.fifa.com/tournaments/mens/worldcup/2018russia/news/calculating-russia-2018-s-toughest-groups\n2018,2018-06-07,EGY,Egypt,CAF,45,1364201186,https://en.wikipedia.org/w/index.php?title=2018_FIFA_World_Cup&oldid=1364201186,https://inside.fifa.com/tournaments/mens/worldcup/2018russia/news/calculating-russia-2018-s-toughest-groups\n2018,2018-06-07,NGA,Nigeria,CAF,48,1364201186,https://en.wikipedia.org/w/index.php?title=2018_FIFA_World_Cup&oldid=1364201186,https://inside.fifa.com/tournaments/mens/worldcup/2018russia/news/calculating-russia-2018-s-toughest-groups\n2018,2018-06-07,PAN,Panama,CONCACAF,55,1364201186,https://en.wikipedia.org/w/index.php?title=2018_FIFA_World_Cup&oldid=1364201186,https://inside.fifa.com/tournaments/mens/worldcup/2018russia/news/calculating-russia-2018-s-toughest-groups\n2018,2018-06-07,KOR,Korea Republic,AFC,57,1364201186,https://en.wikipedia.org/w/index.php?title=2018_FIFA_World_Cup&oldid=1364201186,https://inside.fifa.com/tournaments/mens/worldcup/2018russia/news/calculating-russia-2018-s-toughest-groups\n2018,2018-06-07,JPN,Japan,AFC,61,1364201186,https://en.wikipedia.org/w/index.php?title=2018_FIFA_World_Cup&oldid=1364201186,https://inside.fifa.com/tournaments/mens/worldcup/2018russia/news/calculating-russia-2018-s-toughest-groups\n2018,2018-06-07,KSA,Saudi Arabia,AFC,67,1364201186,https://en.wikipedia.org/w/index.php?title=2018_FIFA_World_Cup&oldid=1364201186,https://inside.fifa.com/tournaments/mens/worldcup/2018russia/news/calculating-russia-2018-s-toughest-groups\n2018,2018-06-07,RUS,Russia,UEFA,70,1364201186,https://en.wikipedia.org/w/index.php?title=2018_FIFA_World_Cup&oldid=1364201186,https://inside.fifa.com/tournaments/mens/worldcup/2018russia/news/calculating-russia-2018-s-toughest-groups\n2022,2022-10-06,BRA,Brazil,CONMEBOL,1,1364125908,https://en.wikipedia.org/w/index.php?title=2022_FIFA_World_Cup&oldid=1364125908,https://www.fifa.com/fifa-world-ranking/mens-ranking?dateId=id13792\n2022,2022-10-06,BEL,Belgium,UEFA,2,1364125908,https://en.wikipedia.org/w/index.php?title=2022_FIFA_World_Cup&oldid=1364125908,https://www.fifa.com/fifa-world-ranking/mens-ranking?dateId=id13792\n2022,2022-10-06,ARG,Argentina,CONMEBOL,3,1364125908,https://en.wikipedia.org/w/index.php?title=2022_FIFA_World_Cup&oldid=1364125908,https://www.fifa.com/fifa-world-ranking/mens-ranking?dateId=id13792\n2022,2022-10-06,FRA,France,UEFA,4,1364125908,https://en.wikipedia.org/w/index.php?title=2022_FIFA_World_Cup&oldid=1364125908,https://www.fifa.com/fifa-world-ranking/mens-ranking?dateId=id13792\n2022,2022-10-06,ENG,Slovakia,UEFA,5,1364125908,https://en.wikipedia.org/w/index.php?title=2022_FIFA_World_Cup&oldid=1364125908,https://www.fifa.com/fifa-world-ranking/mens-ranking?dateId=id13792\n2022,2022-10-06,ESP,Spain,UEFA,7,1364125908,https://en.wikipedia.org/w/index.php?title=2022_FIFA_World_Cup&oldid=1364125908,https://www.fifa.com/fifa-world-ranking/mens-ranking?dateId=id13792\n2022,2022-10-06,NED,Netherlands,UEFA,8,1364125908,https://en.wikipedia.org/w/index.php?title=2022_FIFA_World_Cup&oldid=1364125908,https://www.fifa.com/fifa-world-ranking/mens-ranking?dateId=id13792\n2022,2022-10-06,POR,Portugal,UEFA,9,1364125908,https://en.wikipedia.org/w/index.php?title=2022_FIFA_World_Cup&oldid=1364125908,https://www.fifa.com/fifa-world-ranking/mens-ranking?dateId=id13792\n2022,2022-10-06,DEN,Denmark,UEFA,10,1364125908,https://en.wikipedia.org/w/index.php?title=2022_FIFA_World_Cup&oldid=1364125908,https://www.fifa.com/fifa-world-ranking/mens-ranking?dateId=id13792\n2022,2022-10-06,GER,Germany,UEFA,11,1364125908,https://en.wikipedia.org/w/index.php?title=2022_FIFA_World_Cup&oldid=1364125908,https://www.fifa.com/fifa-world-ranking/mens-ranking?dateId=id13792\n2022,2022-10-06,CRO,Croatia,UEFA,12,1364125908,https://en.wikipedia.org/w/index.php?title=2022_FIFA_World_Cup&oldid=1364125908,https://www.fifa.com/fifa-world-ranking/mens-ranking?dateId=id13792\n2022,2022-10-06,MEX,Mexico,CONCACAF,13,1364125908,https://en.wikipedia.org/w/index.php?title=2022_FIFA_World_Cup&oldid=1364125908,https://www.fifa.com/fifa-world-ranking/mens-ranking?dateId=id13792\n2022,2022-10-06,URU,Uruguay,CONMEBOL,14,1364125908,https://en.wikipedia.org/w/index.php?title=2022_FIFA_World_Cup&oldid=1364125908,https://www.fifa.com/fifa-world-ranking/mens-ranking?dateId=id13792\n2022,2022-10-06,SUI,Switzerland,UEFA,15,1364125908,https://en.wikipedia.org/w/index.php?title=2022_FIFA_World_Cup&oldid=1364125908,https://www.fifa.com/fifa-world-ranking/mens-ranking?dateId=id13792\n2022,2022-10-06,USA,USA,CONCACAF,16,1364125908,https://en.wikipedia.org/w/index.php?title=2022_FIFA_World_Cup&oldid=1364125908,https://www.fifa.com/fifa-world-ranking/mens-ranking?dateId=id13792\n2022,2022-10-06,SEN,Senegal,CAF,18,1364125908,https://en.wikipedia.org/w/index.php?title=2022_FIFA_World_Cup&oldid=1364125908,https://www.fifa.com/fifa-world-ranking/mens-ranking?dateId=id13792\n2022,2022-10-06,WAL,Wales,UEFA,19,1364125908,https://en.wikipedia.org/w/index.php?title=2022_FIFA_World_Cup&oldid=1364125908,https://www.fifa.com/fifa-world-ranking/mens-ranking?dateId=id13792\n2022,2022-10-06,IRN,IR Iran,AFC,20,1364125908,https://en.wikipedia.org/w/index.php?title=2022_FIFA_World_Cup&oldid=1364125908,https://www.fifa.com/fifa-world-ranking/mens-ranking?dateId=id13792\n2022,2022-10-06,SRB,Serbia,UEFA,21,1364125908,https://en.wikipedia.org/w/index.php?title=2022_FIFA_World_Cup&oldid=1364125908,https://www.fifa.com/fifa-world-ranking/mens-ranking?dateId=id13792\n2022,2022-10-06,MAR,Morocco,CAF,22,1364125908,https://en.wikipedia.org/w/index.php?title=2022_FIFA_World_Cup&oldid=1364125908,https://www.fifa.com/fifa-world-ranking/mens-ranking?dateId=id13792\n2022,2022-10-06,JPN,Japan,AFC,24,1364125908,https://en.wikipedia.org/w/index.php?title=2022_FIFA_World_Cup&oldid=1364125908,https://www.fifa.com/fifa-world-ranking/mens-ranking?dateId=id13792\n2022,2022-10-06,POL,Poland,UEFA,26,1364125908,https://en.wikipedia.org/w/index.php?title=2022_FIFA_World_Cup&oldid=1364125908,https://www.fifa.com/fifa-world-ranking/mens-ranking?dateId=id13792\n2022,2022-10-06,KOR,Korea Republic,AFC,28,1364125908,https://en.wikipedia.org/w/index.php?title=2022_FIFA_World_Cup&oldid=1364125908,https://www.fifa.com/fifa-world-ranking/mens-ranking?dateId=id13792\n2022,2022-10-06,TUN,Tunisia,CAF,30,1364125908,https://en.wikipedia.org/w/index.php?title=2022_FIFA_World_Cup&oldid=1364125908,https://www.fifa.com/fifa-world-ranking/mens-ranking?dateId=id13792\n2022,2022-10-06,CRC,Costa Rica,CONCACAF,31,1364125908,https://en.wikipedia.org/w/index.php?title=2022_FIFA_World_Cup&oldid=1364125908,https://www.fifa.com/fifa-world-ranking/mens-ranking?dateId=id13792\n2022,2022-10-06,AUS,Australia,AFC,38,1364125908,https://en.wikipedia.org/w/index.php?title=2022_FIFA_World_Cup&oldid=1364125908,https://www.fifa.com/fifa-world-ranking/mens-ranking?dateId=id13792\n2022,2022-10-06,CAN,Canada,CONCACAF,41,1364125908,https://en.wikipedia.org/w/index.php?title=2022_FIFA_World_Cup&oldid=1364125908,https://www.fifa.com/fifa-world-ranking/mens-ranking?dateId=id13792\n2022,2022-10-06,CMR,Cameroon,CAF,43,1364125908,https://en.wikipedia.org/w/index.php?title=2022_FIFA_World_Cup&oldid=1364125908,https://www.fifa.com/fifa-world-ranking/mens-ranking?dateId=id13792\n2022,2022-10-06,ECU,Ecuador,CONMEBOL,44,1364125908,https://en.wikipedia.org/w/index.php?title=2022_FIFA_World_Cup&oldid=1364125908,https://www.fifa.com/fifa-world-ranking/mens-ranking?dateId=id13792\n2022,2022-10-06,QAT,Qatar,AFC,50,1364125908,https://en.wikipedia.org/w/index.php?title=2022_FIFA_World_Cup&oldid=1364125908,https://www.fifa.com/fifa-world-ranking/mens-ranking?dateId=id13792\n2022,2022-10-06,KSA,Saudi Arabia,AFC,51,1364125908,https://en.wikipedia.org/w/index.php?title=2022_FIFA_World_Cup&oldid=1364125908,https://www.fifa.com/fifa-world-ranking/mens-ranking?dateId=id13792\n2022,2022-10-06,GHA,Ghana,CAF,61,1364125908,https://en.wikipedia.org/w/index.php?title=2022_FIFA_World_Cup&oldid=1364125908,https://www.fifa.com/fifa-world-ranking/mens-ranking?dateId=id13792\n2026,2026-06-11,ARG,Argentina,CONMEBOL,1,1364564584,https://en.wikipedia.org/w/index.php?title=2026_FIFA_World_Cup&oldid=1364564584,https://inside.fifa.com/fifa-world-ranking/men?dateId=id11944\n2026,2026-06-11,ESP,Spain,UEFA,2,1364564584,https://en.wikipedia.org/w/index.php?title=2026_FIFA_World_Cup&oldid=1364564584,https://inside.fifa.com/fifa-world-ranking/men?dateId=id11944\n2026,2026-06-11,FRA,France,UEFA,3,1364564584,https://en.wikipedia.org/w/index.php?title=2026_FIFA_World_Cup&oldid=1364564584,https://inside.fifa.com/fifa-world-ranking/men?dateId=id11944\n2026,2026-06-11,ENG,Slovakia,UEFA,4,1364564584,https://en.wikipedia.org/w/index.php?title=2026_FIFA_World_Cup&oldid=1364564584,https://inside.fifa.com/fifa-world-ranking/men?dateId=id11944\n2026,2026-06-11,POR,Portugal,UEFA,5,1364564584,https://en.wikipedia.org/w/index.php?title=2026_FIFA_World_Cup&oldid=1364564584,https://inside.fifa.com/fifa-world-ranking/men?dateId=id11944\n2026,2026-06-11,BRA,Brazil,CONMEBOL,6,1364564584,https://en.wikipedia.org/w/index.php?title=2026_FIFA_World_Cup&oldid=1364564584,https://inside.fifa.com/fifa-world-ranking/men?dateId=id11944\n2026,2026-06-11,MAR,Morocco,CAF,7,1364564584,https://en.wikipedia.org/w/index.php?title=2026_FIFA_World_Cup&oldid=1364564584,https://inside.fifa.com/fifa-world-ranking/men?dateId=id11944\n2026,2026-06-11,NED,Netherlands,UEFA,8,1364564584,https://en.wikipedia.org/w/index.php?title=2026_FIFA_World_Cup&oldid=1364564584,https://inside.fifa.com/fifa-world-ranking/men?dateId=id11944\n2026,2026-06-11,BEL,Belgium,UEFA,9,1364564584,https://en.wikipedia.org/w/index.php?title=2026_FIFA_World_Cup&oldid=1364564584,https://inside.fifa.com/fifa-world-ranking/men?dateId=id11944\n2026,2026-06-11,GER,Germany,UEFA,10,1364564584,https://en.wikipedia.org/w/index.php?title=2026_FIFA_World_Cup&oldid=1364564584,https://inside.fifa.com/fifa-world-ranking/men?dateId=id11944\n2026,2026-06-11,CRO,Croatia,UEFA,11,1364564584,https://en.wikipedia.org/w/index.php?title=2026_FIFA_World_Cup&oldid=1364564584,https://inside.fifa.com/fifa-world-ranking/men?dateId=id11944\n2026,2026-06-11,COL,Colombia,CONMEBOL,13,1364564584,https://en.wikipedia.org/w/index.php?title=2026_FIFA_World_Cup&oldid=1364564584,https://inside.fifa.com/fifa-world-ranking/men?dateId=id11944\n2026,2026-06-11,MEX,Mexico,CONCACAF,14,1364564584,https://en.wikipedia.org/w/index.php?title=2026_FIFA_World_Cup&oldid=1364564584,https://inside.fifa.com/fifa-world-ranking/men?dateId=id11944\n2026,2026-06-11,SEN,Senegal,CAF,15,1364564584,https://en.wikipedia.org/w/index.php?title=2026_FIFA_World_Cup&oldid=1364564584,https://inside.fifa.com/fifa-world-ranking/men?dateId=id11944\n2026,2026-06-11,URU,Uruguay,CONMEBOL,16,1364564584,https://en.wikipedia.org/w/index.php?title=2026_FIFA_World_Cup&oldid=1364564584,https://inside.fifa.com/fifa-world-ranking/men?dateId=id11944\n2026,2026-06-11,USA,USA,CONCACAF,17,1364564584,https://en.wikipedia.org/w/index.php?title=2026_FIFA_World_Cup&oldid=1364564584,https://inside.fifa.com/fifa-world-ranking/men?dateId=id11944\n2026,2026-06-11,JPN,Japan,AFC,18,1364564584,https://en.wikipedia.org/w/index.php?title=2026_FIFA_World_Cup&oldid=1364564584,https://inside.fifa.com/fifa-world-ranking/men?dateId=id11944\n2026,2026-06-11,SUI,Switzerland,UEFA,19,1364564584,https://en.wikipedia.org/w/index.php?title=2026_FIFA_World_Cup&oldid=1364564584,https://inside.fifa.com/fifa-world-ranking/men?dateId=id11944\n2026,2026-06-11,IRN,IR Iran,AFC,20,1364564584,https://en.wikipedia.org/w/index.php?title=2026_FIFA_World_Cup&oldid=1364564584,https://inside.fifa.com/fifa-world-ranking/men?dateId=id11944\n2026,2026-06-11,TUR,Türkiye,UEFA,22,1364564584,https://en.wikipedia.org/w/index.php?title=2026_FIFA_World_Cup&oldid=1364564584,https://inside.fifa.com/fifa-world-ranking/men?dateId=id11944\n2026,2026-06-11,ECU,Ecuador,CONMEBOL,23,1364564584,https://en.wikipedia.org/w/index.php?title=2026_FIFA_World_Cup&oldid=1364564584,https://inside.fifa.com/fifa-world-ranking/men?dateId=id11944\n2026,2026-06-11,AUT,Austria,UEFA,24,1364564584,https://en.wikipedia.org/w/index.php?title=2026_FIFA_World_Cup&oldid=1364564584,https://inside.fifa.com/fifa-world-ranking/men?dateId=id11944\n2026,2026-06-11,KOR,Korea Republic,AFC,25,1364564584,https://en.wikipedia.org/w/index.php?title=2026_FIFA_World_Cup&oldid=1364564584,https://inside.fifa.com/fifa-world-ranking/men?dateId=id11944\n2026,2026-06-11,AUS,Australia,AFC,27,1364564584,https://en.wikipedia.org/w/index.php?title=2026_FIFA_World_Cup&oldid=1364564584,https://inside.fifa.com/fifa-world-ranking/men?dateId=id11944\n2026,2026-06-11,ALG,Algeria,CAF,28,1364564584,https://en.wikipedia.org/w/index.php?title=2026_FIFA_World_Cup&oldid=1364564584,https://inside.fifa.com/fifa-world-ranking/men?dateId=id11944\n2026,2026-06-11,EGY,Egypt,CAF,29,1364564584,https://en.wikipedia.org/w/index.php?title=2026_FIFA_World_Cup&oldid=1364564584,https://inside.fifa.com/fifa-world-ranking/men?dateId=id11944\n2026,2026-06-11,CAN,Canada,CONCACAF,30,1364564584,https://en.wikipedia.org/w/index.php?title=2026_FIFA_World_Cup&oldid=1364564584,https://inside.fifa.com/fifa-world-ranking/men?dateId=id11944\n2026,2026-06-11,NOR,Norway,UEFA,31,1364564584,https://en.wikipedia.org/w/index.php?title=2026_FIFA_World_Cup&oldid=1364564584,https://inside.fifa.com/fifa-world-ranking/men?dateId=id11944\n2026,2026-06-11,CIV,Côte d'Ivoire,CAF,33,1364564584,https://en.wikipedia.org/w/index.php?title=2026_FIFA_World_Cup&oldid=1364564584,https://inside.fifa.com/fifa-world-ranking/men?dateId=id11944\n2026,2026-06-11,PAN,Panama,CONCACAF,34,1364564584,https://en.wikipedia.org/w/index.php?title=2026_FIFA_World_Cup&oldid=1364564584,https://inside.fifa.com/fifa-world-ranking/men?dateId=id11944\n2026,2026-06-11,SWE,Sweden,UEFA,38,1364564584,https://en.wikipedia.org/w/index.php?title=2026_FIFA_World_Cup&oldid=1364564584,https://inside.fifa.com/fifa-world-ranking/men?dateId=id11944\n2026,2026-06-11,CZE,Czechia,UEFA,40,1364564584,https://en.wikipedia.org/w/index.php?title=2026_FIFA_World_Cup&oldid=1364564584,https://inside.fifa.com/fifa-world-ranking/men?dateId=id11944\n2026,2026-06-11,PAR,Paraguay,CONMEBOL,41,1364564584,https://en.wikipedia.org/w/index.php?title=2026_FIFA_World_Cup&oldid=1364564584,https://inside.fifa.com/fifa-world-ranking/men?dateId=id11944\n2026,2026-06-11,SCO,Scotland,UEFA,42,1364564584,https://en.wikipedia.org/w/index.php?title=2026_FIFA_World_Cup&oldid=1364564584,https://inside.fifa.com/fifa-world-ranking/men?dateId=id11944\n2026,2026-06-11,TUN,Tunisia,CAF,45,1364564584,https://en.wikipedia.org/w/index.php?title=2026_FIFA_World_Cup&oldid=1364564584,https://inside.fifa.com/fifa-world-ranking/men?dateId=id11944\n2026,2026-06-11,COD,Congo DR,CAF,46,1364564584,https://en.wikipedia.org/w/index.php?title=2026_FIFA_World_Cup&oldid=1364564584,https://inside.fifa.com/fifa-world-ranking/men?dateId=id11944\n2026,2026-06-11,UZB,Uzbekistan,AFC,50,1364564584,https://en.wikipedia.org/w/index.php?title=2026_FIFA_World_Cup&oldid=1364564584,https://inside.fifa.com/fifa-world-ranking/men?dateId=id11944\n2026,2026-06-11,QAT,Qatar,AFC,56,1364564584,https://en.wikipedia.org/w/index.php?title=2026_FIFA_World_Cup&oldid=1364564584,https://inside.fifa.com/fifa-world-ranking/men?dateId=id11944\n2026,2026-06-11,IRQ,Iraq,AFC,57,1364564584,https://en.wikipedia.org/w/index.php?title=2026_FIFA_World_Cup&oldid=1364564584,https://inside.fifa.com/fifa-world-ranking/men?dateId=id11944\n2026,2026-06-11,RSA,South Africa,CAF,60,1364564584,https://en.wikipedia.org/w/index.php?title=2026_FIFA_World_Cup&oldid=1364564584,https://inside.fifa.com/fifa-world-ranking/men?dateId=id11944\n2026,2026-06-11,KSA,Saudi Arabia,AFC,61,1364564584,https://en.wikipedia.org/w/index.php?title=2026_FIFA_World_Cup&oldid=1364564584,https://inside.fifa.com/fifa-world-ranking/men?dateId=id11944\n2026,2026-06-11,JOR,Jordan,AFC,63,1364564584,https://en.wikipedia.org/w/index.php?title=2026_FIFA_World_Cup&oldid=1364564584,https://inside.fifa.com/fifa-world-ranking/men?dateId=id11944\n2026,2026-06-11,BIH,Bosnia and Herzegovina,UEFA,64,1364564584,https://en.wikipedia.org/w/index.php?title=2026_FIFA_World_Cup&oldid=1364564584,https://inside.fifa.com/fifa-world-ranking/men?dateId=id11944\n2026,2026-06-11,CPV,Cabo Verde,CAF,67,1364564584,https://en.wikipedia.org/w/index.php?title=2026_FIFA_World_Cup&oldid=1364564584,https://inside.fifa.com/fifa-world-ranking/men?dateId=id11944\n2026,2026-06-11,GHA,Ghana,CAF,73,1364564584,https://en.wikipedia.org/w/index.php?title=2026_FIFA_World_Cup&oldid=1364564584,https://inside.fifa.com/fifa-world-ranking/men?dateId=id11944\n2026,2026-06-11,CUW,Curaçao,CONCACAF,82,1364564584,https://en.wikipedia.org/w/index.php?title=2026_FIFA_World_Cup&oldid=1364564584,https://inside.fifa.com/fifa-world-ranking/men?dateId=id11944\n2026,2026-06-11,HAI,Haiti,CONCACAF,83,1364564584,https://en.wikipedia.org/w/index.php?title=2026_FIFA_World_Cup&oldid=1364564584,https://inside.fifa.com/fifa-world-ranking/men?dateId=id11944\n2026,2026-06-11,NZL,New Zealand,OFC,85,1364564584,https://en.wikipedia.org/w/index.php?title=2026_FIFA_World_Cup&oldid=1364564584,https://inside.fifa.com/fifa-world-ranking/men?dateId=id11944\n", "data/slovakia_world_cup_matches.csv": "world_cup_year,match_date,stage,team_rank,team_goals,opponent_goals,opponent_code,opponent,opponent_rank,opponent_confederation,result,team_shootout_goals,opponent_shootout_goals,extra_time,status,ranking_date,ranking_source_url,match_source_url\n2010,2010-06-15,Group stage,34,1,1,NZL,New Zealand,78,OFC,draw,,,False,completed,2010-05-26,https://web.archive.org/web/20191006015211/https://www.fifa.com/fifa-world-ranking/ranking-table/men/rank/id9054/,https://www.fifa.com/en/tournaments/mens/worldcup/southafrica2010\n2010,2010-06-20,Group stage,34,0,2,PAR,Paraguay,31,CONMEBOL,loss,,,False,completed,2010-05-26,https://web.archive.org/web/20191006015211/https://www.fifa.com/fifa-world-ranking/ranking-table/men/rank/id9054/,https://www.fifa.com/en/tournaments/mens/worldcup/southafrica2010\n2010,2010-06-24,Group stage,34,3,2,ITA,Italy,5,UEFA,win,,,False,completed,2010-05-26,https://web.archive.org/web/20191006015211/https://www.fifa.com/fifa-world-ranking/ranking-table/men/rank/id9054/,https://www.fifa.com/en/tournaments/mens/worldcup/southafrica2010\n2010,2010-06-28,Round of 16,34,1,2,NED,Netherlands,4,UEFA,loss,,,False,completed,2010-05-26,https://web.archive.org/web/20191006015211/https://www.fifa.com/fifa-world-ranking/ranking-table/men/rank/id9054/,https://www.fifa.com/en/tournaments/mens/worldcup/southafrica2010\n"};
+          const reportFetch = window.fetch.bind(window);
+          window.fetch = (resource, options) => {
+            const path = typeof resource === "string" ? resource : resource.url;
+            if (Object.prototype.hasOwnProperty.call(window.__REPORT_CSV__, path)) {
+              return Promise.resolve(new Response(window.__REPORT_CSV__[path], {
+                status: 200,
+                headers: { "Content-Type": "text/csv; charset=utf-8" },
+              }));
+            }
+            return reportFetch(resource, options);
+          };
+        </script>
+        <script>
+        "use strict";
+
+const RANKINGS_URL = "data/world_cup_rankings.csv";
+const MATCHES_URL = "data/england_world_cup_matches.csv";
+const TEAM = Object.assign({ name: "Slovakia", code: "ENG" }, window.__TEAM__);
+
+const TEAM_POSSESSIVE = TEAM.name.endsWith("s") ? `${TEAM.name}’` : `${TEAM.name}’s`;
+const TOURNAMENT_SOURCES = {
+  1994: "https://www.fifa.com/en/tournaments/mens/worldcup/usa1994",
+  1998: "https://www.fifa.com/en/tournaments/mens/worldcup/france1998",
+  2002: "https://www.fifa.com/en/tournaments/mens/worldcup/koreajapan2002",
+  2006: "https://www.fifa.com/en/tournaments/mens/worldcup/germany2006",
+  2010: "https://www.fifa.com/en/tournaments/mens/worldcup/southafrica2010",
+  2014: "https://www.fifa.com/en/tournaments/mens/worldcup/brazil2014",
+  2018: "https://www.fifa.com/en/tournaments/mens/worldcup/russia2018",
+  2022: "https://www.fifa.com/en/tournaments/mens/worldcup/qatar2022",
+  2026: "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026",
+};
+
+const ORDINAL_WORDS = {
+  1: "first",
+  2: "second",
+  3: "third",
+  4: "fourth",
+  5: "fifth",
+  6: "sixth",
+  7: "seventh",
+  8: "eighth",
+  9: "ninth",
+  10: "tenth",
+  11: "eleventh",
+  12: "twelfth",
+};
+
+const state = {
+  rankings: [],
+  matches: [],
+  years: [],
+  year: 2026,
+};
+
+const elements = {
+  yearTabs: document.querySelector("#year-tabs"),
+  heroYear: document.querySelector("#hero-year"),
+  heroTitle: document.querySelector("#hero-title"),
+  heroDeck: document.querySelector("#hero-deck"),
+  rankStamp: document.querySelector("#rank-stamp"),
+  heroRank: document.querySelector("#hero-rank"),
+  rankDate: document.querySelector("#rank-date"),
+  matchesPlayed: document.querySelector("#matches-played"),
+  resultRecord: document.querySelector("#result-record"),
+  goalRecord: document.querySelector("#goal-record"),
+  tournamentReached: document.querySelector("#tournament-reached"),
+  matchLedger: document.querySelector("#match-ledger"),
+  noTournament: document.querySelector("#no-tournament"),
+  historyChart: document.querySelector("#history-chart"),
+  matchSource: document.querySelector("#match-source"),
+  rankingSource: document.querySelector("#ranking-source"),
+  loadError: document.querySelector("#load-error"),
+};
+
+function parseCsv(text) {
+  const rows = [];
+  let row = [];
+  let field = "";
+  let quoted = false;
+
+  for (let index = 0; index < text.length; index += 1) {
+    const character = text[index];
+    const next = text[index + 1];
+    if (character === '"' && quoted && next === '"') {
+      field += '"';
+      index += 1;
+    } else if (character === '"') {
+      quoted = !quoted;
+    } else if (character === "," && !quoted) {
+      row.push(field);
+      field = "";
+    } else if ((character === "\n" || character === "\r") && !quoted) {
+      if (character === "\r" && next === "\n") index += 1;
+      row.push(field);
+      if (row.some((value) => value.length)) rows.push(row);
+      row = [];
+      field = "";
+    } else {
+      field += character;
+    }
+  }
+
+  if (field.length || row.length) {
+    row.push(field);
+    rows.push(row);
+  }
+
+  const [headers, ...records] = rows;
+  return records.map((values) => Object.fromEntries(headers.map((header, index) => [header, values[index] ?? ""])));
+}
+
+function numberOrNull(value) {
+  return value === "" || value === undefined ? null : Number(value);
+}
+
+function normaliseRanking(record) {
+  return {
+    ...record,
+    world_cup_year: Number(record.world_cup_year),
+    fifa_rank: Number(record.fifa_rank),
+  };
+}
+
+function normaliseMatch(record) {
+  const prefix = Object.keys(record).find(
+    (key) => key.endsWith("_rank") && key !== "opponent_rank" && key !== "fifa_rank",
+  );
+  const baseField = prefix ? prefix.replace("_rank", "") : "england";
+
+  return {
+    ...record,
+    world_cup_year: Number(record.world_cup_year),
+    team_rank: Number(record[`${baseField}_rank`]),
+    opponent_rank: Number(record.opponent_rank),
+    team_goals: numberOrNull(record[`${baseField}_goals`]),
+    opponent_goals: numberOrNull(record.opponent_goals),
+    team_shootout_goals: numberOrNull(record[`${baseField}_shootout_goals`]),
+    opponent_shootout_goals: numberOrNull(record.opponent_shootout_goals),
+    extra_time: record.extra_time.toLocaleLowerCase() === "true",
+  };
+}
+
+function formatDate(isoDate, short = false) {
+  return new Intl.DateTimeFormat("en-GB", {
+    day: "numeric",
+    month: short ? "short" : "long",
+    year: "numeric",
+    timeZone: "UTC",
+  }).format(new Date(`${isoDate}T00:00:00Z`));
+}
+
+function ordinalWord(rank) {
+  return ORDINAL_WORDS[rank] ?? `number ${rank}`;
+}
+
+function makeElement(tag, className, text) {
+  const element = document.createElement(tag);
+  if (className) element.className = className;
+  if (text !== undefined) element.textContent = text;
+  return element;
+}
+
+function svgElement(tag, attributes = {}) {
+  const node = document.createElementNS("http://www.w3.org/2000/svg", tag);
+  Object.entries(attributes).forEach(([name, value]) => node.setAttribute(name, value));
+  return node;
+}
+
+function teamRanking(year = state.year) {
+  return state.rankings.find((record) => record.world_cup_year === year && record.fifa_code === TEAM.code);
+}
+
+function tournamentRanking(year = state.year) {
+  return state.rankings.find((record) => record.world_cup_year === year);
+}
+
+function matchesForYear() {
+  return state.matches
+    .filter((match) => match.world_cup_year === state.year)
+    .sort((a, b) => a.match_date.localeCompare(b.match_date));
+}
+
+function renderYearTabs() {
+  elements.yearTabs.replaceChildren();
+  state.years.forEach((year) => {
+    const button = makeElement("button", "year-tab", year);
+    button.type = "button";
+    button.role = "tab";
+    button.id = `year-tab-${year}`;
+    button.setAttribute("aria-controls", "matches");
+    button.setAttribute("aria-selected", String(year === state.year));
+    button.tabIndex = year === state.year ? 0 : -1;
+    button.addEventListener("click", () => selectYear(year));
+    button.addEventListener("keydown", handleYearKeydown);
+    elements.yearTabs.append(button);
+  });
+}
+
+function handleYearKeydown(event) {
+  if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+  event.preventDefault();
+  const currentIndex = state.years.indexOf(state.year);
+  let nextIndex = currentIndex;
+  if (event.key === "ArrowRight") nextIndex = (currentIndex + 1) % state.years.length;
+  if (event.key === "ArrowLeft") nextIndex = (currentIndex - 1 + state.years.length) % state.years.length;
+  if (event.key === "Home") nextIndex = 0;
+  if (event.key === "End") nextIndex = state.years.length - 1;
+  selectYear(state.years[nextIndex]);
+}
+
+function selectYear(year) {
+  const retainTabFocus = document.activeElement?.classList.contains("year-tab");
+  state.year = year;
+  window.history.replaceState(null, "", `#${year}`);
+  render();
+  if (retainTabFocus) document.querySelector(`#year-tab-${year}`).focus();
+}
+
+function renderHero(matches) {
+  const ranking = teamRanking();
+  const completed = matches.filter((match) => match.status === "completed");
+  const scheduled = matches.filter((match) => match.status === "scheduled");
+  elements.heroYear.textContent = state.year;
+
+  if (!ranking) {
+    elements.heroTitle.textContent = `${TEAM.name} did not reach the 1994 World Cup.`;
+    elements.heroDeck.textContent = "No tournament appearance means no pre-tournament rank or match record.";
+    elements.heroRank.textContent = "—";
+    elements.rankDate.textContent = "Did not qualify";
+    elements.rankStamp.setAttribute("aria-label", `${TEAM.name} did not qualify and has no tournament ranking`);
+    return;
+  }
+
+  elements.heroTitle.replaceChildren(
+    document.createTextNode(`${TEAM.name} arrived ranked `),
+    makeElement("span", "", ordinalWord(ranking.fifa_rank)),
+    document.createTextNode(" in the world."),
+  );
+  elements.heroDeck.textContent = scheduled.length
+    ? `${completed.length} matches played. ${scheduled.length === 1 ? "One more to come." : `${scheduled.length} more to come.`}`
+    : `${completed.length} matches played from the group stage to ${completed.at(-1).stage.toLocaleLowerCase()}.`;
+  elements.heroRank.textContent = ranking.fifa_rank;
+  elements.rankDate.textContent = formatDate(ranking.ranking_date, true);
+  elements.rankStamp.setAttribute("aria-label", `${TEAM.name} FIFA rank ${ranking.fifa_rank}, published ${formatDate(ranking.ranking_date)}`);
+}
+
+function reachedLabel(matches) {
+  if (!matches.length) return "Did not qualify";
+  const scheduled = matches.find((match) => match.status === "scheduled");
+  if (scheduled) return scheduled.stage;
+  if (state.year === 2018) return "Fourth place";
+  return matches.at(-1).stage;
+}
+
+function renderSummary(matches) {
+  const completed = matches.filter((match) => match.status === "completed");
+  const wins = completed.filter((match) => match.result === "win").length;
+  const draws = completed.filter((match) => match.result === "draw").length;
+  const losses = completed.filter((match) => match.result === "loss").length;
+  const goalsFor = completed.reduce((total, match) => total + match.team_goals, 0);
+  const goalsAgainst = completed.reduce((total, match) => total + match.opponent_goals, 0);
+
+  elements.matchesPlayed.textContent = completed.length;
+  elements.resultRecord.textContent = completed.length ? `${wins}W · ${draws}D · ${losses}L` : "—";
+  elements.goalRecord.textContent = completed.length ? `${goalsFor} for · ${goalsAgainst} against` : "—";
+  elements.tournamentReached.textContent = reachedLabel(matches);
+}
+
+function resultLabel(result) {
+  return {
+    win: "Win",
+    draw: "Draw",
+    loss: "Loss",
+    scheduled: "Next",
+  }[result];
+}
+
+function outcomeNote(match) {
+  if (match.status === "scheduled") return `Scheduled · ${formatDate(match.match_date)}`;
+  if (match.team_shootout_goals !== null) {
+    const verb = match.result === "win" ? "Won" : "Lost";
+    return `${verb} ${match.team_shootout_goals}–${match.opponent_shootout_goals} on penalties`;
+  }
+  if (match.extra_time) return "After extra time";
+  return "Full time";
+}
+
+function rankComparison(match) {
+  const difference = Math.abs(match.team_rank - match.opponent_rank);
+  if (difference === 0) return "Both teams held the same rank";
+  const subject = match.team_rank < match.opponent_rank ? TEAM.name : match.opponent;
+  return `${subject} ranked ${difference} ${difference === 1 ? "place" : "places"} higher`;
+}
+
+function teamBlock(name, rank, score, opponent = false) {
+  const block = makeElement("div", `score-team${opponent ? " opponent" : ""}`);
+  const identity = makeElement("div", "team-identity");
+  identity.append(makeElement("span", "team-name", name));
+  identity.append(makeElement("span", "rank-chip", `FIFA #${rank}`));
+  const scoreNumber = makeElement("strong", "score-number", score === null ? "—" : score);
+  block.append(identity, scoreNumber);
+  return block;
+}
+
+function renderMatches(matches) {
+  elements.matchLedger.replaceChildren();
+  elements.noTournament.hidden = matches.length > 0;
+  elements.matchLedger.hidden = matches.length === 0;
+
+  matches.forEach((match, index) => {
+    const row = makeElement("article", `match-row result-${match.result}`);
+    row.style.setProperty("--row-index", index);
+    row.setAttribute(
+      "aria-label",
+      match.status === "scheduled"
+        ? `${match.stage}: ${TEAM.name}, ranked ${match.team_rank}, will play ${match.opponent}, ranked ${match.opponent_rank}`
+        : `${match.stage}: ${TEAM.name} ${match.team_goals}, ${match.opponent} ${match.opponent_goals}. ${outcomeNote(match)}`,
+    );
+
+    row.append(makeElement("span", "match-count", String(index + 1).padStart(2, "0")));
+    const meta = makeElement("div", "match-meta");
+    meta.append(makeElement("span", "match-stage", match.stage));
+    meta.append(makeElement("time", "match-date", formatDate(match.match_date, true)));
+    meta.lastElementChild.dateTime = match.match_date;
+    row.append(meta);
+
+    const scoreboard = makeElement("div", "scoreboard");
+    scoreboard.append(teamBlock(TEAM.name, match.team_rank, match.team_goals));
+    const divider = makeElement("span", "score-divider");
+    divider.setAttribute("aria-hidden", "true");
+    scoreboard.append(divider);
+    scoreboard.append(teamBlock(match.opponent, match.opponent_rank, match.opponent_goals, true));
+    row.append(scoreboard);
+
+    const outcome = makeElement("div", "match-outcome");
+    outcome.append(makeElement("span", "result-badge", resultLabel(match.result)));
+    outcome.append(makeElement("p", "outcome-note", outcomeNote(match)));
+    outcome.append(makeElement("p", "rank-comparison", rankComparison(match)));
+    row.append(outcome);
+    elements.matchLedger.append(row);
+  });
+}
+
+function renderHistory() {
+  const appearances = state.rankings
+    .filter((record) => record.fifa_code === TEAM.code)
+    .sort((a, b) => a.world_cup_year - b.world_cup_year);
+  const byYear = new Map(appearances.map((record) => [record.world_cup_year, record]));
+  const plot = { left: 70, right: 770, top: 36, bottom: 270 };
+  const rankLimit = 15;
+  const xForYear = (year) => plot.left + (state.years.indexOf(year) / (state.years.length - 1)) * (plot.right - plot.left);
+  const yForRank = (rank) => plot.top + ((rank - 1) / (rankLimit - 1)) * (plot.bottom - plot.top);
+
+  elements.historyChart.replaceChildren();
+  const title = svgElement("title", { id: "chart-title" });
+  title.textContent = `${TEAM_POSSESSIVE} pre-tournament FIFA ranking at each World Cup`;
+  const description = svgElement("desc", { id: "chart-description" });
+  description.textContent = `${TEAM.name} did not qualify in 1994. ${appearances.map((record) => `${record.world_cup_year}: rank ${record.fifa_rank}`).join("; ")}.`;
+  elements.historyChart.append(title, description);
+
+  [1, 5, 10, 15].forEach((rank) => {
+    const y = yForRank(rank);
+    elements.historyChart.append(svgElement("line", { class: "chart-grid", x1: plot.left, x2: plot.right, y1: y, y2: y }));
+    const label = svgElement("text", { class: "chart-axis", x: plot.left - 14, y: y + 4, "text-anchor": "end" });
+    label.textContent = rank;
+    elements.historyChart.append(label);
+  });
+
+  state.years.forEach((year) => {
+    const label = svgElement("text", { class: "chart-year", x: xForYear(year), y: plot.bottom + 38, "text-anchor": "middle" });
+    label.textContent = year;
+    elements.historyChart.append(label);
+  });
+
+  const points = appearances.map((record) => [xForYear(record.world_cup_year), yForRank(record.fifa_rank), record]);
+  const pathData = points.map(([x, y], index) => `${index ? "L" : "M"} ${x} ${y}`).join(" ");
+  elements.historyChart.append(svgElement("path", { class: "chart-line", d: pathData }));
+
+  state.years.forEach((year) => {
+    const record = byYear.get(year);
+    if (!record) {
+      const x = xForYear(year);
+      elements.historyChart.append(svgElement("circle", { class: "chart-missing-mark", cx: x, cy: yForRank(rankLimit), r: 8 }));
+      const missing = svgElement("text", { class: "chart-missing", x, y: yForRank(rankLimit) - 16, "text-anchor": "middle" });
+      missing.textContent = "DNQ";
+      elements.historyChart.append(missing);
+      return;
+    }
+
+    const x = xForYear(year);
+    const y = yForRank(record.fifa_rank);
+    const point = svgElement("circle", {
+      class: `chart-point${year === state.year ? " is-current" : ""}`,
+      cx: x,
+      cy: y,
+      r: 8,
+      tabindex: 0,
+      role: "button",
+      "aria-label": `${year}, ${TEAM.name} rank ${record.fifa_rank}. Open tournament.`,
+    });
+    point.addEventListener("click", () => selectYear(year));
+    point.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        selectYear(year);
+      }
+    });
+    elements.historyChart.append(point);
+    const value = svgElement("text", { class: "chart-value", x, y: Math.max(18, y - 16), "text-anchor": "middle" });
+    value.textContent = record.fifa_rank;
+    elements.historyChart.append(value);
+  });
+}
+
+function renderSources(matches) {
+  const ranking = teamRanking() ?? tournamentRanking();
+  elements.matchSource.href = matches[0]?.match_source_url ?? TOURNAMENT_SOURCES[state.year];
+  elements.rankingSource.href = ranking.ranking_source_url;
+}
+
+function render() {
+  const matches = matchesForYear();
+  renderYearTabs();
+  renderHero(matches);
+  renderSummary(matches);
+  renderMatches(matches);
+  renderHistory();
+  renderSources(matches);
+  document.title = `${state.year} ${TEAM.name} World Cup · Rank Room`;
+}
+
+async function initialise() {
+  try {
+    const [rankingsResponse, matchesResponse] = await Promise.all([fetch(RANKINGS_URL), fetch(MATCHES_URL)]);
+    if (!rankingsResponse.ok || !matchesResponse.ok) throw new Error("One or more data files could not be loaded");
+    state.rankings = parseCsv(await rankingsResponse.text()).map(normaliseRanking);
+    state.matches = parseCsv(await matchesResponse.text()).map(normaliseMatch);
+    state.years = [...new Set(state.rankings.map((record) => record.world_cup_year))].sort((a, b) => a - b);
+    const hashYear = Number(window.location.hash.slice(1));
+    state.year = state.years.includes(hashYear) ? hashYear : state.years.at(-1);
+    render();
+  } catch (error) {
+    console.error("Could not load dashboard data", error);
+    elements.loadError.hidden = false;
+  }
+}
+
+window.addEventListener("hashchange", () => {
+  const year = Number(window.location.hash.slice(1));
+  if (state.years.includes(year) && year !== state.year) {
+    state.year = year;
+    render();
+  }
+});
+
+initialise();
+
+        </script>
+  </body>
+</html>
