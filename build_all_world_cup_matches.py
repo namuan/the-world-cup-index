@@ -163,25 +163,32 @@ def parse_aet(wikitext):
 
 
 def parse_team_codes(wikitext):
-    """Extract both team FIFA codes from a match template."""
-    all_codes = []
-    # Standard {{fb-rt|CODE}} or {{fb|CODE}} — 3-letter codes
-    all_codes.extend(re.findall(r"\{\{fb(?:-rt)?\|([A-Z]{3})(?:\|\d+)?\}\}", wikitext))
-    # Handle named teams like {{fb|FR Yugoslavia|name=FR Yugoslavia}}
-    all_codes.extend(re.findall(r"\{\{fb(?:-rt)?\|([A-Z][A-Za-z\s]+)\|", wikitext))
-    # 2026 format: {{#invoke:flag|fb-rt|CODE}} or {{#invoke:flag|fb|CODE}}
-    all_codes.extend(re.findall(r"flag\|(?:fb-rt|fb)\|([A-Z]{3})\}\}", wikitext))
-    # {{#invoke:flagg|...|fb|CODE}} patterns (2022 format)
-    all_codes.extend(re.findall(r"fb\|([A-Z]{3})\}\}", wikitext))
-    # Handle 2-letter codes like {{fb|US}}
-    all_codes.extend(re.findall(r"\{\{fb(?:-rt)?\|([A-Z]{2,3})\b", wikitext))
-    # Deduplicate while preserving order
-    seen = set()
+    """Extract both team FIFA codes from a match template, preserving text order."""
+    matches = []
+
+    def add_matches(pattern):
+        for m in re.finditer(pattern, wikitext):
+            matches.append((m.start(), len(m.group(1)), m.group(1)))
+
+    add_matches(r"\{\{fb(?:-rt)?\|([A-Z]{3})(?:\|\d+)?\}\}")
+    add_matches(r"\{\{fb(?:-rt)?\|([A-Z][A-Za-z\s]+)\|")
+    add_matches(r"flag\|(?:fb-rt|fb)\|([A-Z]{3})\}\}")
+    add_matches(r"fb\|([A-Z]{3})\}\}")
+    add_matches(r"\{\{fb(?:-rt)?\|([A-Z]{2,3})\b")
+
+    # Sort by position, then prefer longer matches at same position
+    matches.sort(key=lambda x: (x[0], -x[1]))
+    seen_codes = set()
     codes = []
-    for c in all_codes:
-        if c not in seen:
-            seen.add(c)
-            codes.append(c)
+    last_pos = -1
+    for pos, length, code in matches:
+        if code in seen_codes or code.lower() == 'name':
+            continue
+        if pos == last_pos:
+            continue  # skip shorter match at same position
+        last_pos = pos
+        seen_codes.add(code)
+        codes.append(code)
     if len(codes) >= 2:
         return codes[0], codes[1]
     return None, None
