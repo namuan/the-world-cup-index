@@ -28,6 +28,11 @@ DATA_DIR = PROJECT_DIRECTORY / "data"
 
 EXCLUDE_CODES = {"fifa_code"}
 
+ALIAS_MAP = {
+    "YUG": "SRB",
+    "SCG": "SRB",
+}
+
 
 def setup_logging(verbosity):
     logging_level = logging.WARNING
@@ -76,8 +81,9 @@ def discover_teams(rankings):
         code = row["fifa_code"]
         if code in EXCLUDE_CODES:
             continue
-        if code not in teams:
-            teams[code] = {
+        canonical = ALIAS_MAP.get(code, code)
+        if canonical not in teams:
+            teams[canonical] = {
                 "name": row["team"],
                 "field_prefix": row["team"].lower().replace(" ", "_"),
                 "csv_prefix": row["team"].lower().replace(" ", "_"),
@@ -264,8 +270,13 @@ def tournament_markup(year, ranking, matches, tournament_ranking, team_name):
 def build_report(rankings, matches, team_info, fifa_code):
     team_name = team_info["name"]
     years = sorted({int(row["world_cup_year"]) for row in rankings})
+
+    # Include aliased codes (e.g. YUG, SCG → SRB)
+    codes_to_match = {fifa_code} | {k for k, v in ALIAS_MAP.items() if v == fifa_code}
     team_rankings = {
-        int(row["world_cup_year"]): row for row in rankings if row["fifa_code"] == fifa_code
+        int(row["world_cup_year"]): row
+        for row in rankings
+        if row["fifa_code"] in codes_to_match
     }
     tournament_rankings = {}
     for row in rankings:
