@@ -168,7 +168,7 @@ function applyFilters() {
   tbody.innerHTML = filtered.map((t, i) => {
     const rankClass = i === 0 ? 'rank-gold' : (i === 1 ? 'rank-silver' : (i === 2 ? 'rank-bronze' : ''));
     const detailRows = t.details
-      .sort((a, b) => b.rank_gap - a.rank_gap)
+      .sort((a, b) => a.year - b.year)
       .map(d => `
         <div class="upset-row ${d.result === 'win' ? 'result-win' : d.result === 'draw' ? 'result-draw' : 'result-loss'}">
           <span class="upset-year">${d.year}</span>
