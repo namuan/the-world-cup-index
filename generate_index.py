@@ -18,27 +18,19 @@ REPORTS_DIR = PROJECT_DIRECTORY / "docs"
 
 def discover_reports():
     continuous = []
-    interactive = []
     for path in sorted(REPORTS_DIR.glob("*-world-cups-all.html")):
         name = path.stem.replace("-world-cups-all", "").replace("_", " ").title()
         continuous.append((name, path.name))
-    for path in sorted(REPORTS_DIR.glob("*-world-cup-tabs.html")):
-        name = path.stem.replace("-world-cup-tabs", "").replace("_", " ").title()
-        interactive.append((name, path.name))
-    return continuous, interactive
+    return continuous
 
 
 def main():
     REPORTS_DIR.mkdir(parents=True, exist_ok=True)
-    continuous, interactive = discover_reports()
+    continuous = discover_reports()
 
     continuous_rows = "\n".join(
         f'            <li><a href="{href}">{name}</a></li>'
         for name, href in continuous
-    )
-    interactive_rows = "\n".join(
-        f'            <li><a href="{href}">{name}</a></li>'
-        for name, href in interactive
     )
 
     html = dedent(
@@ -92,11 +84,6 @@ def main():
           </ul>
           <h2>Giant-killer Index</h2>
           <p>Teams ranked by wins against higher-ranked opponents. <a href="effectiveness.html">Filterable report →</a></p>
-          <h2>Interactive dashboards</h2>
-          <p>Teams with full match data. Switch between tournaments, explore every fixture and ranking history. <span class="counts">{len(interactive)} dashboards</span></p>
-          <ul>
-        {interactive_rows}
-          </ul>
         </main>
         </body>
         </html>
@@ -105,7 +92,7 @@ def main():
 
     index_path = REPORTS_DIR / "index.html"
     index_path.write_text(html, encoding="utf-8")
-    print(f"Wrote {index_path} ({len(continuous)} continuous, {len(interactive)} interactive)")
+    print(f"Wrote {index_path} ({len(continuous)} continuous)")
 
 
 if __name__ == "__main__":
