@@ -37,7 +37,7 @@ def setup_logging(verbosity):
 
 def parse_args():
     parser = ArgumentParser(description=__doc__, formatter_class=RawDescriptionHelpFormatter)
-    parser.add_argument("--output-dir", default="reports", type=Path)
+    parser.add_argument("--output-dir", default="docs", type=Path)
     parser.add_argument("-v", "--verbose", action="count", default=0, dest="verbose")
     return parser.parse_args()
 

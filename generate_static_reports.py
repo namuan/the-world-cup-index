@@ -71,7 +71,7 @@ def parse_args():
     )
     parser.add_argument(
         "--output-dir",
-        default="reports",
+        default="docs",
         type=Path,
         help="Output directory, relative to the project (default: %(default)s)",
     )

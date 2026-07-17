@@ -13,7 +13,7 @@ from pathlib import Path
 from textwrap import dedent
 
 PROJECT_DIRECTORY = Path(__file__).resolve().parent
-REPORTS_DIR = PROJECT_DIRECTORY / "reports"
+REPORTS_DIR = PROJECT_DIRECTORY / "docs"
 
 
 def discover_reports():

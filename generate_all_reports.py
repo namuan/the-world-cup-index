@@ -48,7 +48,7 @@ def parse_args():
     parser = ArgumentParser(description=__doc__, formatter_class=RawDescriptionHelpFormatter)
     parser.add_argument(
         "--output-dir",
-        default="reports",
+        default="docs",
         type=Path,
         help="Output directory (default: %(default)s)",
     )
