@@ -2,7 +2,7 @@
 
 Every team's FIFA rank before each men's World Cup from 1994 (when the ranking began) through 2026, plus a complete match-by-match record for every team that qualified.
 
-The data powers two kinds of reports — an interactive dashboard per team and a continuous print-friendly page — and an SQLite database for querying.
+The data powers continuous print-friendly team reports, a filterable Giant-killer Index, and an SQLite database for querying.
 
 ## Quick start
 
@@ -13,10 +13,7 @@ The data powers two kinds of reports — an interactive dashboard per team and a
 # Scrape every match from group and knockout articles
 ./build_all_world_cup_matches.py
 
-# Build the SQLite database
-./build_database.py
-
-# Generate all reports
+# Generate all reports, database, and index
 ./generate_all_reports.py
 
 # Open the team index
@@ -39,12 +36,11 @@ All scripts use `uv` for inline dependency management — just run them.
 
 ## Reports
 
-All output in `reports/`:
+All output in `docs/` (deployed via GitHub Pages):
 
-- **`index.html`** — searchable grid linking to every team's continuous report and interactive dashboard
-- **`*-world-cups-all.html`** — 77 continuous, print-friendly reports (no JavaScript)
-- **`*-world-cup-tabs.html`** — interactive dashboards with year tabs, match ledger, and ranking history chart for every team with match data
-- **`effectiveness.html`** — the Giant-killer Index: teams ranked by wins against higher-ranked opponents, with live filters
+- **`index.html`** — searchable grid linking to every team's continuous report
+- **`*-world-cups-all.html`** — 75 continuous, print-friendly reports (no JavaScript)
+- **`effectiveness.html`** — the Giant-killer Index: teams ranked by wins against higher-ranked opponents, with live filters and sortable columns
 
 ## Database
 
@@ -71,14 +67,6 @@ SELECT team_code,
 FROM matches GROUP BY 1 ORDER BY 3 DESC LIMIT 10;
 ```
 
-## Dashboard (dev server)
-
-The interactive dashboard also runs as a live dev server reading CSVs at runtime:
-
-```sh
-./serve_dashboard.py       # → http://localhost:8000
-```
-
 ## Build pipeline
 
 ```
@@ -90,10 +78,8 @@ Wikipedia API (pinned revisions)
     └── build_all_world_cup_matches.py  →  data/*_world_cup_matches.csv
          (scrapes group + knockout articles for every tournament)
               │
-              ├── build_database.py  →  worldcup.db
-              │
-              └── generate_all_reports.py  →  reports/*.html
-                   (continuous + interactive dashboards + index)
+              └── generate_all_reports.py  →  docs/*.html
+                   (continuous reports, index, database, effectiveness)
 ```
 
 ## Sources & acknowledgements
