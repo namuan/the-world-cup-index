@@ -507,23 +507,7 @@ def main(args):
 
     logging.info("Generated %d team reports, skipped %d in %s", generated, skipped, output_directory)
 
-    # Also generate tabbed interactive dashboards for teams with match data
     import subprocess
-    tabbed_script = PROJECT_DIRECTORY / "generate_static_reports.py"
-    for fifa_code, team_info in sorted(teams.items()):
-        matches = load_matches(team_info)
-        if not matches:
-            continue
-        try:
-            subprocess.run(
-                [str(tabbed_script), "--fifa-code", fifa_code, "--output-dir", str(output_directory)],
-                check=True, capture_output=True,
-            )
-            logging.info("Wrote %s-world-cup-tabs.html", team_info["csv_prefix"])
-        except subprocess.CalledProcessError as exc:
-            logging.warning("Tabbed report failed for %s: %s", fifa_code, exc.stderr.decode().strip())
-
-    logging.info("All reports generated in %s", output_directory)
 
     index_script = PROJECT_DIRECTORY / "generate_index.py"
     subprocess.run([str(index_script)], check=True)
