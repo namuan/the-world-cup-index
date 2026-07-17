@@ -164,24 +164,24 @@ def parse_aet(wikitext):
 
 def parse_team_codes(wikitext):
     """Extract both team FIFA codes from a match template."""
-    # Standard {{fb-rt|CODE}} or {{fb|CODE}}
-    codes = re.findall(r"\{\{fb(?:-rt)?\|([A-Z]{3})(?:\|\d+)?\}\}", wikitext)
-    if len(codes) >= 2:
-        return codes[0], codes[1]
-    # 2026 format: {{#invoke:flag|fb-rt|CODE}} or {{#invoke:flag|fb|CODE}}
-    codes = re.findall(r"flag\|(?:fb-rt|fb)\|([A-Z]{3})\}\}", wikitext)
-    if len(codes) >= 2:
-        return codes[0], codes[1]
-    # {{#invoke:flagg|...|fb|CODE}} patterns (2022 format)
-    codes = re.findall(r"fb\|([A-Z]{3})\}\}", wikitext)
-    if len(codes) >= 2:
-        return codes[0], codes[1]
-    # Handle 2-letter codes like {{fb|US}}
-    codes = re.findall(r"\{\{fb(?:-rt)?\|([A-Z]{2,3})\b", wikitext)
-    if len(codes) >= 2:
-        return codes[0], codes[1]
+    all_codes = []
+    # Standard {{fb-rt|CODE}} or {{fb|CODE}} — 3-letter codes
+    all_codes.extend(re.findall(r"\{\{fb(?:-rt)?\|([A-Z]{3})(?:\|\d+)?\}\}", wikitext))
     # Handle named teams like {{fb|FR Yugoslavia|name=FR Yugoslavia}}
-    codes = re.findall(r"\{\{fb(?:-rt)?\|([A-Z][A-Za-z\s]+)\|", wikitext)
+    all_codes.extend(re.findall(r"\{\{fb(?:-rt)?\|([A-Z][A-Za-z\s]+)\|", wikitext))
+    # 2026 format: {{#invoke:flag|fb-rt|CODE}} or {{#invoke:flag|fb|CODE}}
+    all_codes.extend(re.findall(r"flag\|(?:fb-rt|fb)\|([A-Z]{3})\}\}", wikitext))
+    # {{#invoke:flagg|...|fb|CODE}} patterns (2022 format)
+    all_codes.extend(re.findall(r"fb\|([A-Z]{3})\}\}", wikitext))
+    # Handle 2-letter codes like {{fb|US}}
+    all_codes.extend(re.findall(r"\{\{fb(?:-rt)?\|([A-Z]{2,3})\b", wikitext))
+    # Deduplicate while preserving order
+    seen = set()
+    codes = []
+    for c in all_codes:
+        if c not in seen:
+            seen.add(c)
+            codes.append(c)
     if len(codes) >= 2:
         return codes[0], codes[1]
     return None, None

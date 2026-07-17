@@ -1,5 +1,5 @@
 world_cup_year,match_date,stage,team_rank,team_goals,opponent_goals,opponent_code,opponent,opponent_rank,opponent_confederation,result,team_shootout_goals,opponent_shootout_goals,extra_time,status,ranking_date,ranking_source_url,match_source_url
-2006,2006-06-12,Group stage,2,3,0,USA,USA,5,CONCACAF,win,,,False,completed,2006-05-17,https://inside.fifa.com/fifa-world-ranking,https://www.fifa.com/en/tournaments/mens/worldcup/germany2006
+2006,2006-06-12,Group stage,2,0,3,USA,USA,5,CONCACAF,loss,,,False,completed,2006-05-17,https://inside.fifa.com/fifa-world-ranking,https://www.fifa.com/en/tournaments/mens/worldcup/germany2006
 2006,2006-06-17,Group stage,2,0,2,GHA,Ghana,48,CAF,loss,,,False,completed,2006-05-17,https://inside.fifa.com/fifa-world-ranking,https://www.fifa.com/en/tournaments/mens/worldcup/germany2006
 2006,2006-06-22,Group stage,2,0,2,ITA,Italy,13,UEFA,loss,,,False,completed,2006-05-17,https://inside.fifa.com/fifa-world-ranking,https://www.fifa.com/en/tournaments/mens/worldcup/germany2006
 2026,2026-06-11,Group stage,40,1,2,KOR,Korea Republic,25,AFC,loss,,,False,completed,2026-06-11,https://inside.fifa.com/fifa-world-ranking/men?dateId=id11944,https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026
